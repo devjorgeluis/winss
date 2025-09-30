@@ -926,6 +926,7 @@ ul.nav>li.sa-stacker>a:hover {
     .login-header .login-group-default {
         min-width: auto !important;
         display: flex;
+        align-items: flex-start;
     }
 }
 

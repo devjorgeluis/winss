@@ -64,7 +64,7 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                     </div>
                 </nav>
                 <div className="container-fluid hw-bg">
-                    <div className="container container-header-flex">
+                    <div className="container container-header-flex p-0">
                         <div id="header-bg">
                             <div className="modal fade" id="LoginModalExpress" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
                                 <div className="modal-dialog" role="document">
@@ -151,47 +151,45 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                             </div>
                             <div className="row">
                                 <div className="col-4 col-sm-6 col-md-3 col-lg-2 col-xl-4 logo-responsive">
-                                    <a className="navbar-brand" href="https://winss.bet">
+                                    <a className="navbar-brand" href="/">
                                         <img id="logo" className="logo-header" src={ImgLogo} alt="Logo de winss.bet" />
                                     </a>
                                 </div>
                                 <div className="col-8 col-sm-6 col-md-7 col-lg-10 col-xl-8 login-header">
                                     <div className="container-top">
                                         <ul className="nav">
-                                            { fragmentNavLinksTop }
+                                            {fragmentNavLinksTop}
                                         </ul>
                                     </div>
 
-                                    <div className="d-none d-sm-none d-md-block d-lg-block d-xl-block">
-                                        <div className="btn-group login-group" role="group">
-                                            <div className="login-group-default">
-                                                <a href="/register" className="btn btn-dark btn-menu-top btndrop btn-register-a"> <i className="fas fa-user"></i> CREAR CUENTA </a>
-                                                <a href="/login" className="btn btn-danger btn-menu-top btndrop btn-login-a"> <i className="fas fa-lock"></i> INICIAR SESIÓN </a>
+                                    <div className="btn-group login-group" role="group">
+                                        <div className="login-group-default">
+                                            <a href="/register" className="btn btn-dark btn-menu-top btndrop btn-register-a"> <i className="fas fa-user"></i> CREAR CUENTA </a>
+                                            <a href="/login" className="btn btn-danger btn-menu-top btndrop btn-login-a"> <i className="fas fa-lock"></i> INICIAR SESIÓN </a>
 
-                                                <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <img src={ImgFlagES} />
-                                                </a>
-                                                <ul className="navbar-nav ml-auto idomas_reponsive__">
-                                                    <li className="nav-item btn-sm px-0">
-                                                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                                                <img src={ImgFlagES} width="27px" height="20px" /> Español
-                                                            </a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                                                <img src={ImgFlagFR} width="27px" height="20px" /> Frances</a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                                                <img src={ImgFlagEN} width="27px" height="20px" /> Inglés
-                                                            </a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                                                <img src={ImgFlagPT} width="27px" height="20px" /> Portugués
-                                                            </a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                                                <img src={ImgFlagHE} width="27px" height="20px" /> Hebreo
-                                                            </a>
-                                                        </div>
-                                                    </li>
-                                                </ul>
-                                            </div>
+                                            <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <img src={ImgFlagES} />
+                                            </a>
+                                            <ul className="navbar-nav ml-auto idomas_reponsive__">
+                                                <li className="nav-item btn-sm px-0">
+                                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <img src={ImgFlagES} width="27px" height="20px" /> Español
+                                                        </a>
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <img src={ImgFlagFR} width="27px" height="20px" /> Frances</a>
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <img src={ImgFlagEN} width="27px" height="20px" /> Inglés
+                                                        </a>
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <img src={ImgFlagPT} width="27px" height="20px" /> Portugués
+                                                        </a>
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <img src={ImgFlagHE} width="27px" height="20px" /> Hebreo
+                                                        </a>
+                                                    </div>
+                                                </li>
+                                            </ul>
                                         </div>
                                     </div>
                                 </div>

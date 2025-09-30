@@ -245,7 +245,6 @@ body {
 }
 
 .login-header {
-	line-height: 75px;
 	text-align: right;
 }
 
@@ -885,6 +884,7 @@ input.form-control.input-sm {
 }
 .nav-link-mini {
 	font-size: 12px !important;
+	cursor: pointer;
 }
 
 /*----------------------------------------------------FOOTER END//-----------------------------------------*/
@@ -937,6 +937,10 @@ input.form-control.input-sm {
 	}
 	.login-header {
 		text-align: center;
+		padding: 0;
+	}
+	.login-group {
+		margin-left: 0;
 	}
 	.direct {
 		font-size: 12px;
@@ -946,6 +950,12 @@ input.form-control.input-sm {
 	}
 	.btn-mini {
 		display: none;
+	}
+    #navbarDropdown {
+        display: none;
+    }
+	.login-group-default{
+		margin-top: 7px;
 	}
 }
 
