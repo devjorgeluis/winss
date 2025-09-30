@@ -60,7 +60,7 @@ body {
 }
 
 .hw-bg {
-    background: url('/assets/template/winss/images/v5/header.png') #8d7c44 !important;
+    background: url('../assets/img/header.png') #8d7c44 !important;
     max-height: 75px;
 }
 
@@ -154,6 +154,13 @@ ul.nav>li.sa-stacker>a {
 .nav-item a {
     text-align: left;
     color: #fff;
+}
+
+.nav-link-mini img {
+    border-radius: 50px;
+    width: 30px;
+    height: 30px;
+    border: 3px solid #4c3019;
 }
 
 .container-top ul.nav>li>a {
@@ -619,7 +626,7 @@ ul.nav>li.sa-stacker>a:hover {
     padding: 10px;
     min-height: 260px;
     border-radius: 10px;
-    background: url("/assets/img/auth/banner-profile-winss.png") #291d16;
+    background: url("../assets/img/banner-profile-winss.png") #291d16;
 }
 
 .profile-content-historial {

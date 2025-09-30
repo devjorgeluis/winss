@@ -1,18 +1,19 @@
 import { NavLink } from "react-router-dom";
 
 const NavLinkHeader = (props) => {
-  return (
-    <NavLink
-      to={props.pageCode === "home" ? "/" : `/${props.pageCode}`}
-      className={({ isActive }) => 
-        `header-link_headerLink ${isActive ? "header-link_active" : ""}`
-      }
-      onClick={props.onClick}
-    >
-      {props.icon && <img className="main-nav-img" src={props.icon} alt={props.title} />}
-      {props.title}
-    </NavLink>
-  );
+    return (
+        <li>
+            <NavLink
+                to={props.pageCode === "home" ? "/" : `/${props.pageCode}`}
+                className={({ isActive }) =>
+                    `btn-menu-cj button type1 text-white ${isActive ? "active-menu-item" : ""}`
+                }
+                onClick={props.onClick}
+            >
+                {props.title}
+            </NavLink>
+        </li>
+    );
 };
 
 export default NavLinkHeader;

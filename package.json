@@ -11,9 +11,11 @@
   },
   "dependencies": {
     "animate.css": "^4.1.1",
-    "bootstrap": "^5.3.3",
+    "bootstrap": "^4.1.1",
+    "jquery": "^3.6.0",
     "micro-slider": "^1.1.0",
     "normalize.css": "^8.0.1",
+    "popper.js": "^1.16.1",
     "prop-types": "^15.8.1",
     "react": "^19.0.0",
     "react-calendar": "^6.0.0",

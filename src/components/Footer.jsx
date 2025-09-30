@@ -42,10 +42,10 @@ const Footer = ({ isSlotsOnly }) => {
                                     {
                                         isSlotsOnly === "false" && <>
                                             <a onClick={() => navigate("/live-casino")}>
-                                                <span className={`footer-link_footerLink ${location.pathname === '/live-casino' ? 'footer-link_active' : ''}`}>Live Casino</span>
+                                                <span className={`footer-link_footerLink ${location.pathname === '/live-casino' ? 'footer-link_active' : ''}`}>Casino En Vivo</span>
                                             </a>
                                             <a onClick={() => navigate("/sports")}>
-                                                <span className={`footer-link_footerLink ${location.pathname === '/sports' ? 'footer-link_active' : ''}`}>Sport</span>
+                                                <span className={`footer-link_footerLink ${location.pathname === '/sports' ? 'footer-link_active' : ''}`}>Deportes</span>
                                             </a>
                                         </>
                                     }

@@ -54,8 +54,8 @@ const UserMenu = ({ handleChangePasswordClick, handleLogoutClick, onClose }) => 
                 <div className="mobile-menu-navigation_mobileMenuNav">
                     <a className="mobile-menu-navigation_mobileMenuLink" onClick={() => {navigate("/"); onClose();}}>Home</a>
                     <a className="mobile-menu-navigation_mobileMenuLink" onClick={() => {navigate("/casino"); onClose();}}>Casino</a>
-                    <a className="mobile-menu-navigation_mobileMenuLink" onClick={() => {navigate("/live-casino"); onClose();}}>Live Casino</a>
-                    <a className="mobile-menu-navigation_mobileMenuLink" onClick={() => {navigate("/sports"); onClose();}}>Sport</a>
+                    <a className="mobile-menu-navigation_mobileMenuLink" onClick={() => {navigate("/live-casino"); onClose();}}>Casino En Vivo</a>
+                    <a className="mobile-menu-navigation_mobileMenuLink" onClick={() => {navigate("/sports"); onClose();}}>Deportes</a>
                 </div>
             </div>
         </div>

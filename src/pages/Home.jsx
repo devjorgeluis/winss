@@ -71,7 +71,7 @@ const Home = () => {
 
   const promos = [
     { name: "Casino", link: "/casino", image: ImgPromoCasino },
-    { name: "Live Casino", link: "/live-casino", image: ImgPromoLiveCasino },
+    { name: "Casino En Vivo", link: "/live-casino", image: ImgPromoLiveCasino },
     { name: "Sports", link: "/sports", image: ImgPromoSport }
   ]
 
@@ -596,7 +596,7 @@ const Home = () => {
               <div className="live-casino">
                 <div className="games-block-title_gamesBlockTitle">
                   <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleLeft"></div>
-                  <p className="games-block-title_gamesBlockTitleText">Live Casino</p>
+                  <p className="games-block-title_gamesBlockTitleText">Casino En Vivo</p>
                   <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleRight"></div>
                 </div>
                 <div className="games-cards-suspensed_gameCardWrapper">

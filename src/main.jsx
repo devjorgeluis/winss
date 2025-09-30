@@ -4,6 +4,7 @@ import AppContextProvider from './AppContext.jsx'
 
 import "bootstrap/dist/css/bootstrap.css";
 import "bootstrap/dist/css/bootstrap-grid.css";
+import "bootstrap/dist/js/bootstrap.bundle.min.js";
 import './css/Winss.css'
 import './css/Home.css'
 import './css/Poseidon.css'
