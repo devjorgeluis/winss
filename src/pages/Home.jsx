@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <>
-      <div class="main" id="wlcp" data-app="">
+      <div className="main" id="wlcp" data-app="">
         <VideoSlideshow videos={videoSlideshow} />
 
         <div className="container container-winss">

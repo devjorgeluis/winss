@@ -215,6 +215,7 @@ const Layout = () => {
                         <main className="app__main">
                             <Outlet />
                         </main>
+                        <Footer />
                         {/* {
                             isMobile && !isSportsPage ? <Footer isSlotsOnly={isSlotsOnly} isSportsPage={isSportsPage} /> :
                                 !isMobile ? <Footer isSlotsOnly={isSlotsOnly} isSportsPage={isSportsPage} /> : <></>

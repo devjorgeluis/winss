@@ -22,6 +22,15 @@ body {
     font-family: "MetropolisMedium", sans-serif;
 }
 
+html {
+    -moz-osx-font-smoothing: grayscale;
+    -webkit-font-smoothing: antialiased;
+    -webkit-tap-highlight-color: rgba(0, 0, 0, 0);
+    font-size: 14px;
+    overflow-x: hidden;
+    text-rendering: optimizeLegibility;
+}
+
 .row {
     padding: 0;
     margin: 0;
@@ -505,7 +514,7 @@ ul.nav>li.sa-stacker>a:hover {
 
 .list-footer li a {
     color: #fff;
-    font-size: 0.7rem;
+    font-size: 10px;
 }
 
 .group-networks {
@@ -1189,4 +1198,59 @@ ul.nav>li.sa-stacker>a:hover {
     transform: translate(-50%, 0);
     width: 25%;
     left: 50%;
+}
+
+@media  screen and (max-width:768px) {
+    .curacao {
+      width: 130px;
+      height: auto;
+    }
+
+    .list-footer {
+        padding: 0;
+    }
+}
+
+.curacao-text {
+    font-size:10px;
+}
+
+@media  screen and (max-width: 460px) {
+    .footer-bc .col-9 {
+        width: 100%; 
+        display: flex;
+        justify-content: center;
+        gap: 0px;
+        flex-wrap: nowrap; 
+        margin-bottom: 55px; 
+        left: 20%;
+    }
+
+    .footer-bc .col-3 {
+        width: 100%;
+        gap: 10px;
+        flex-wrap: nowrap; 
+        margin-top: 70px; 
+        right: auto;
+        transform: translateX(-20px);
+        align-items: center;
+    }
+
+    .footer-bc .col-3 button {
+        font-size: 25px;
+        padding: 10px;
+        border: none;
+        background: none;
+
+    }
+    .icon-x{
+        margin-top: 17px;
+    }
+}
+
+.footer-bc   button {
+    font-size: 30px;
+    background: transparent;
+    border: none;
+    color: #fff;
 }

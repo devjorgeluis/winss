@@ -469,6 +469,7 @@ const Casino = () => {
         />
       ) : (
         <>
+          
           <Slideshow images={imageSlideshow} />
 
           <div className="games-tags_gamesTags">

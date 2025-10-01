@@ -42,30 +42,30 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
 
                                     {
                                         isLogin ?
-                                        <div class="btn-group d-wallet-default d-wallet-default-header" role="group">
-                                            <a class="btn btn-sm btn-success cashin-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
-                                                <i class="fas fa-money-bill-wave"></i><br />
+                                        <div className="btn-group d-wallet-default d-wallet-default-header" role="group">
+                                            <a className="btn btn-sm btn-success cashin-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
+                                                <i className="fas fa-money-bill-wave"></i><br />
                                                 Depositar
                                             </a>
-                                            <a class="btn btn-danger btn-sm cashout-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
-                                                <i class="fas fa-arrow-alt-circle-down"></i> <br />
+                                            <a className="btn btn-danger btn-sm cashout-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
+                                                <i className="fas fa-arrow-alt-circle-down"></i> <br />
                                                 Retirar
                                             </a>
-                                            <button class="btn dropdown-toggle btn-sm btn-success btn-menu-top-login" type="button" data-toggle="dropdown" id="navbarDropdown2" aria-haspopup="true" aria-expanded="false">
-                                                <i class="fas fa-user"></i> <span>Hola, </span> <strong>betarsis</strong><br />
-                                                <i class="fas fa-money-bill-wave"></i> <span>AR$</span> <span class="walletBalance">0,00</span>
+                                            <button className="btn dropdown-toggle btn-sm btn-success btn-menu-top-login" type="button" data-toggle="dropdown" id="navbarDropdown2" aria-haspopup="true" aria-expanded="false">
+                                                <i className="fas fa-user"></i> <span>Hola, </span> <strong>betarsis</strong><br />
+                                                <i className="fas fa-money-bill-wave"></i> <span>AR$</span> <span className="walletBalance">0,00</span>
                                             </button>
-                                            <div class="dropdown-menu" aria-labelledby="dropdown">
-                                                <a class="dropdown-item btn-sm" href="https://winss.bet/profile/wallet"><i class="fas fa-wallet"></i> Ir a billetera</a>
+                                            <div className="dropdown-menu" aria-labelledby="dropdown">
+                                                <a className="dropdown-item btn-sm" href="https://winss.bet/profile/wallet"><i className="fas fa-wallet"></i> Ir a billetera</a>
 
-                                                <a class="dropdown-item btn-sm" href="https://winss.bet/auth/logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                                                <a className="dropdown-item btn-sm" href="https://winss.bet/auth/logout"><i className="fas fa-sign-out-alt"></i> Cerrar sesión</a>
 
                                                 <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
                                                     <img src={ImgFlagES} />
                                                 </a>
                                             </div>
-                                            <ul class="navbar-nav ml-auto idomas_reponsive__">
-                                                <li class="nav-item btn-sm" style="padding: 0;">
+                                            <ul className="navbar-nav ml-auto idomas_reponsive__">
+                                                <li className="nav-item btn-sm" style="padding: 0;">
 
                                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                         <a className="dropdown-item" id="dropdown-item-tls" href="#">
