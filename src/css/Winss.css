@@ -3,7 +3,7 @@
 
 @font-face {
     font-family: 'MetropolisMedium';
-    src: url('/font/medium/Metropolis_Medium.otf') format("truetype");
+    src: url("../assets/font/Metropolis-Medium.otf") format("truetype");
     font-weight: 400;
     font-style: normal;
 }
@@ -25,6 +25,10 @@ body {
 .row {
     padding: 0;
     margin: 0;
+}
+
+.container {
+    padding: 24px;
 }
 
 #wl-top {
@@ -938,4 +942,251 @@ ul.nav>li.sa-stacker>a:hover {
     .login-header {
         display: initial !important;
     }
+}
+
+#wlcp .react-slideshow-container .default-nav {
+    width: 15%;
+    height: 100%;
+    background: transparent;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+#wlcp .react-slideshow-container .default-nav svg {
+    filter: invert(1);
+}
+
+#wlcp .react-slideshow-container video {
+    width: 100%;
+    object-fit: cover;
+}
+
+.main {
+    background: url('../assets/img/bg-winss.jpg') !important;
+    background-size: cover !important;
+    background-repeat: repeat !important;
+    background-position: center !important;
+}
+
+.container-winss h5 {
+    color: #fff;
+    font-weight: 800;
+    text-transform: uppercase;
+}
+
+.container-fanpoker {
+    margin-top: -58px;
+    max-width: 1250px;
+}
+
+.container-fanpoker-responsive {
+    max-width: 1024px;
+}
+
+.col-center-fanpoker {
+    padding: 5px;
+}
+
+.col-center-fanpoker img {
+    transition-delay: 0.1s;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.col-center-fanpoker img:hover {
+    cursor: pointer;
+    box-shadow: 2px 2px 6px 1px #000000;
+    border-radius: 15px !important;
+    transform: scale(1.03) !important;
+}
+
+.owl-carousel {
+    height: 80px;
+}
+
+@media only screen and (max-width: 768px) {
+    .main {
+        background: linear-gradient(to bottom, #4a00b0, #170038);
+    }
+}
+
+@media only screen and (max-width: 380px) {}
+
+/* banners */
+
+/* banner slots */
+.background {
+    width: 100%;
+    height: 100%;
+}
+
+.position-container {
+    position: absolute;
+    z-index: 1;
+}
+
+.icon-777 {
+    top: 55%;
+    left: 20%;
+    transform: translate(-50%, 30%);
+    width: 25%;
+    z-index: 2;
+}
+
+.torch {
+    top: 40%;
+    left: 4%;
+    transform: translate(10%, -30%);
+    width: 20%;
+    z-index: 1;
+}
+
+.panda {
+    top: 50%;
+    left: 10%;
+    transform: translate(35%, 30%);
+    width: 31%;
+    z-index: 3;
+}
+
+.cowgirl {
+    top: 50%;
+    right: 5%;
+    transform: translate(0%, -40%);
+    width: 25%;
+    z-index: 4;
+}
+
+.banner-frame {
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: auto;
+    z-index: 3;
+}
+
+.titles {
+    position: absolute;
+    z-index: 4;
+    top: 20%;
+    transform: translate(-50%, 0);
+}
+
+.title-deportes {
+    left: 35%;
+    width: 45%;
+}
+
+.title-slots {
+    left: 45%;
+    width: 60%;
+}
+
+.title-casino {
+    left: 50%;
+    width: 55%;
+}
+
+.title-crash {
+    top: 30%;
+    left: 50%;
+    width: 40%;
+}
+
+/* banner slots */
+
+/* banner deportes */
+.monedas-deportes {
+    top: 1%;
+    right: 4%;
+    width: 40%;
+}
+
+.woody-deportes {
+    right: 0;
+    width: 100%;
+    transform: translate(0%, 0%);
+}
+
+.ball-deportes {
+    top: 24%;
+    z-index: 4;
+    width: 12%;
+    right: 30%;
+    transform: translate(-20%, 100%);
+}
+
+/* banner deportes */
+
+/* banner casino */
+.vaquera-casino {
+    top: 15%;
+    left: 0;
+    width: 45%;
+    transform: translate(0%, 25%);
+    z-index: 2;
+}
+
+.live-casino {
+    bottom: 25%;
+    left: 50%;
+    width: 30%;
+    transform: translate(-50%, 100%);
+    z-index: 3;
+}
+
+.ruleta-casino {
+    bottom: 25%;
+    left: 50%;
+    width: 70%;
+    transform: translate(-45%, 30%);
+}
+
+.vaquero-casino {
+    bottom: 5%;
+    right: 5%;
+    width: 50%;
+    transform: translate(25%, 0%);
+    z-index: 2;
+}
+
+.monedas-casino {
+    right: 0%;
+    bottom: 10%;
+    width: 35%;
+}
+
+.nav-vaquero-crash {
+    bottom: 5%;
+    left: 0;
+    width: 50%;
+}
+
+.spaceman-crash {
+    top: 30%;
+    left: 3%;
+    width: 15%;
+}
+
+.aviator-crash {
+    top: 5%;
+    left: 30%;
+    width: 20%;
+}
+
+.pescador-crash {
+    right: 1%;
+    bottom: 7%;
+    width: 35%;
+}
+
+.games-crash {
+    bottom: 4%;
+    transform: translate(-50%, 0);
+    width: 25%;
+    left: 50%;
 }

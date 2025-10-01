@@ -24,131 +24,9 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
     return (
         <>
             <div id="wl-top">
-                <nav className="navbar navbar-expand navbar-custom-mini">
-                    <div className="container container-header">
-                        <div className="navbar-collapse collapse">
-                            <ul className="navbar-nav btn-sm">
-                                <li className="nav-item active">
-                                    <a className="nav-link nav-link-mini clock-div" href="#">
-                                        <i className="far fa-clock"></i>
-                                        <div id="MyClockDisplay" className="clock">12:12:17 AM</div>
-                                    </a>
-                                </li>
-                            </ul>
-                            <ul className="navbar-nav ml-auto">
-                                <li className="nav-item dropdown btn-sm">
-                                    <a className="nav-link nav-link-mini dropdown-toggle" href="#" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                        <img src={ImgFlagES} />
-                                        <span className="lang-large-name">ESPAÑOL</span>
-                                        <span className="lang-shot-name">ES</span>
-                                    </a>
-                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown" id="dropdown-tls">
-                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                            <img src={ImgFlagES} width="27px" height="20px" /> Español
-                                        </a>
-                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                            <img src={ImgFlagFR} width="27px" height="20px" /> Frances</a>
-                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                            <img src={ImgFlagEN} width="27px" height="20px" /> Inglés
-                                        </a>
-                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                            <img src={ImgFlagPT} width="27px" height="20px" /> Portugués
-                                        </a>
-                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
-                                            <img src={ImgFlagHE} width="27px" height="20px" /> Hebreo
-                                        </a>
-                                    </div>
-                                </li>
-                            </ul>
-                        </div>
-                    </div>
-                </nav>
                 <div className="container-fluid hw-bg">
                     <div className="container container-header-flex p-0">
                         <div id="header-bg">
-                            <div className="modal fade" id="LoginModalExpress" role="dialog" aria-labelledby="exampleModalLabel" aria-hidden="true">
-                                <div className="modal-dialog" role="document">
-                                    <div className="modal-content">
-                                        <div className="modal-body">
-                                            <button type="button" className="close" data-dismiss="modal" aria-label="Close">
-                                                <span aria-hidden="true">×</span>
-                                            </button>
-                                            <div className="row p-5">
-                                                <div className="container-fluid">
-                                                    <article className="card-body mx-auto content-relog">
-                                                        <h4>INICIAR SESIÓN</h4>
-                                                        <form method="post" action="https://winss.bet/auth/login" className="form frmAuthLogin" role="form" autoComplete="off" noValidate="">
-                                                            <div className="form-group input-group">
-                                                                <div className="input-group-prepend">
-                                                                    <span className="input-group-text input-group-text-icon"> <i className="fa fa-user"></i> </span>
-                                                                </div>
-                                                                <input name="username" className="form-control form-control-auth btn-md" placeholder="Usuario" type="text" />
-                                                            </div>
-                                                            <div className="form-group input-group">
-                                                                <div className="input-group-prepend">
-                                                                    <span className="input-group-text input-group-text-icon"> <i className="fa fa-lock"></i> </span>
-                                                                </div>
-                                                                <input name="password" className="form-control form-control-auth btn-md" placeholder="Contraseña" type="password" />
-                                                            </div>
-
-                                                            <button
-                                                                type="submit"
-                                                                data-submit=".frmAuthLogin"
-                                                                className="btn btn-lo btn-green-ct btn-danger btn-md btn-block btn-submit reg-submit"
-                                                                data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Procesando Orden"
-                                                            >
-                                                                Entrar
-                                                            </button>
-                                                        </form>
-                                                        <br />
-
-                                                        <form method="post" action="https://winss.bet/auth/password/reset" className="form frmPasswordRestore" role="form" autoComplete="off">
-                                                            <div className="accordion" id="accordionExample">
-                                                                <div className="card">
-                                                                    <div className="card-header-" id="headingThree">
-                                                                        <h5 className="mb-0">
-                                                                            <button
-                                                                                className="btn btn-block btn-sm recuperar"
-                                                                                type="button"
-                                                                                data-toggle="collapse"
-                                                                                data-target=".collapseThree"
-                                                                                aria-expanded="true"
-                                                                                aria-controls="collapseThree"
-                                                                            >
-                                                                                RECUPERAR CONTRASEÑA
-                                                                            </button>
-                                                                            <a href="/contacto" className="btn btn-block btn-sm click-contact" type="button">
-                                                                                RECUPERAR CONTRASEÑA
-                                                                            </a>
-                                                                        </h5>
-                                                                    </div>
-                                                                    <div id="collapseThree" className="collapse collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample">
-                                                                        <div className="form-group input-group">
-                                                                            <div className="input-group-prepend">
-                                                                                <span className="input-group-text input-group-text-icon"> <i className="fas fa-envelope"></i> </span>
-                                                                            </div>
-                                                                            <input name="email" className="form-control btn-md" placeholder="Ingrese su correo" type="email" required="" />
-                                                                        </div>
-
-                                                                        <button
-                                                                            type="submit"
-                                                                            data-submit=".frmPasswordRestore"
-                                                                            className="btn btn-lo btn-green-ct btn-danger btn-md btn-block btn-submit reg-submit"
-                                                                            data-loading-text="&lt;i class='fa fa-circle-o-notch fa-spin'&gt;&lt;/i&gt; Procesando Orden"
-                                                                        >
-                                                                            RECUPERAR CONTRASEÑA
-                                                                        </button>
-                                                                    </div>
-                                                                </div>
-                                                            </div>
-                                                        </form>
-                                                    </article>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    </div>
-                                </div>
-                            </div>
                             <div className="row">
                                 <div className="col-4 col-sm-6 col-md-3 col-lg-2 col-xl-4 logo-responsive">
                                     <a className="navbar-brand" href="/">
@@ -162,16 +40,33 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                                         </ul>
                                     </div>
 
-                                    <div className="btn-group login-group" role="group">
-                                        <div className="login-group-default">
-                                            <a href="/register" className="btn btn-dark btn-menu-top btndrop btn-register-a"> <i className="fas fa-user"></i> CREAR CUENTA </a>
-                                            <a href="/login" className="btn btn-danger btn-menu-top btndrop btn-login-a"> <i className="fas fa-lock"></i> INICIAR SESIÓN </a>
-
-                                            <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                <img src={ImgFlagES} />
+                                    {
+                                        isLogin ?
+                                        <div class="btn-group d-wallet-default d-wallet-default-header" role="group">
+                                            <a class="btn btn-sm btn-success cashin-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
+                                                <i class="fas fa-money-bill-wave"></i><br />
+                                                Depositar
                                             </a>
-                                            <ul className="navbar-nav ml-auto idomas_reponsive__">
-                                                <li className="nav-item btn-sm px-0">
+                                            <a class="btn btn-danger btn-sm cashout-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
+                                                <i class="fas fa-arrow-alt-circle-down"></i> <br />
+                                                Retirar
+                                            </a>
+                                            <button class="btn dropdown-toggle btn-sm btn-success btn-menu-top-login" type="button" data-toggle="dropdown" id="navbarDropdown2" aria-haspopup="true" aria-expanded="false">
+                                                <i class="fas fa-user"></i> <span>Hola, </span> <strong>betarsis</strong><br />
+                                                <i class="fas fa-money-bill-wave"></i> <span>AR$</span> <span class="walletBalance">0,00</span>
+                                            </button>
+                                            <div class="dropdown-menu" aria-labelledby="dropdown">
+                                                <a class="dropdown-item btn-sm" href="https://winss.bet/profile/wallet"><i class="fas fa-wallet"></i> Ir a billetera</a>
+
+                                                <a class="dropdown-item btn-sm" href="https://winss.bet/auth/logout"><i class="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+
+                                                <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src={ImgFlagES} />
+                                                </a>
+                                            </div>
+                                            <ul class="navbar-nav ml-auto idomas_reponsive__">
+                                                <li class="nav-item btn-sm" style="padding: 0;">
+
                                                     <div className="dropdown-menu" aria-labelledby="navbarDropdown">
                                                         <a className="dropdown-item" id="dropdown-item-tls" href="#">
                                                             <img src={ImgFlagES} width="27px" height="20px" /> Español
@@ -191,7 +86,38 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                                                 </li>
                                             </ul>
                                         </div>
-                                    </div>
+                                        :
+                                        <div className="btn-group login-group" role="group">
+                                            <div className="login-group-default">
+                                                <a href="/register" className="btn btn-dark btn-menu-top btndrop btn-register-a"> <i className="fas fa-user"></i> CREAR CUENTA </a>
+                                                <a href="/login" className="btn btn-danger btn-menu-top btndrop btn-login-a"> <i className="fas fa-lock"></i> INICIAR SESIÓN </a>
+
+                                                <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                    <img src={ImgFlagES} />
+                                                </a>
+                                                <ul className="navbar-nav ml-auto idomas_reponsive__">
+                                                    <li className="nav-item btn-sm px-0">
+                                                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                                <img src={ImgFlagES} width="27px" height="20px" /> Español
+                                                            </a>
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                                <img src={ImgFlagFR} width="27px" height="20px" /> Frances</a>
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                                <img src={ImgFlagEN} width="27px" height="20px" /> Inglés
+                                                            </a>
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                                <img src={ImgFlagPT} width="27px" height="20px" /> Portugués
+                                                            </a>
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                                <img src={ImgFlagHE} width="27px" height="20px" /> Hebreo
+                                                            </a>
+                                                        </div>
+                                                    </li>
+                                                </ul>
+                                            </div>
+                                        </div>
+                                    }
                                 </div>
                             </div>
                         </div>

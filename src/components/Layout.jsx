@@ -212,10 +212,10 @@ const Layout = () => {
                             fragmentNavLinksTop={fragmentNavLinksTop}
                             isSlotsOnly={isSlotsOnly}
                         />
-                        {/* <main className="app__main">
+                        <main className="app__main">
                             <Outlet />
                         </main>
-                        {
+                        {/* {
                             isMobile && !isSportsPage ? <Footer isSlotsOnly={isSlotsOnly} isSportsPage={isSportsPage} /> :
                                 !isMobile ? <Footer isSlotsOnly={isSlotsOnly} isSportsPage={isSportsPage} /> : <></>
                         } */}
