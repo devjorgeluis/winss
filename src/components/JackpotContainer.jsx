@@ -8,13 +8,13 @@ const JackpotContainer = () => {
             <div className="boton-layout pl-2 pr-2">
                 <div>
                     <a href="#historial" data-toggle="modal" data-target="#historial">
-                        <img src={ImgReglas} alt="Historial" />
+                        <img src={ImgHistorial} alt="Historial" />
                     </a>
                 </div>
                 <div></div>
                 <div>
                     <a href="#reglamento" data-toggle="modal" data-target="#reglamento">
-                        <img src={ImgHistorial} alt="Reglamento" />
+                        <img src={ImgReglas} alt="Reglamento" />
                     </a>
                 </div>
             </div>

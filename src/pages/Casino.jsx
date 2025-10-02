@@ -54,7 +54,7 @@ const Casino = () => {
   const { contextData } = useContext(AppContext);
   const { isLogin } = useContext(LayoutContext);
   const { setShowFullDivLoading } = useContext(NavigationContext);
-  const [selectedPage, setSelectedPage] = useState("lobby");
+  const [selectedPage, setSelectedPage] = useState("casino");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [games, setGames] = useState([]);
   const [topSlot, setTopSlot] = useState([]);
@@ -63,6 +63,7 @@ const Casino = () => {
   const [topArcade, setTopArcade] = useState([]);
   const [categories, setCategories] = useState([]);
   const [mainCategories, setMainCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState({});
   const [pageData, setPageData] = useState({});
   const [gameUrl, setGameUrl] = useState("");
   const [fragmentNavLinksBody, setFragmentNavLinksBody] = useState(<></>);
@@ -153,8 +154,8 @@ const Casino = () => {
             title="Lobby"
             pageCode="home"
             icon={ImgLobby}
-            active={selectedPage === "home" || selectedPage === "lobby"}
-            onClick={() => getPage("home")}
+            active={selectedPage === "casino"}
+            onClick={() => getPage("casino")}
           />
           <NavLinkIcon
             title="Jokers"
@@ -200,8 +201,8 @@ const Casino = () => {
             title="Lobby"
             pageCode="home"
             icon={ImgLobby}
-            active={selectedPage === "home" || selectedPage === "lobby"}
-            onClick={() => getPage("home")}
+            active={selectedPage === "casino"}
+            onClick={() => getPage("casino")}
           />
           <NavLinkIcon
             title="Jokers"
@@ -267,6 +268,7 @@ const Casino = () => {
       if (result.data.page_group_type === "categories" && result.data.categories.length > 0) {
         const firstCategory = result.data.categories[0];
         setSelectedCategoryIndex(0);
+        // setActiveCategory(firstCategory);
         fetchContent(firstCategory, firstCategory.id, firstCategory.table_name, 0, true, result.data.page_group_code);
       } else if (result.data.page_group_type === "games") {
         loadMoreContent();
@@ -289,6 +291,7 @@ const Casino = () => {
       setMessageCustomAlert(["error", result.message]);
     } else {
       setPageData(result.data);
+      setActiveCategory({});
 
       if (result.data.page_group_type === "categories") {
         setCategories(result.data.categories)
@@ -330,6 +333,7 @@ const Casino = () => {
       setGames([]);
     }
 
+    // setActiveCategory(category);
     setSelectedCategoryIndex(categoryIndex);
     setTxtSearch("");
 
@@ -425,6 +429,7 @@ const Casino = () => {
   };
 
   const handleCategorySelect = (category) => {
+    setActiveCategory(category);
     setTxtSearch("");
   }
 
@@ -525,78 +530,120 @@ const Casino = () => {
             /> : <DivLoading />
           }
 
-          <div className="slots-filters_gamesFilters">
-            <div className="slots-filters_searchSection">
-              <SearchInput
-                txtSearch={txtSearch}
-                setTxtSearch={setTxtSearch}
-                searchRef={searchRef}
-                search={search}
-                contextData={contextData}
-                pageData={pageData}
-                setGames={setGames}
-                setIsLoadingGames={setIsLoadingGames}
-                callbackSearch={callbackSearch}
-                searchDelayTimer={searchDelayTimer}
-                setSearchDelayTimer={setSearchDelayTimer}
-              />
-            </div>
-          </div>
-
-          <div className="active-games">
-            <div className="col-12 home-title">
-              <h3>
-                <div className="title">Los Mejores Juegos</div>
-              </h3>
-            </div>
-
-            <TopGameSlideshow games={topSlot} />
-            <TopGameSlideshow games={topLiveCasino} />
-            <TopGameSlideshow games={topHot} />
-            <TopGameSlideshow games={topArcade} />
-
-            {/* <div className="games-cards-suspensed_gameCardWrapper">
-              <div className="grid_grid grid_sm grid_rowMax3 games-cards-suspensed_gameCardListClassName">
-                {games &&
-                  games.map((item, index) => {
-                    let imageDataSrc = item.image_url;
-                    if (item.image_local != null) {
-                      imageDataSrc = contextData.cdnUrl + item.image_local;
-                    }
-                    return (
-                      <GameCard
-                        key={index}
-                        id={item.id}
-                        title={item.name}
-                        imageSrc={imageDataSrc}
-                        onClick={() =>
-                          isLogin
-                            ? launchGame(item.id, "slot", "tab")
-                            : handleLoginClick()
+          <div className="container-provider">
+            {
+              (activeCategory && activeCategory.name && activeCategory.name !== "") ?
+                <>
+                  <div className="botton-header-slots">
+                    <strong>{activeCategory && activeCategory.name}</strong>
+                    <SearchInput
+                      txtSearch={txtSearch}
+                      setTxtSearch={setTxtSearch}
+                      searchRef={searchRef}
+                      search={search}
+                      contextData={contextData}
+                      pageData={pageData}
+                      setGames={setGames}
+                      setIsLoadingGames={setIsLoadingGames}
+                      callbackSearch={callbackSearch}
+                      searchDelayTimer={searchDelayTimer}
+                      setSearchDelayTimer={setSearchDelayTimer}
+                    />
+                  </div>
+                  <div className="container-games">
+                    {games &&
+                      games.map((item, index) => {
+                        let imageDataSrc = item.image_url;
+                        if (item.image_local != null) {
+                          imageDataSrc = contextData.cdnUrl + item.image_local;
                         }
-                      />
-                    );
-                  })
-                }
-              </div>
-            </div> */}
-          </div>
+                        return (
+                          <GameCard
+                            key={index}
+                            id={item.id}
+                            title={item.name}
+                            imageSrc={imageDataSrc}
+                            onClick={() =>
+                              isLogin
+                                ? launchGame(item.id, "slot", "tab")
+                                : handleLoginClick()
+                            }
+                          />
+                        );
+                      })
+                    }
+                  </div>
+                </>
+                : selectedPage === "casino" ? <>
+                  <div className="col-12 home-title">
+                    <h3>
+                      <div className="title">Los Mejores Juegos</div>
+                    </h3>
+                  </div>
 
-          {isLoadingGames && <GamesLoading />}
-          {!isLoadingGames && games.length >= 20 && (
-            <div className="games-cards-suspensed_seeMoreWrapper">
-              <a onClick={loadMoreContent}>
-                <button className="button_button button_zeusPrimary button_md">See more</button>
-              </a>
-            </div>
-          )}
-          {!isLoadingGames && games.length === 0 && (
-            <div className="not-found-view_notFoundView">
-              <div className="not-found-view_notFoundViewContent">
-                We looked everywhere, <br /> but found nothing.
+                  <TopGameSlideshow games={topSlot} />
+                  <TopGameSlideshow games={topLiveCasino} />
+                  <TopGameSlideshow games={topHot} />
+                  <TopGameSlideshow games={topArcade} />
+                </>
+                  :
+                  <>
+                    <div className="botton-header-slots">
+                      <strong>{activeCategory && activeCategory.name}</strong>
+                      <SearchInput
+                        txtSearch={txtSearch}
+                        setTxtSearch={setTxtSearch}
+                        searchRef={searchRef}
+                        search={search}
+                        contextData={contextData}
+                        pageData={pageData}
+                        setGames={setGames}
+                        setIsLoadingGames={setIsLoadingGames}
+                        callbackSearch={callbackSearch}
+                        searchDelayTimer={searchDelayTimer}
+                        setSearchDelayTimer={setSearchDelayTimer}
+                      />
+                    </div>
+                    <div className="container-games">
+                      {games &&
+                        games.map((item, index) => {
+                          let imageDataSrc = item.image_url;
+                          if (item.image_local != null) {
+                            imageDataSrc = contextData.cdnUrl + item.image_local;
+                          }
+                          return (
+                            <GameCard
+                              key={index}
+                              id={item.id}
+                              title={item.name}
+                              imageSrc={imageDataSrc}
+                              onClick={() =>
+                                isLogin
+                                  ? launchGame(item.id, "slot", "tab")
+                                  : handleLoginClick()
+                              }
+                            />
+                          );
+                        })
+                      }
+                    </div>
+                  </>
+            }
+
+            {isLoadingGames && <GamesLoading />}
+            {!isLoadingGames && games.length >= 20 && (
+              <div className="text-center">
+                <a onClick={loadMoreContent}>
+                  <button className="load_more">See more</button>
+                </a>
               </div>
-            </div>
-          )}
+            )}
+            {!isLoadingGames && games.length === 0 && (
+              <div className="no-results">
+                <p>SIN RESULTADOS</p>
+              </div>
+            )}
+          </div>
         </>
       )}
     </>

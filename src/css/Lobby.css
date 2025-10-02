@@ -27,10 +27,28 @@ body {
     display: none !important;
 }
 
+.el-input {
+    width: 200px;
+    margin-left: auto;
+    margin-right: 10px;
+}
+
 .el-input__inner {
     background-color: #1c1c1c !important;
     border-radius: 4px;
     border: 1px solid #1c1c1c !important;
+    -webkit-appearance: none;
+    background-image: none;
+    display: inline-block;
+    font-size: inherit;
+    height: 32px;
+    line-height: 32px;
+    outline: 0;
+    padding: 0 15px;
+    transition: border-color 0.2s cubic-bezier(0.645, 0.045, 0.355, 1);
+    width: 100%;
+    color: #fff;
+    font-weight: 100;
 }
 
 .container-provider {
@@ -409,12 +427,20 @@ body {
     -moz-border-radius: 10px 10px 0 0;
     -ms-border-radius: 10px 10px 0 0;
     -o-border-radius: 10px 10px 0 0;
+    display: flex;
 }
 
 .botton-header-slots span {
     line-height: 50px;
     font-size: 20px;
     color: #ffffff;
+}
+
+.container-provider .container-games {
+    display: grid;
+    grid-template-columns: repeat(6, 1fr);
+    gap: 8px;
+    padding: 8px;
 }
 
 .container-provider .container-games .slots-grid-item {
@@ -435,6 +461,8 @@ body {
     width: 100%;
     border-radius: 6px;
     box-shadow: 2px 2px 10px 0px #000000;
+    object-fit: cover;
+    cursor: pointer;
 }
 
 .container-provider .container-games .slots-grid-item:hover img {
@@ -569,6 +597,10 @@ body {
         display: none;
     }
 
+    .container-provider .container-games {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
     .container-provider .container-games .primero {
         width: 16%;
         float: left;
@@ -577,9 +609,10 @@ body {
     }
 
     .container-provider .container-games .otros {
-        width: 16%;
-        float: left;
-        padding: 2px;
+        height: 90px;
+    }
+
+    .container-provider .container-games .otros.loading {
         height: 90px;
     }
 
@@ -608,113 +641,6 @@ body {
 .mobile-all,
 .menu-all {
     display: contents;
-}
-
-@media (max-width: 580px) {
-    .mobile-all {
-        width: 100%;
-        display: flex;
-    }
-
-    .menu-all {
-        width: 100%;
-        display: flex;
-    }
-
-    .menu-provider {
-        display: block !important;
-        height: auto;
-    }
-
-    #menu-scroll {
-        overflow-x: scroll;
-        width: 100%;
-        display: flex;
-        overflow-y: hidden;
-    }
-
-    .provider-title-sub-first,
-    .provider-title-sub-home {
-        width: 50%;
-    }
-
-    .provider-title-sub {
-        width: 22vw !important;
-        margin-left: 2vw !important;
-    }
-
-    .edit {
-        width: 100% !important;
-    }
-}
-
-@media (max-width: 375px) {
-    .mobile-all {
-        width: 100%;
-        display: flex;
-    }
-
-    .menu-all {
-        width: 100%;
-        display: flex;
-    }
-
-    .menu-provider {
-        display: block !important;
-        height: auto;
-    }
-
-    #menu-scroll {
-        overflow-x: scroll;
-        width: 100%;
-        display: flex;
-        overflow-y: hidden;
-    }
-
-    .provider-title-sub-first,
-    .provider-title-sub-home {
-        width: 50%;
-    }
-
-    .provider-title-sub {
-        width: 30vw !important;
-        margin-left: 2vw !important;
-    }
-
-    .edit {
-        width: 100% !important;
-    }
-}
-
-@media (max-width: 480px) {
-    .container-provider .container-games .primero {
-        margin: 0px auto 0px auto;
-        width: 33.3%;
-        float: left;
-    }
-
-    .container-provider .reset {
-        display: none;
-    }
-
-    .container-provider .container-games .otros {
-        margin: 0px auto 0px auto;
-        margin-bottom: 10px;
-        width: 33.3%;
-        float: left;
-        padding: 2px;
-    }
-
-    .provider-title {
-        text-overflow: none !important;
-        overflow: none !important;
-        white-space: none !important;
-        width: calc((100vw - 25px) / 3) !important;
-    }
-
-    .provider-title-sub-first {
-        min-width: 100px;
-    }
 }
 
 /*# sourceMappingURL=live-dealer.css.map */
@@ -852,8 +778,6 @@ body {
 }
 
 .provider-title-sub_active {
-    background: #673ab7;
-    text-decoration: none;
     border-radius: 5px;
 }
 
@@ -873,12 +797,13 @@ body {
     }
 
     .container-provider .container-games .otros {
-        width: 16%;
-        margin: 4px;
         height: auto;
-        float: left;
         border-radius: 6px;
         background: #202020;
+    }
+
+    .container-provider .container-games .otros.loading {
+        height: 25vh;
     }
 
     .slots-grid-item:hover {
@@ -905,11 +830,24 @@ body {
     }
 
     .container-provider .container-games .otros {
-        width: 15%;
         height: 121px;
-        margin: 4px;
-        float: left;
         border-radius: 6px;
+    }
+
+    .container-provider .container-games .otros.loading {
+        height: 121px;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .container-provider .container-games {
+        grid-template-columns: repeat(4, 1fr);
+    }
+}
+
+@media screen and (max-width: 576px) {
+    .container-provider .container-games {
+        grid-template-columns: repeat(3, 1fr);
     }
 }
 
@@ -924,11 +862,12 @@ body {
     }
 
     .container-provider .container-games .otros {
-        width: 16%;
-        margin: 4px;
         height: 270px;
-        float: left;
         border-radius: 6px;
+    }
+
+    .container-provider .container-games .otros.loading {
+        height: 270px;
     }
 }
 
@@ -1408,5 +1347,118 @@ ol.flickity-page-dots {
 
 .containerSliders {
     position: relative;
-    padding: 4px 0;
+    padding: 5px;
+}
+
+.load_more {
+    font-size: 11px;
+    font-weight: 500;
+    color: #ffffff;
+    height: 38px;
+    line-height: 38px;
+    min-width: 81px;
+    text-transform: capitalize;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Play', sans-serif;
+    background: linear-gradient(#dfc69a, #816440);
+    border-radius: 5px;
+    height: 38px !important;
+    border: none;
+    margin-top: 10px;
+}
+
+@media (max-width: 580px) {
+    .mobile-all {
+        width: 100%;
+        display: flex;
+    }
+
+    .menu-all {
+        width: 100%;
+        display: flex;
+    }
+
+    .menu-provider {
+        display: block !important;
+        height: auto;
+    }
+
+    #menu-scroll {
+        overflow-x: scroll;
+        width: 100%;
+        display: flex;
+        overflow-y: hidden;
+    }
+
+    .provider-title-sub {
+        min-width: unset;
+    }
+
+    .provider-title-sub-first,
+    .provider-title-sub-home {
+        width: 50%;
+    }
+
+    .edit {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 375px) {
+    .mobile-all {
+        width: 100%;
+        display: flex;
+    }
+
+    .menu-all {
+        width: 100%;
+        display: flex;
+    }
+
+    .menu-provider {
+        display: block !important;
+        height: auto;
+    }
+
+    #menu-scroll {
+        overflow-x: scroll;
+        width: 100%;
+        display: flex;
+        overflow-y: hidden;
+    }
+
+    .provider-title-sub-first,
+    .provider-title-sub-home {
+        width: 50%;
+    }
+
+    .edit {
+        width: 100% !important;
+    }
+}
+
+@media (max-width: 480px) {
+    .container-provider .container-games .primero {
+        margin: 0px auto 0px auto;
+        width: 33.3%;
+        float: left;
+    }
+
+    .container-provider .reset {
+        display: none;
+    }
+
+    .provider-title {
+        text-overflow: none !important;
+        overflow: none !important;
+        white-space: none !important;
+        width: calc((100vw - 25px) / 3) !important;
+    }
+
+    .provider-title-sub-first {
+        min-width: 100px;
+    }
 }

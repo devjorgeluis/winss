@@ -121,7 +121,7 @@ const CategorySlideshow = (props) => {
                           ? contextData.cdnUrl + category.image_local
                           : category.image_url
                       }
-                      active={(props.selectedCategoryIndex === index).toString()}
+                      active={props.selectedCategoryIndex === index}
                       onClick={() => handleCategoryClick(category, index)}
                     />
                   </SwiperSlide>

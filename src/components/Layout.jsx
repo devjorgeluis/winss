@@ -38,8 +38,6 @@ const Layout = () => {
             }
         }
         getStatus();
-        console.log(contextData);
-        
     }, [contextData.session]);
 
     useEffect(() => {

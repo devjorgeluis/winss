@@ -4,6 +4,10 @@ body {
 	background: #1c2331;
 }
 
+button:focus {
+	outline: none;
+}
+
 .container-header {
 	flex: 1 1 100%;
 	margin: 0 auto;
