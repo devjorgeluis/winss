@@ -1,12 +1,12 @@
 const CategoryButton = (props) => {
-  let customClass = "providers-carousel_providerItem";
+  let customClass = "provider-title-sub";
   if (props.active == true) {
-    customClass += " providers-carousel_active";
+    customClass += " provider-title-sub_active";
   }
 
   return (
     <div className={customClass} onClick={props.onClick}>
-      <div className="providers-carousel_providerItemIcon">
+      {/* <div>
         {
           props.icon && props.icon !== "" &&
           <img
@@ -21,8 +21,8 @@ const CategoryButton = (props) => {
             }}
           />
         }
-      </div>
-      <span className="providers-carousel_providerItemLabel">{props.name}</span>
+      </div> */}
+      <p className="menu-provider-title">{props.name}</p>
     </div>
   );
 };

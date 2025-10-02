@@ -237,6 +237,9 @@ body {
     flex: 1 1 14.2857142857%;
     flex: 1;
     border-right: 1px solid #d4d4d41f !important;
+    min-height: 60px !important;
+    font-size: 12px;
+    line-height: 32px;
 }
 
 .provider-title a {
@@ -294,20 +297,6 @@ body {
     line-height: 35px;
 }
 
-.provider-title-sub {
-    font-size: x-small;
-    cursor: pointer;
-    font-family: "Play", sans-serif;
-    color: #fff;
-    height: auto;
-    text-align: center;
-    padding: 0px !important;
-    min-width: 54px;
-    margin-left: 4%;
-    margin-top: 8px;
-    float: left;
-    text-transform: capitalize;
-}
 
 .provider-title-sub-cate {
     font-size: small;
@@ -527,6 +516,7 @@ body {
     height: auto;
     background: rgba(255, 255, 255, 0.08);
     overflow: auto;
+    display: flex;
 }
 
 .menu-provider-title {
@@ -558,10 +548,6 @@ body {
 
 .provider-title-sub:hover .menu-provider-title {
     color: #fff !important;
-}
-
-.main {
-    height: auto;
 }
 
 .icon-promoted {
@@ -842,23 +828,37 @@ body {
     color: #0f1119;
 }
 
+.swiper-slide {
+    background: linear-gradient(#dfc69a, #816440);
+    border-radius: 5px;
+    height: 38px !important;
+    margin-top: 5px;
+}
+
 .provider-title-sub {
     font-size: 11px;
     font-weight: 500;
     color: #ffffff;
-    background: linear-gradient(#dfc69a, #816440);
     height: 38px;
     line-height: 38px;
-    text-align: center;
-    padding: 0px 5px 0px 5px !important;
-    width: calc((100vw - 70px) / 16);
     min-width: 81px;
-    margin-left: 3px;
-    margin-top: 5px;
-    border-radius: 5px;
-    float: left;
     text-transform: capitalize;
-    overflow: hidden;
+    width: 100%;
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+    font-family: 'Play', sans-serif;
+}
+
+.provider-title-sub_active {
+    background: #673ab7;
+    text-decoration: none;
+    border-radius: 5px;
+}
+
+.provider-title-sub_active p {
+    color: #ffffff;
 }
 
 @media screen and (min-width: 1200px) {
@@ -1056,6 +1056,7 @@ body {
     color: white;
     font-size: 1.5rem;
     line-height: 22px;
+    cursor: pointer;
 }
 
 .edit {
@@ -1063,6 +1064,17 @@ body {
     width: 90%;
     display: block !important;
     overflow-y: auto !important;
+}
+
+.edit .provider-title-sub{
+    color: #ffffff;
+    background: linear-gradient(#dfc69a, #816440);
+    padding: 0px 5px 0px 5px !important;
+    width: calc((100vw - 70px) / 16);
+    margin-left: 3px;
+    margin-top: 5px;
+    border-radius: 5px;
+    float: left;
 }
 
 .play-button {
@@ -1107,4 +1119,289 @@ body {
 
 .image-box:hover::after {
     opacity: 1;
+}
+
+@media screen and (min-width: 200px) and (max-width: 480px) and (orientation: portrait) {
+    #playSlot {
+        width: 100vh;
+        height: 100vh;
+        background: #090909 !important;
+    }
+
+    #loadinglaunch {
+        display: block !important;
+        color: white !important;
+        margin-top: 25%;
+        text-align: center;
+    }
+
+    #box-wallet {
+        bottom: -255px;
+        width: 50px !important;
+        height: 494px !important;
+        margin-left: 100px;
+        position: absolute;
+    }
+
+    #wallet-box-total {
+        display: none;
+    }
+
+    .logo-img {
+        display: none !important;
+    }
+}
+
+/* external css: flickity.css */
+body {
+    font-family: sans-serif;
+}
+
+.gallery {
+    background: #EEE;
+    overflow: hidden;
+}
+
+.gallery-cell {
+    width: 5%;
+    height: 200px;
+    margin-right: 10px;
+    background: #8C8;
+    counter-increment: gallery-cell;
+}
+
+/* cell number */
+.gallery-cell:before {
+    display: block;
+    text-align: center;
+}
+
+ol.flickity-page-dots {
+    display: none !important;
+}
+
+#menu-scroll {
+    overflow-x: scroll;
+    width: 100%;
+    display: flex;
+    overflow-y: hidden;
+}
+
+/*
+*  STYLE 4
+*/
+#menu-scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: transparent;
+}
+
+#menu-scroll::-webkit-scrollbar {
+    height: 5px;
+    background-color: transparent;
+}
+
+#menu-scroll::-webkit-scrollbar-thumb {
+    background-color: #727272;
+}
+
+#menu-scroll-2::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0,0,0,0.3);
+    background-color: transparent;
+}
+
+#menu-scroll-2::-webkit-scrollbar {
+    height: 5px;
+    background-color: transparent;
+}
+
+#menu-scroll-2::-webkit-scrollbar-thumb {
+    background-color: #727272;
+}
+
+/*
+*  STYLE 4
+*/
+.fa-arrow-circle-right {
+    margin-top: 6px;
+    font-size: 20px;
+    color: #5f5f5f;
+    margin-left: 5px;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #171717 0%, #121212 100%);
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 30px;
+    height: 36px;
+    border-radius: 2px;
+    line-height: 33px !important;
+}
+
+.fa-arrow-circle-right:hover {
+    color: #fff;
+    background: linear-gradient(to bottom, #9c27b0 0%, #673ab7 100%);
+}
+
+.fa-arrow-circle-left {
+    margin-top: 6px;
+    font-size: 20px;
+    color: #5f5f5f;
+    margin: 6px 5px;
+    cursor: pointer;
+    background: linear-gradient(to bottom, #171717 0%, #121212 100%);
+    padding-left: 5px;
+    padding-right: 5px;
+    width: 30px;
+    height: 36px;
+    border-radius: 2px;
+    line-height: 33px !important;
+}
+
+.fa-arrow-circle-left:hover {
+    color: #fff;
+    background: linear-gradient(to bottom, #9c27b0 0%, #673ab7 100%);
+}
+
+.container-provider .fa-arrow-circle-right {
+    margin-top: 30px;
+    font-size: 20px;
+    color: #93000e;
+    cursor: pointer;
+}
+
+.container-provider .fa-arrow-circle-left {
+    margin-top: 30px;
+    font-size: 20px;
+    color: #93000e;
+    margin-left: 5px;
+    cursor: pointer;
+}
+
+.wrapper {
+    /*   width: 0px; */
+    height: 50px;
+    top: 20px;
+    left: 475px;
+    position: absolute;
+    margin: auto;
+    background: #dadada;
+    /* overflow: hidden; */
+}
+
+.wrapper::after {
+    width: 46px;
+    height: 46px;
+    content: "";
+    position: absolute;
+    border: solid 2px red;
+}
+
+.box {
+    width: 50px;
+    height: 50px;
+    position: absolute;
+    background: red;
+    font-size: 25px;
+    text-align: center;
+    line-height: 50px;
+}
+
+.boxes {
+    position: relative;
+}
+
+.provider-title-sub-first {
+    font-size: 12px !important;
+    width: 50px !important;
+    min-width: 120px !important;
+    margin: 7px 0 0 1px !important;
+    padding: 0 10px !important;
+    display: flex !important;
+    align-items: center !important;
+    justify-content: center !important;
+    text-transform: capitalize !important;
+    line-height: normal !important;
+    white-space: nowrap !important;
+}
+
+.menu-provider-title {
+    margin-top: 0px !important;
+}
+
+#nextButton {
+    cursor: pointer;
+    position: absolute;
+    top: 100px;
+    left: 575px;
+    height: 50px;
+    width: 150px;
+    background-color: white;
+    text-align: center;
+    line-height: 50px;
+    user-select: none;
+}
+
+#prevButton {
+    cursor: pointer;
+    position: absolute;
+    top: 100px;
+    left: 275px;
+    height: 50px;
+    width: 150px;
+    background-color: white;
+    text-align: center;
+    line-height: 50px;
+    user-select: none;
+    -moz-user-select: none;
+    -webkit-user-select: none;
+    -ms-user-select: none;
+    -o-user-select: none;
+}
+
+.fullscreen {
+    position: fixed !important;
+    top: 0 !important;
+    left: 0 !important;
+    width: 100vw !important;
+    height: 100vh !important;
+    height: -webkit-fill-available !important;
+    z-index: 9999 !important;
+    margin: 0 !important;
+}
+
+.loading-spinner {
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+    width: 40px;
+    height: 40px;
+    border: 4px solid rgba(255, 255, 255, 0.3);
+    border-radius: 50%;
+    border-top-color: #e9b108;
+    animation: spin 1s linear infinite;
+    z-index: 2;
+}
+
+@keyframes spin {
+    0% {
+        transform: translate(-50%, -50%) rotate(0deg);
+    }
+
+    100% {
+        transform: translate(-50%, -50%) rotate(360deg);
+    }
+}
+
+.loading .imgslot {
+    opacity: 0.5;
+}
+
+.hidden {
+    visibility: hidden
+}
+
+@media screen and (max-width: 1660px) {
+    .provider-title a {
+        font-size: 8.5px !important;
+    }
 }

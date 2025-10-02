@@ -36,12 +36,13 @@ import ImgMobileBanner1 from "/src/assets/img/aviatrix-01-mobile.png";
 import ImgMobileBanner2 from "/src/assets/img/aviatrix-03-mobile.png";
 import ImgMobileBanner3 from "/src/assets/img/aviatrix-02-mobile.png";
 
-import ImgLobby from "/src/assets/img/lobby.avif";
-import ImgJoker from "/src/assets/img/jokers.avif";
-import ImgHot from "/src/assets/img/hot.avif";
-import ImgCrash from "/src/assets/img/crash.avif";
-import ImgMegaways from "/src/assets/img/megaways.avif";
-import ImgRoulette from "/src/assets/img/roulette.webp";
+import ImgLobby from "/src/assets/svg/lobby.svg";
+import ImgJoker from "/src/assets/img/jokers.png";
+import ImgHot from "/src/assets/img/supercaliente.png";
+import ImgRoulette from "/src/assets/svg/roulette.svg";
+import ImgCrash from "/src/assets/svg/hability.svg";
+import ImgMegaways from "/src/assets/svg/megaways.svg";
+
 
 let selectedGameId = null;
 let selectedGameType = null;
@@ -59,7 +60,6 @@ const Casino = () => {
   const [games, setGames] = useState([]);
   const [categories, setCategories] = useState([]);
   const [mainCategories, setMainCategories] = useState([]);
-  const [activeCategory, setActiveCategory] = useState({});
   const [selectedProvider, setSelectedProvider] = useState(null);
   const [isProviderDropdownOpen, setIsProviderDropdownOpen] = useState(false);
   const [pageData, setPageData] = useState({});
@@ -162,18 +162,18 @@ const Casino = () => {
             onClick={() => getSubPage("joker")}
           />
           <NavLinkIcon
-            title="Hot"
+            title="Supercaliente"
             pageCode="hot"
             icon={ImgHot}
             active={selectedPage === "hot"}
             onClick={() => getSubPage("hot")}
           />
           <NavLinkIcon
-            title="Habilidad"
-            pageCode="arcade"
-            icon={ImgCrash}
-            active={selectedPage === "arcade"}
-            onClick={() => getSubPage("arcade")}
+            title="Ruletas"
+            pageCode="roulette"
+            icon={ImgRoulette}
+            active={selectedPage === "roulette"}
+            onClick={() => getSubPage("roulette")}
           />
           <NavLinkIcon
             title="Megaways"
@@ -183,11 +183,11 @@ const Casino = () => {
             onClick={() => getSubPage("megaways")}
           />
           <NavLinkIcon
-            title="Ruleta"
-            pageCode="roulette"
-            icon={ImgRoulette}
-            active={selectedPage === "roulette"}
-            onClick={() => getSubPage("roulette")}
+            title="Habilidad"
+            pageCode="arcade"
+            icon={ImgCrash}
+            active={selectedPage === "arcade"}
+            onClick={() => getSubPage("arcade")}
           />
         </>
       );
@@ -209,7 +209,7 @@ const Casino = () => {
             onClick={() => getSubPage("joker")}
           />
           <NavLinkIcon
-            title="Hot"
+            title="Supercaliente"
             pageCode="hot"
             icon={ImgHot}
             active={selectedPage === "hot"}
@@ -250,7 +250,6 @@ const Casino = () => {
       if (result.data.page_group_type === "categories" && result.data.categories.length > 0) {
         const firstCategory = result.data.categories[0];
         setSelectedCategoryIndex(0);
-        setActiveCategory(firstCategory);
         fetchContent(firstCategory, firstCategory.id, firstCategory.table_name, 0, true, result.data.page_group_code);
       } else if (result.data.page_group_type === "games") {
         loadMoreContent();
@@ -274,7 +273,6 @@ const Casino = () => {
     } else {
       setPageData(result.data);
       setSelectedProvider(null);
-      setActiveCategory({});
 
       if (result.data.page_group_type === "categories") {
         setCategories(result.data.categories)
@@ -316,7 +314,6 @@ const Casino = () => {
       setGames([]);
     }
 
-    setActiveCategory(category);
     setSelectedCategoryIndex(categoryIndex);
     setTxtSearch("");
 
@@ -416,7 +413,6 @@ const Casino = () => {
   };
 
   const handleCategorySelect = (category) => {
-    setActiveCategory(category);
     setSelectedProvider(category);
     setTxtSearch("");
   }
@@ -426,11 +422,9 @@ const Casino = () => {
     setIsProviderDropdownOpen(false);
     setTxtSearch("");
     if (categories.length > 0 && provider) {
-      setActiveCategory(provider);
       fetchContent(provider, provider.id, provider.table_name, index, true);
     } else if (!provider && categories.length > 0) {
       const firstCategory = categories[0];
-      setActiveCategory(firstCategory);
       fetchContent(firstCategory, firstCategory.id, firstCategory.table_name, 0, true);
     }
   };
@@ -518,10 +512,8 @@ const Casino = () => {
           <JackpotContainer />
           <Slideshow images={imageSlideshow} />
 
-          <div className="games-tags_gamesTags">
-            <div className="games-tags_gamesTagsInner">
-              {fragmentNavLinksBody}
-            </div>
+          <div className="container-fluid provider-container">
+            {fragmentNavLinksBody}
           </div>
 
           {

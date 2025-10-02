@@ -28,7 +28,7 @@ const Layout = () => {
     const navigate = useNavigate();
 
     const location = useLocation();
-    const isSportsPage = location.pathname === "/sports";
+    const isCasino = location.pathname === "/casino";
 
     useEffect(() => {
         if (contextData.session != null) {
@@ -38,6 +38,8 @@ const Layout = () => {
             }
         }
         getStatus();
+        console.log(contextData);
+        
     }, [contextData.session]);
 
     useEffect(() => {
@@ -212,7 +214,7 @@ const Layout = () => {
                             fragmentNavLinksTop={fragmentNavLinksTop}
                             isSlotsOnly={isSlotsOnly}
                         />
-                        <main className="main" id="wlcp">
+                        <main className={isCasino ? 'casino main' : 'main'} id="wlcp">
                             <Outlet />
                         </main>
                         <Footer />

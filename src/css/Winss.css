@@ -978,6 +978,10 @@ ul.nav>li.sa-stacker>a:hover {
     background-position: center !important;
 }
 
+.main.casino {
+    background: #242322 !important;
+}
+
 .container-winss h5 {
     color: #fff;
     font-weight: 800;
