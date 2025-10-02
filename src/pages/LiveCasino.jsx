@@ -11,7 +11,6 @@ import GameModal from "../components/GameModal";
 import DivLoading from "../components/DivLoading";
 import GamesLoading from "../components/GamesLoading";
 import SearchInput from "../components/SearchInput";
-import SearchSelect from "../components/SearchSelect";
 import LoginModal from "../components/LoginModal";
 import CustomAlert from "../components/CustomAlert";
 import "animate.css";
@@ -375,14 +374,6 @@ const LiveCasino = () => {
                 callbackSearch={callbackSearch}
                 searchDelayTimer={searchDelayTimer}
                 setSearchDelayTimer={setSearchDelayTimer}
-              />
-              <SearchSelect
-                categories={categories}
-                selectedProvider={selectedProvider}
-                setSelectedProvider={setSelectedProvider}
-                isProviderDropdownOpen={isProviderDropdownOpen}
-                setIsProviderDropdownOpen={setIsProviderDropdownOpen}
-                onProviderSelect={handleProviderSelect}
               />
             </div>
           </div>

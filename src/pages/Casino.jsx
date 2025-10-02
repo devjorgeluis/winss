@@ -9,11 +9,11 @@ import NavLinkIcon from "../components/NavLinkIcon";
 import JackpotContainer from "../components/JackpotContainer";
 import Slideshow from "../components/Slideshow";
 import CategorySlideshow from "../components/CategorySlideshow";
+import TopGameSlideshow from "../components/TopGameSlideshow";
 import GameModal from "../components/GameModal";
 import DivLoading from "../components/DivLoading";
 import GamesLoading from "../components/GamesLoading";
 import SearchInput from "../components/SearchInput";
-import SearchSelect from "../components/SearchSelect";
 import LoginModal from "../components/LoginModal";
 import CustomAlert from "../components/CustomAlert";
 import "animate.css";
@@ -30,7 +30,6 @@ import ImgBanner8 from "/src/assets/img/slots-6.jpeg";
 import ImgBanner9 from "/src/assets/img/aviatrix-02.png";
 import ImgBanner10 from "/src/assets/img/slots-4.jpeg";
 import ImgBanner11 from "/src/assets/img/aviatrix-03.png";
-
 
 import ImgMobileBanner1 from "/src/assets/img/aviatrix-01-mobile.png";
 import ImgMobileBanner2 from "/src/assets/img/aviatrix-03-mobile.png";
@@ -58,10 +57,12 @@ const Casino = () => {
   const [selectedPage, setSelectedPage] = useState("lobby");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [games, setGames] = useState([]);
+  const [topSlot, setTopSlot] = useState([]);
+  const [topLiveCasino, setTopLiveCasino] = useState([]);
+  const [topHot, setTopHot] = useState([]);
+  const [topArcade, setTopArcade] = useState([]);
   const [categories, setCategories] = useState([]);
   const [mainCategories, setMainCategories] = useState([]);
-  const [selectedProvider, setSelectedProvider] = useState(null);
-  const [isProviderDropdownOpen, setIsProviderDropdownOpen] = useState(false);
   const [pageData, setPageData] = useState({});
   const [gameUrl, setGameUrl] = useState("");
   const [fragmentNavLinksBody, setFragmentNavLinksBody] = useState(<></>);
@@ -134,6 +135,7 @@ const Casino = () => {
 
     setSelectedPage("casino");
     getPage("casino");
+    getStatus();
 
     window.scrollTo(0, 0);
   }, [location.pathname]);
@@ -227,6 +229,22 @@ const Casino = () => {
     }
   };
 
+  const getStatus = () => {
+    callApi(contextData, "GET", "/get-status", callbackGetStatus, null);
+  };
+
+  const callbackGetStatus = (result) => {
+    if (result.status === 500 || result.status === 422) {
+      setMessageCustomAlert(["error", result.message]);
+    } else {
+      setIsLoadingGames(false);
+      setTopSlot(result.top_slot);
+      setTopLiveCasino(result.top_livecasino);
+      setTopHot(result.top_hot);
+      setTopArcade(result.top_arcade);
+    }
+  };
+
   const getPage = (page) => {
     setIsLoadingGames(true);
     setCategories([]);
@@ -240,7 +258,6 @@ const Casino = () => {
       setMessageCustomAlert(["error", result.message]);
     } else {
       setCategories(result.data.categories);
-      setSelectedProvider(null);
       setPageData(result.data);
 
       if (result.data.menu === "home") {
@@ -272,7 +289,6 @@ const Casino = () => {
       setMessageCustomAlert(["error", result.message]);
     } else {
       setPageData(result.data);
-      setSelectedProvider(null);
 
       if (result.data.page_group_type === "categories") {
         setCategories(result.data.categories)
@@ -329,10 +345,6 @@ const Casino = () => {
       pageCurrent +
       "&length=" +
       pageSize;
-
-    if (selectedProvider && selectedProvider.id) {
-      apiUrl += "&provider=" + selectedProvider.id;
-    }
 
     callApiService(
       contextData,
@@ -413,21 +425,8 @@ const Casino = () => {
   };
 
   const handleCategorySelect = (category) => {
-    setSelectedProvider(category);
     setTxtSearch("");
   }
-
-  const handleProviderSelect = (provider, index = 0) => {
-    setSelectedProvider(provider);
-    setIsProviderDropdownOpen(false);
-    setTxtSearch("");
-    if (categories.length > 0 && provider) {
-      fetchContent(provider, provider.id, provider.table_name, index, true);
-    } else if (!provider && categories.length > 0) {
-      const firstCategory = categories[0];
-      fetchContent(firstCategory, firstCategory.id, firstCategory.table_name, 0, true);
-    }
-  };
 
   const search = (e) => {
     let keyword = e.target.value;
@@ -541,25 +540,22 @@ const Casino = () => {
                 searchDelayTimer={searchDelayTimer}
                 setSearchDelayTimer={setSearchDelayTimer}
               />
-              <SearchSelect
-                categories={categories}
-                selectedProvider={selectedProvider}
-                setSelectedProvider={setSelectedProvider}
-                isProviderDropdownOpen={isProviderDropdownOpen}
-                setIsProviderDropdownOpen={setIsProviderDropdownOpen}
-                onProviderSelect={handleProviderSelect}
-              />
             </div>
           </div>
 
           <div className="active-games">
-            <div className="games-block-title_gamesBlockTitle">
-              <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleLeft"></div>
-              <p className="games-block-title_gamesBlockTitleText">Top Games</p>
-              <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleRight"></div>
+            <div className="col-12 home-title">
+              <h3>
+                <div className="title">Los Mejores Juegos</div>
+              </h3>
             </div>
 
-            <div className="games-cards-suspensed_gameCardWrapper">
+            <TopGameSlideshow games={topSlot} />
+            <TopGameSlideshow games={topLiveCasino} />
+            <TopGameSlideshow games={topHot} />
+            <TopGameSlideshow games={topArcade} />
+
+            {/* <div className="games-cards-suspensed_gameCardWrapper">
               <div className="grid_grid grid_sm grid_rowMax3 games-cards-suspensed_gameCardListClassName">
                 {games &&
                   games.map((item, index) => {
@@ -583,9 +579,8 @@ const Casino = () => {
                   })
                 }
               </div>
-            </div>
+            </div> */}
           </div>
-
 
           {isLoadingGames && <GamesLoading />}
           {!isLoadingGames && games.length >= 20 && (

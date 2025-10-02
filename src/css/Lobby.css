@@ -828,7 +828,7 @@ body {
     color: #0f1119;
 }
 
-.swiper-slide {
+.menu-provider .swiper-slide {
     background: linear-gradient(#dfc69a, #816440);
     border-radius: 5px;
     height: 38px !important;
@@ -1404,4 +1404,9 @@ ol.flickity-page-dots {
     .provider-title a {
         font-size: 8.5px !important;
     }
+}
+
+.containerSliders {
+    position: relative;
+    padding: 4px 0;
 }
