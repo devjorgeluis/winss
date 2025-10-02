@@ -420,11 +420,6 @@ ul.nav>li.sa-stacker>a {
 	color: #fff;
 }
 
-.btn-danger {
-	background-color: #ed3037;
-	border-color: #ed3037;
-}
-
 .btn-fb {
 	color: #fff;
 	background-color: #3b5998;
@@ -525,10 +520,6 @@ ul.nav>li.sa-stacker>a {
 /*----------------------------------------------------LOGIN-REGISTER-END//-----------------------------------------*/
 
 /*----------------------------------------------------MAIN INITIAL//------------------------------------------------*/
-
-.main {
-	height: auto;
-}
 
 .main-static {
 	height: 800px;

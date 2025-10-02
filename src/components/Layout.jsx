@@ -143,24 +143,18 @@ const Layout = () => {
     };
 
     const handleLogoutClick = () => {
-        setShowLogoutModal(true);
-    };
-
-    const handleChangePasswordClick = () => {
-        setShowChangePasswordModal(true);
-    };
-
-    const handleLogoutConfirm = () => {
         callApi(contextData, "POST", "/logout", (result) => {
             if (result.status === "success") {
                 setTimeout(() => {
                     localStorage.removeItem("session");
                     window.location.href = "/";
                 }, 200);
-            } else {
-                setShowLogoutModal(false);
             }
         }, null);
+    };
+
+    const handleChangePasswordClick = () => {
+        setShowChangePasswordModal(true);
     };
 
     const handleChangePasswordConfirm = () => {

@@ -169,6 +169,10 @@ ul.nav>li.sa-stacker>a {
     color: #fff;
 }
 
+.nav-item .dropdown-menu a {
+    line-height: 1.5 !important;
+}
+
 .nav-link-mini img {
     border-radius: 50px;
     width: 30px;
@@ -982,6 +986,11 @@ ul.nav>li.sa-stacker>a:hover {
     background: #242322 !important;
 }
 
+#showGame .main {
+    min-height: 500px;
+    background: #513717 !important;
+}
+
 .container-winss h5 {
     color: #fff;
     font-weight: 800;
@@ -1431,4 +1440,69 @@ ul.nav>li.sa-stacker>a:hover {
     100% {
         transform: translateX(-100%);
     }
+}
+
+.main-standalone {
+    margin: 0;
+    padding: 0;
+    height: 100vh;
+    width: 100vw;
+}
+
+#main-loading {
+    position: fixed;
+    top: 0px;
+    left: 0px;
+    width: 100%;
+    height: 100%;
+    background: rgb(15, 15, 18);
+    display: none;
+    justify-content: center;
+    align-items: center;
+    flex-direction: column;
+    z-index: 9999;
+    transition: opacity 0.5s;
+    opacity: 0;
+}
+
+#main-loading .spinner {
+    width: 50px;
+    height: 50px;
+    border: 5px solid rgba(255, 255, 255, 0.1);
+    border-radius: 50%;
+    border-top-color: #fff;
+    animation: spin 1s ease-in-out infinite;
+    margin-bottom: 20px;
+}
+
+#main-loading p {
+    color: #fff;
+    font-size: 16px;
+    letter-spacing: 1px;
+}
+
+#main-content {
+    display: block;
+    padding-top: 15%;
+}
+
+#main-content .content-relog {
+    max-width: 300px;
+}
+
+#main-content .content-relog h4 {
+    text-align: center;
+    color: #fff;
+    text-transform: uppercase;
+    letter-spacing: 3px;
+}
+
+#showGame .action-buttons {
+    text-align: center;
+    position: absolute;
+    right: 10px;
+    z-index: 5000;
+    height: auto;
+    width: 50px;
+    top: 100px;
 }

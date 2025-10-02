@@ -261,8 +261,9 @@ const Casino = () => {
       setCategories(result.data.categories);
       setPageData(result.data);
 
-      if (result.data.menu === "home") {
+      if (result.data.menu === "casino") {
         setMainCategories(result.data.categories);
+        setActiveCategory({});
       }
 
       if (result.data.page_group_type === "categories" && result.data.categories.length > 0) {
@@ -573,6 +574,18 @@ const Casino = () => {
                       })
                     }
                   </div>
+                  {!isLoadingGames && games.length >= 20 && (
+                    <div className="text-center">
+                      <a onClick={loadMoreContent}>
+                        <button className="load_more">See more</button>
+                      </a>
+                    </div>
+                  )}
+                  {!isLoadingGames && games.length === 0 && (
+                    <div className="no-results">
+                      <p>SIN RESULTADOS</p>
+                    </div>
+                  )}
                 </>
                 : selectedPage === "casino" ? <>
                   <div className="col-12 home-title">
@@ -581,68 +594,68 @@ const Casino = () => {
                     </h3>
                   </div>
 
-                  <TopGameSlideshow games={topSlot} />
-                  <TopGameSlideshow games={topLiveCasino} />
-                  <TopGameSlideshow games={topHot} />
-                  <TopGameSlideshow games={topArcade} />
+                  <TopGameSlideshow games={topSlot} isLogin={isLogin} handleLoginClick={handleLoginClick} />
+                  <TopGameSlideshow games={topLiveCasino} isLogin={isLogin} handleLoginClick={handleLoginClick} />
+                  <TopGameSlideshow games={topHot} isLogin={isLogin} handleLoginClick={handleLoginClick} />
+                  <TopGameSlideshow games={topArcade} isLogin={isLogin} handleLoginClick={handleLoginClick} />
                 </>
-                  :
-                  <>
-                    <div className="botton-header-slots">
-                      <strong>{activeCategory && activeCategory.name}</strong>
-                      <SearchInput
-                        txtSearch={txtSearch}
-                        setTxtSearch={setTxtSearch}
-                        searchRef={searchRef}
-                        search={search}
-                        contextData={contextData}
-                        pageData={pageData}
-                        setGames={setGames}
-                        setIsLoadingGames={setIsLoadingGames}
-                        callbackSearch={callbackSearch}
-                        searchDelayTimer={searchDelayTimer}
-                        setSearchDelayTimer={setSearchDelayTimer}
-                      />
+                :
+                <>
+                  <div className="botton-header-slots">
+                    <strong>{activeCategory && activeCategory.name}</strong>
+                    <SearchInput
+                      txtSearch={txtSearch}
+                      setTxtSearch={setTxtSearch}
+                      searchRef={searchRef}
+                      search={search}
+                      contextData={contextData}
+                      pageData={pageData}
+                      setGames={setGames}
+                      setIsLoadingGames={setIsLoadingGames}
+                      callbackSearch={callbackSearch}
+                      searchDelayTimer={searchDelayTimer}
+                      setSearchDelayTimer={setSearchDelayTimer}
+                    />
+                  </div>
+                  <div className="container-games">
+                    {games &&
+                      games.map((item, index) => {
+                        let imageDataSrc = item.image_url;
+                        if (item.image_local != null) {
+                          imageDataSrc = contextData.cdnUrl + item.image_local;
+                        }
+                        return (
+                          <GameCard
+                            key={index}
+                            id={item.id}
+                            title={item.name}
+                            imageSrc={imageDataSrc}
+                            onClick={() =>
+                              isLogin
+                                ? launchGame(item.id, "slot", "tab")
+                                : handleLoginClick()
+                            }
+                          />
+                        );
+                      })
+                    }
+                  </div>
+                  {!isLoadingGames && games.length >= 20 && (
+                    <div className="text-center">
+                      <a onClick={loadMoreContent}>
+                        <button className="load_more">See more</button>
+                      </a>
                     </div>
-                    <div className="container-games">
-                      {games &&
-                        games.map((item, index) => {
-                          let imageDataSrc = item.image_url;
-                          if (item.image_local != null) {
-                            imageDataSrc = contextData.cdnUrl + item.image_local;
-                          }
-                          return (
-                            <GameCard
-                              key={index}
-                              id={item.id}
-                              title={item.name}
-                              imageSrc={imageDataSrc}
-                              onClick={() =>
-                                isLogin
-                                  ? launchGame(item.id, "slot", "tab")
-                                  : handleLoginClick()
-                              }
-                            />
-                          );
-                        })
-                      }
+                  )}
+                  {!isLoadingGames && games.length === 0 && (
+                    <div className="no-results">
+                      <p>SIN RESULTADOS</p>
                     </div>
-                  </>
+                  )}
+                </>
             }
 
             {isLoadingGames && <GamesLoading />}
-            {!isLoadingGames && games.length >= 20 && (
-              <div className="text-center">
-                <a onClick={loadMoreContent}>
-                  <button className="load_more">See more</button>
-                </a>
-              </div>
-            )}
-            {!isLoadingGames && games.length === 0 && (
-              <div className="no-results">
-                <p>SIN RESULTADOS</p>
-              </div>
-            )}
           </div>
         </>
       )}

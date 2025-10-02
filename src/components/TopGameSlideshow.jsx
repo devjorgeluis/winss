@@ -12,8 +12,11 @@ const TopGameSlideshow = (props) => {
   const [isEnd, setIsEnd] = useState(false);
 
   const handleGameClick = (game, index) => {
-    // Handle game click logic here
-    console.log('Game clicked:', game);
+    if (!props.isLogin && props.handleLoginClick) {
+      props.handleLoginClick();
+    } else {
+      console.log('Launching game:', game);
+    }
   };
 
   const handlePrev = () => {

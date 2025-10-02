@@ -1,17 +1,13 @@
-import { useContext, useState, useEffect } from "react";
+import { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
 import { callApi } from "../utils/Utils";
 import CustomAlert from "../components/CustomAlert";
-import ImgLogo from "/src/assets/img/logo.png";
-import IconClose from "/src/assets/svg/close.svg";
-import IconEye from "/src/assets/svg/eye.svg";
-import IconEyeSlash from "/src/assets/svg/eye-slash.svg";
 
 const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
     const { contextData, updateSession } = useContext(AppContext);
     const [username, setUsername] = useState("");
     const [password, setPassword] = useState("");
-    const [showPassword, setShowPassword] = useState(false);
+    const [email, setEmail] = useState("");
     const [messageCustomAlert, setMessageCustomAlert] = useState("");
 
     const handleSubmit = (event) => {
@@ -50,100 +46,120 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
         }
     };
 
-    useEffect(() => {
-        const passwordInput = document.getElementById("password");
-        if (passwordInput) {
-            passwordInput.setAttribute("type", showPassword ? "text" : "password");
-        }
-    }, [showPassword]);
-
     if (!isOpen) return null;
 
     return (
         <>
-            <div className="modal-wrapper_modalWrapper modal-wrapper_shown">
-                <div className="modal-wrapper_modalContentWrapper modal-wrapper_hasTitle login-modal">
-                    <div className="modal-wrapper-title_modalWrapperTitle">
-                        <span>Login</span>
-                        <button onClick={onClose}>
-                            <img src={IconClose} />
-                        </button>
-                    </div>
+            <div className="modal d-block" id="showGame">
+                <div className="modal-dialog">
+                    <div className="modal-content">
+                        <div className="main container-fluid main-standalone">
+                            <div id="main-loading">
+                                <div className="spinner"></div>
+                                <p>Cargando...</p>
+                            </div>
 
-                    <div className="login-modal_loginModalInner">
-                        <div className="login-modal_logoCentered">
-                            <img alt="" loading="lazy" width="118" height="48" className="logo_logo" src={ImgLogo} />
-                        </div>
-                        <div className="login-modal_modalDescription">
-                            <p className="login-modal_modalDescriptionInner">Enter your username and password to start playing</p>
-                        </div>
-                        <div>
-                            <form className="login-form_loginFormForm" method="POST" onSubmit={handleSubmit}>
-                                <div className="input-wrapper_inputWrapper input-wrapper_default">
-                                    <div>
-                                        <label htmlFor="username" className="input-wrapper_inputWrapperLabel">
-                                            <span className="input-wrapper_inputWrapperInput">
-                                                <input
-                                                    className="input_input login-form_loginFormInput"
-                                                    type="text"
-                                                    name="username"
-                                                    placeholder="Nombre"
-                                                    autoComplete="false"
-                                                    value={username}
-                                                    onChange={(e) => setUsername(e.target.value)}
-                                                    required
-                                                />
-                                            </span>
-                                        </label>
-                                    </div>
-                                    <fieldset className="input-wrapper_inputWrapperFieldset"></fieldset>
-                                </div>
-                                
-                                <div className="input-wrapper_inputWrapper input-wrapper_default">
-                                    <div>
-                                        <label htmlFor="password" className="input-wrapper_inputWrapperLabel">
-                                            <span className="input-wrapper_inputWrapperInput">
-                                                <input
-                                                    id="password"
-                                                    className="input_input login-form_loginFormInput"
-                                                    type={showPassword ? "text" : "password"}
-                                                    name="password"
-                                                    placeholder="Contraseña"
-                                                    autoComplete="false"
-                                                    value={password}
-                                                    onChange={(e) => setPassword(e.target.value)}
-                                                    required
-                                                />
-                                            </span>
-                                            {showPassword === false ? (
-                                                <span
-                                                    className="input-wrapper-suffix_inputWrapperSuffix"
-                                                    onClick={() => setShowPassword(true)}
-                                                >
-                                                    <button type="button" className="input-button_inputButton">
-                                                        <img src={IconEyeSlash} />
+                            <div id="main-content">
+                                <article className="card-body mx-auto content-relog">
+                                    <h4>INICIAR SESION</h4>
+                                    <form method="POST" onSubmit={handleSubmit}>
+                                        <div className="form-group input-group">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text input-group-text-icon"> <i className="fa fa-user"></i> </span>
+                                            </div>
+                                            <input
+                                                className="form-control btn-md"
+                                                type="text"
+                                                name="username"
+                                                placeholder="Usuario"
+                                                autoComplete="false"
+                                                value={username}
+                                                onChange={(e) => setUsername(e.target.value)}
+                                                required
+                                            />
+                                        </div>
+                                        <div className="form-group input-group">
+                                            <div className="input-group-prepend">
+                                                <span className="input-group-text input-group-text-icon"> <i className="fa fa-lock"></i> </span>
+                                            </div>
+                                            <input
+                                                id="password"
+                                                className="form-control btn-md"
+                                                type="password"
+                                                name="password"
+                                                placeholder="Contraseña"
+                                                autoComplete="false"
+                                                value={password}
+                                                onChange={(e) => setPassword(e.target.value)}
+                                                required
+                                            />
+                                        </div>
+
+                                        <button
+                                            type="submit"
+                                            data-submit=".frmAuthLogin"
+                                            className="btn btn-lo btn-green-ct btn-danger btn-md btn-block btn-submit reg-submit"
+                                        >
+                                            Entrar
+                                        </button>
+                                    </form>
+                                    <br />
+
+                                    <form method="POST" onSubmit={handleSubmit}>
+                                        <div className="accordion" id="accordionExample">
+                                            <div className="card">
+                                                <div className="card-header-" id="headingThree">
+                                                    <h5 className="mb-0">
+                                                        <button
+                                                            className="btn btn-block btn-sm recuperar"
+                                                            type="button"
+                                                            data-toggle="collapse"
+                                                            data-target=".collapseThree"
+                                                            aria-expanded="true"
+                                                            aria-controls="collapseThree"
+                                                        >
+                                                            RECUPERAR CONTRASEÑA
+                                                        </button>
+                                                    </h5>
+                                                </div>
+                                                <div id="collapseThree" className="collapse collapseThree" aria-labelledby="headingThree" data-parent="#accordionExample">
+                                                    <div className="form-group input-group">
+                                                        <div className="input-group-prepend">
+                                                            <span className="input-group-text input-group-text-icon"> <i className="fas fa-envelope"></i> </span>
+                                                        </div>
+                                                        <input
+                                                            className="form-control btn-md"
+                                                            type="email"
+                                                            name="email"
+                                                            placeholder="Ingrese su correo"
+                                                            autoComplete="false"
+                                                            value={email}
+                                                            onChange={(e) => setEmail(e.target.value)}
+                                                            required
+                                                        />
+                                                    </div>
+
+                                                    <button
+                                                        type="submit"
+                                                        className="btn btn-lo btn-green-ct btn-danger btn-md btn-block btn-submit reg-submit"
+                                                    >
+                                                        RECUPERAR CONTRASEÑA
                                                     </button>
-                                                </span>
-                                            ) : (
-                                                <span
-                                                    className="input-wrapper-suffix_inputWrapperSuffix"
-                                                    onClick={() => setShowPassword(false)}
-                                                >
-                                                    <button type="button" className="input-button_inputButton">
-                                                        <img src={IconEye} />
-                                                    </button>
-                                                </span>
-                                            )}
-                                        </label>
-                                    </div>
-                                    <fieldset className="input-wrapper_inputWrapperFieldset"></fieldset>
-                                </div>
-                                <button className="button_button button_zeusPrimary button_sm login-form_loginFormButton" type="submit">Login
-                                    <span className="button_buttonLoader">
-                                        <svg width="1em" height="1em" fill="currentColor" aria-hidden="true" data-icon="loading" viewBox="0 0 1024 1024"><path d="M988 548c-19.9 0-36-16.1-36-36 0-59.4-11.6-117-34.6-171.3a440.5 440.5 0 0 0-94.3-139.9 437.7 437.7 0 0 0-139.9-94.3C629 83.6 571.4 72 512 72c-19.9 0-36-16.1-36-36s16.1-36 36-36c69.1 0 136.2 13.5 199.3 40.3C772.3 66 827 103 874 150s83.9 101.8 109.7 162.7c26.7 63.1 40.2 130.2 40.2 199.3.1 19.9-16 36-35.9 36"></path></svg>
-                                    </span>
-                                </button>
-                            </form>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </form>
+                                </article>
+                            </div>
+                        </div>
+
+                        <div className="action-buttons">
+                            <button type="button" className="btn-dark btn-box-option btn-sm text-white">
+                                <i className="fas fa-expand"></i>
+                            </button>
+                            <button type="button" data-dismiss="modal" className="btn-dark btn-box-option btn-sm text-white" onClick={onClose}>
+                                <i className="far fa-times-circle"></i>
+                            </button>
                         </div>
                     </div>
                 </div>

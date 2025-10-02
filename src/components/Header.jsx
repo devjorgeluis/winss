@@ -14,12 +14,23 @@ import IconHamburger from "/src/assets/svg/hamburger.svg";
 const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, handleChangePasswordClick, fragmentNavLinksTop, isSlotsOnly }) => {
     const navigate = useNavigate();
     const [showUserMenu, setShowUserMenu] = useState(false);
+    const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
+    
     const openMenu = () => {
         setShowUserMenu(!showUserMenu);
     };
+    
     const onClose = () => {
         setShowUserMenu(false);
     }
+    
+    const toggleLanguageDropdown = () => {
+        setShowLanguageDropdown(!showLanguageDropdown);
+    };
+    
+    const closeLanguageDropdown = () => {
+        setShowLanguageDropdown(false);
+    };
 
     return (
         <>
@@ -55,36 +66,53 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                                                 <i className="fas fa-user"></i> <span>Hola, </span> <strong>betarsis</strong><br />
                                                 <i className="fas fa-money-bill-wave"></i> <span>AR$</span> <span className="walletBalance">0,00</span>
                                             </button>
-                                            <div className="dropdown-menu" aria-labelledby="dropdown">
+                                            
+                                            <div
+                                                className="dropdown-menu"
+                                                style={{
+                                                    zIndex: 10000,
+                                                    cursor: "pointer"
+                                                }}
+                                            >
                                                 <a className="dropdown-item btn-sm" href="https://winss.bet/profile/wallet"><i className="fas fa-wallet"></i> Ir a billetera</a>
-
-                                                <a className="dropdown-item btn-sm" href="https://winss.bet/auth/logout"><i className="fas fa-sign-out-alt"></i> Cerrar sesión</a>
-
-                                                <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                                <a className="dropdown-item btn-sm" onClick={() => handleLogoutClick()}><i className="fas fa-sign-out-alt"></i> Cerrar sesión</a>
+                                            </div>
+                                            <div className="nav-item dropdown" style={{ position: 'relative' }}>
+                                                <a 
+                                                    className="nav-link nav-link-mini dropdown-toggle p-0" 
+                                                    id="navbarDropdown3" 
+                                                    onClick={toggleLanguageDropdown}
+                                                    style={{ cursor: 'pointer' }}
+                                                >
                                                     <img src={ImgFlagES} />
                                                 </a>
-                                            </div>
-                                            <ul className="navbar-nav ml-auto idomas_reponsive__">
-                                                <li className="nav-item btn-sm" style="padding: 0;">
-
-                                                    <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                {showLanguageDropdown && (
+                                                    <div 
+                                                        className="dropdown-menu show" 
+                                                        style={{ 
+                                                            position: 'absolute', 
+                                                            right: 0, 
+                                                            top: '100%',
+                                                            zIndex: 10000
+                                                        }}
+                                                    >
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                             <img src={ImgFlagES} width="27px" height="20px" /> Español
                                                         </a>
-                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                             <img src={ImgFlagFR} width="27px" height="20px" /> Frances</a>
-                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                             <img src={ImgFlagEN} width="27px" height="20px" /> Inglés
                                                         </a>
-                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                             <img src={ImgFlagPT} width="27px" height="20px" /> Portugués
                                                         </a>
-                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                        <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                             <img src={ImgFlagHE} width="27px" height="20px" /> Hebreo
                                                         </a>
                                                     </div>
-                                                </li>
-                                            </ul>
+                                                )}
+                                            </div>
                                         </div>
                                         :
                                         <div className="btn-group login-group" role="group">
@@ -92,29 +120,42 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                                                 <a href="/register" className="btn btn-dark btn-menu-top btndrop btn-register-a"> <i className="fas fa-user"></i> CREAR CUENTA </a>
                                                 <a href="/login" className="btn btn-danger btn-menu-top btndrop btn-login-a"> <i className="fas fa-lock"></i> INICIAR SESIÓN </a>
 
-                                                <a className="nav-link nav-link-mini dropdown-toggle p-0" id="navbarDropdown" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
-                                                    <img src={ImgFlagES} />
-                                                </a>
-                                                <ul className="navbar-nav ml-auto idomas_reponsive__">
-                                                    <li className="nav-item btn-sm px-0">
-                                                        <div className="dropdown-menu" aria-labelledby="navbarDropdown">
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                <div className="nav-item dropdown" style={{ position: 'relative' }}>
+                                                    <a 
+                                                        className="nav-link nav-link-mini dropdown-toggle p-0" 
+                                                        id="navbarDropdown" 
+                                                        onClick={toggleLanguageDropdown}
+                                                        style={{ cursor: 'pointer' }}
+                                                    >
+                                                        <img src={ImgFlagES} />
+                                                    </a>
+                                                    {showLanguageDropdown && (
+                                                        <div 
+                                                            className="dropdown-menu show" 
+                                                            style={{ 
+                                                                position: 'absolute', 
+                                                                right: 0, 
+                                                                top: '100%',
+                                                                zIndex: 10000
+                                                            }}
+                                                        >
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                                 <img src={ImgFlagES} width="27px" height="20px" /> Español
                                                             </a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                                 <img src={ImgFlagFR} width="27px" height="20px" /> Frances</a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                                 <img src={ImgFlagEN} width="27px" height="20px" /> Inglés
                                                             </a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                                 <img src={ImgFlagPT} width="27px" height="20px" /> Portugués
                                                             </a>
-                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#">
+                                                            <a className="dropdown-item" id="dropdown-item-tls" href="#" onClick={closeLanguageDropdown}>
                                                                 <img src={ImgFlagHE} width="27px" height="20px" /> Hebreo
                                                             </a>
                                                         </div>
-                                                    </li>
-                                                </ul>
+                                                    )}
+                                                </div>
                                             </div>
                                         </div>
                                     }
