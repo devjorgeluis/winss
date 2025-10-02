@@ -28,7 +28,7 @@ const Home = () => {
 
   return (
     <>
-      <div className="main" id="wlcp" data-app="">
+      <>
         <VideoSlideshow videos={videoSlideshow} />
 
         <div className="container container-winss">
@@ -48,7 +48,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-      </div>
+      </>
     </>
   );
 };

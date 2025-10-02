@@ -212,7 +212,7 @@ const Layout = () => {
                             fragmentNavLinksTop={fragmentNavLinksTop}
                             isSlotsOnly={isSlotsOnly}
                         />
-                        <main className="app__main">
+                        <main className="main" id="wlcp">
                             <Outlet />
                         </main>
                         <Footer />

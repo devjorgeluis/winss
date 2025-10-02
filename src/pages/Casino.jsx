@@ -6,6 +6,7 @@ import { NavigationContext } from "../components/NavigationContext";
 import { callApi, callApiService } from "../utils/Utils";
 import GameCard from "/src/components/GameCard";
 import NavLinkIcon from "../components/NavLinkIcon";
+import JackpotContainer from "../components/JackpotContainer";
 import Slideshow from "../components/Slideshow";
 import CategorySlideshow from "../components/CategorySlideshow";
 import GameModal from "../components/GameModal";
@@ -16,8 +17,25 @@ import SearchSelect from "../components/SearchSelect";
 import LoginModal from "../components/LoginModal";
 import CustomAlert from "../components/CustomAlert";
 import "animate.css";
-import ImgBanner1 from "/src/assets/img/slots.avif";
-import ImgMobileBanner1 from "/src/assets/img/mobile-slots.avif";
+import ImgBanner1 from "/src/assets/img/banner-quinielas-1500x300.png";
+import ImgBanner2 from "/src/assets/img/banner-1.jpeg";
+import ImgBanner3 from "/src/assets/img/banner-2.jpeg";
+import ImgBanner4 from "/src/assets/img/banner-3.jpeg";
+import ImgBanner5 from "/src/assets/img/banner-4.jpeg";
+import VideoBanner1 from "/src/assets/video/tadavideo.mp4";
+import VideoBanner2 from "/src/assets/video/triplecherry.webm";
+import ImgBanner6 from "/src/assets/img/sprintgames.jpg";
+import ImgBanner7 from "/src/assets/img/aviatrix-01.png";
+import ImgBanner8 from "/src/assets/img/slots-6.jpeg";
+import ImgBanner9 from "/src/assets/img/aviatrix-02.png";
+import ImgBanner10 from "/src/assets/img/slots-4.jpeg";
+import ImgBanner11 from "/src/assets/img/aviatrix-03.png";
+
+
+import ImgMobileBanner1 from "/src/assets/img/aviatrix-01-mobile.png";
+import ImgMobileBanner2 from "/src/assets/img/aviatrix-03-mobile.png";
+import ImgMobileBanner3 from "/src/assets/img/aviatrix-02-mobile.png";
+
 import ImgLobby from "/src/assets/img/lobby.avif";
 import ImgJoker from "/src/assets/img/jokers.avif";
 import ImgHot from "/src/assets/img/hot.avif";
@@ -59,7 +77,35 @@ const Casino = () => {
   const location = useLocation();
   const searchRef = useRef(null);
 
-  let imageSlideshow = isMobile ? [ImgMobileBanner1] : [ImgBanner1];
+  let imageSlideshow = isMobile ? [
+    { type: "image", url: ImgBanner1 },
+    { type: "image", url: ImgBanner2 },
+    { type: "image", url: ImgBanner3 },
+    { type: "image", url: ImgBanner4 },
+    { type: "image", url: ImgBanner5 },
+    { type: "video", url: VideoBanner1 },
+    { type: "video", url: VideoBanner2 },
+    { type: "image", url: ImgBanner6 },
+    { type: "image", url: ImgMobileBanner1 },
+    { type: "image", url: ImgMobileBanner2 },
+    { type: "image", url: ImgMobileBanner3 },
+    { type: "image", url: ImgMobileBanner1 },
+    { type: "image", url: ImgMobileBanner2 },
+  ] : [
+    { type: "image", url: ImgBanner1 },
+    { type: "image", url: ImgBanner2 },
+    { type: "image", url: ImgBanner3 },
+    { type: "image", url: ImgBanner4 },
+    { type: "image", url: ImgBanner5 },
+    { type: "video", url: VideoBanner1 },
+    { type: "video", url: VideoBanner2 },
+    { type: "image", url: ImgBanner6 },
+    { type: "image", url: ImgBanner7 },
+    { type: "image", url: ImgBanner8 },
+    { type: "image", url: ImgBanner9 },
+    { type: "image", url: ImgBanner10 },
+    { type: "image", url: ImgBanner11 },
+  ]
 
   useEffect(() => {
     const checkIsMobile = () => {
@@ -469,7 +515,7 @@ const Casino = () => {
         />
       ) : (
         <>
-          
+          <JackpotContainer />
           <Slideshow images={imageSlideshow} />
 
           <div className="games-tags_gamesTags">
