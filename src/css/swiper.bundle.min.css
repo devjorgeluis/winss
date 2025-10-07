@@ -29,7 +29,7 @@
 }
 
 .swiper {
-    margin-left: auto;
+    margin-left: unset !important;
     margin-right: auto;
     position: relative;
     overflow: hidden;

@@ -87,7 +87,7 @@ const CategorySlideshow = (props) => {
                 onSlideChange={onSlideChange}
                 className="menu-scroll"
                 spaceBetween={3}
-                slidesPerView={20}
+                slidesPerView={props.categories.length > 20 ? 20 : props.categories.length}
                 watchOverflow={true}
                 observer={true}
                 observeParents={true}
@@ -96,19 +96,19 @@ const CategorySlideshow = (props) => {
                     slidesPerView: 4
                   },
                   576: {
-                    slidesPerView: 6
+                    slidesPerView: props.categories.length > 20 && 6
                   },
                   640: {
-                    slidesPerView: 8
+                    slidesPerView: props.categories.length > 20 && 8
                   },
                   1024: {
-                    slidesPerView: 9
+                    slidesPerView: props.categories.length > 20 && 9
                   },
                   1600: {
-                    slidesPerView: 12
+                    slidesPerView: props.categories.length > 20 && 12
                   },
                   1601: {
-                    slidesPerView: 15
+                    slidesPerView: props.categories.length > 20 && 15
                   },
                 }}
               >
