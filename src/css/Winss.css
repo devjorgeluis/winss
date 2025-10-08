@@ -961,22 +961,71 @@ ul.nav>li.sa-stacker>a:hover {
     }
 }
 
-#wlcp .react-slideshow-container .default-nav {
-    width: 15%;
-    height: 100%;
+/* Custom Slideshow Styles */
+.slide-container {
+    height: auto !important;
+    position: relative;
+}
+
+.slideshow-wrapper {
+    height: auto !important;
+    overflow: hidden;
+}
+
+.slides {
+    height: auto !important;
+}
+
+.slide {
+    height: auto !important;
+}
+
+.slide img,
+.slide video {
+    width: 100%;
+    height: auto;
+    display: block;
+    object-fit: contain;
+}
+
+.slide-nav {
+    position: absolute;
+    top: 50%;
+    transform: translateY(-50%);
     background: transparent;
+    border: none;
+    color: white;
+    padding: 10px;
+    cursor: pointer;
+    z-index: 10;
     display: flex;
     align-items: center;
     justify-content: center;
+    width: 40px;
+    height: 40px;
+    border-radius: 50%;
 }
 
-#wlcp .react-slideshow-container .default-nav svg {
+.slide-nav img {
     filter: invert(1);
+    width: 20px;
+    height: 20px;
 }
 
-#wlcp .react-slideshow-container video {
-    width: 100%;
-    object-fit: cover;
+.slide-nav.prev {
+    left: 10px;
+}
+
+.slide-nav.next {
+    right: 10px;
+}
+
+@media screen and (max-width:767px) {
+    .slide img,
+    .slide video {
+        min-height: 270px;
+        object-fit: cover;
+    }
 }
 
 .main {

@@ -795,7 +795,6 @@ body {
     border-radius: 5px;
     height: 38px !important;
     margin-top: 5px;
-    width: unset !important;
 }
 
 .provider-title-sub {
@@ -1424,19 +1423,20 @@ ol.flickity-page-dots {
     }
 
     .menu-provider {
-        display: block !important;
+        display: block;
         height: auto;
     }
 
-    #menu-scroll {
-        overflow-x: scroll;
-        width: 100%;
+    .menu-provider.live-menu-provider {
         display: flex;
-        overflow-y: hidden;
     }
 
     .provider-title-sub {
         min-width: unset;
+    }
+
+    .edit .provider-title-sub {
+        width: calc((100vw - 35px) / 4);
     }
 
     .provider-title-sub-first,
@@ -1463,13 +1463,6 @@ ol.flickity-page-dots {
     .menu-provider {
         display: block !important;
         height: auto;
-    }
-
-    #menu-scroll {
-        overflow-x: scroll;
-        width: 100%;
-        display: flex;
-        overflow-y: hidden;
     }
 
     .provider-title-sub-first,

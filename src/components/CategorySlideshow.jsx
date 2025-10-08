@@ -40,9 +40,11 @@ const CategorySlideshow = (props) => {
     } else {
       if (props.onCategoryClick) {
         props.onCategoryClick(category, category.id, category.table_name, index, true);
+        setIsOpen(false);
       }
       if (props.onCategorySelect) {
         props.onCategorySelect(category);
+        setIsOpen(false);
       }
     }
   };
@@ -93,10 +95,10 @@ const CategorySlideshow = (props) => {
                 observeParents={true}
                 breakpoints={{
                   320: {
-                    slidesPerView: 4
+                    slidesPerView: 3
                   },
                   576: {
-                    slidesPerView: props.categories.length > 20 && 6
+                    slidesPerView: props.categories.length > 20 && 4
                   },
                   640: {
                     slidesPerView: props.categories.length > 20 && 8

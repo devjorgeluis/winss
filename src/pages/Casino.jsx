@@ -542,10 +542,9 @@ const Casino = () => {
             /> : <DivLoading />
           }
 
-          <div className="container-provider">
             {
               (activeCategory && activeCategory.name && activeCategory.name !== "") ?
-                <>
+                <div className="container-provider">
                   <div className="botton-header-slots">
                     <strong>{activeCategory && activeCategory.name}</strong>
                     <SearchInput
@@ -585,6 +584,7 @@ const Casino = () => {
                       })
                     }
                   </div>
+                  {isLoadingGames && <GamesLoading />}
                   {!isLoadingGames && games.length >= 20 && (
                     <div className="text-center">
                       <a onClick={loadMoreContent}>
@@ -597,7 +597,7 @@ const Casino = () => {
                       <p>SIN RESULTADOS</p>
                     </div>
                   )}
-                </>
+                </div>
                 : selectedPage === "casino" ? <>
                   <div className="col-12 home-title">
                     <h3>
@@ -611,7 +611,7 @@ const Casino = () => {
                   <TopGameSlideshow games={topArcade} isLogin={isLogin} handleLoginClick={handleLoginClick} />
                 </>
                 :
-                <>
+                <div className="container-provider">
                   <div className="botton-header-slots">
                     <strong>{activeCategory && activeCategory.name}</strong>
                     <SearchInput
@@ -651,6 +651,7 @@ const Casino = () => {
                       })
                     }
                   </div>
+                  {isLoadingGames && <GamesLoading />}
                   {!isLoadingGames && games.length >= 20 && (
                     <div className="text-center">
                       <a onClick={loadMoreContent}>
@@ -663,11 +664,8 @@ const Casino = () => {
                       <p>SIN RESULTADOS</p>
                     </div>
                   )}
-                </>
+                </div>
             }
-
-            {isLoadingGames && <GamesLoading />}
-          </div>
         </>
       )}
     </>

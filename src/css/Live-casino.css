@@ -239,77 +239,6 @@
     border-left: none;
 }
 
-.provider-title-sub-first {
-    font-size: small;
-    cursor: pointer;
-    font-family: 'Play', sans-serif;
-    color: #fff;
-    background: #000000;
-    height: 35px;
-    text-align: center;
-    padding: 0px !important;
-    min-width: 150px;
-    margin-left: 3%;
-    margin-top: 16px;
-    border-radius: 5px;
-    float: left;
-    text-transform: capitalize;
-    line-height: 35px;
-}
-
-.provider-title-sub-bc {
-    font-size: x-small;
-    cursor: pointer;
-    font-family: 'Play', sans-serif;
-    color: #fff;
-    height: auto;
-    text-align: center;
-    padding: 0px !important;
-    margin-left: 1%;
-    margin-top: 8px;
-    float: left;
-    text-transform: capitalize;
-}
-
-.provider-title-sub-cate {
-    font-size: small;
-    cursor: pointer;
-    font-family: 'Play', sans-serif;
-    color: #fff;
-    height: auto;
-    text-align: center;
-    padding: 0px !important;
-    min-width: 150px;
-    max-width: 150px;
-    float: left;
-    line-height: 40px;
-    text-transform: capitalize;
-    text-overflow: ellipsis;
-    white-space: nowrap;
-    overflow: hidden;
-}
-
-.provider-title-sub-bc a {
-    color: #fff;
-}
-
-.provider-title-sub-bc img {
-    height: 60px;
-    width: auto;
-    transition-delay: 0.1s;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
-
-.provider-title-sub-bc a:active {
-    color: #ffffff;
-    background: #333743;
-    text-decoration: none;
-}
-
 .grActive,
 .join_btn {
     background: -webkit-linear-gradient(top left, #ff5d3c 0, #ff8929);
@@ -460,17 +389,6 @@
     justify-content: center;
 }
 
-.menu-provider-title {
-    font-size: 10px;
-    color: #fff;
-    transition-delay: 0.1s;
-    -webkit-transition: all 1s ease;
-    -moz-transition: all 1s ease;
-    -o-transition: all 1s ease;
-    -ms-transition: all 1s ease;
-    transition: all 1s ease;
-}
-
 .menu-provider-title-modal {
     font-size: 16px;
     margin-left: 0;
@@ -484,20 +402,6 @@
     -ms-transition: all 1s ease;
     transition: all 1s ease;
     text-align: left;
-}
-
-.provider-title-sub-bc:hover .menu-provider-title {
-    color: #fba537 !important;
-}
-
-.provider-title-sub-bc:hover {
-    color: #fba537 !important;
-    background: linear-gradient(to bottom, rgba(63, 105, 232, 1) 0%, rgba(63, 105, 232, 1) 46%, rgba(65, 105, 225, 1) 51%, rgba(29, 63, 163, 1) 100%) !important;
-}
-
-.provider-title-sub-bc:focus,
-.provider-title-sub-bc:active {
-    background: linear-gradient(to bottom, rgba(63, 105, 232, 1) 0%, rgba(63, 105, 232, 1) 46%, rgba(65, 105, 225, 1) 51%, rgba(29, 63, 163, 1) 100%) !important;
 }
 
 .CheckActive {
@@ -633,6 +537,10 @@
     align-items: center;
     display: flex;
     justify-content: center;
+    text-align: center;
+    padding: 0px !important;
+    margin-left: 1%;
+    margin-top: 8px;
 }
 
 #menu-category-bc {
@@ -1088,17 +996,10 @@
         width: calc((100vw - 25px) / 3) !important;
     }
 
-    .provider-title-sub-first {
-        min-width: 100px;
-    }
-
-    .provider-title-sub-bc {
-        height: 100px !important;
-    }
-
     #menu-scroll {
         align-items: center;
         width: 100% !important;
+        padding: 0 5px;
     }
 
     #prev,
@@ -1106,16 +1007,11 @@
         display: none !important;
     }
 
-    .fa-arrow-circle-right,
-    .fa-arrow-circle-left {
-        margin-top: 25px !important;
-    }
-
     .provider-title-sub-bc {
         height: 60px !important;
     }
 
-    .menu-provider {
+    .menu-provider.live-menu-provider {
         height: 80px !important;
     }
 }
@@ -1177,20 +1073,12 @@
         width: calc((100vw - 25px) / 3) !important;
     }
 
-    .provider-title-sub-first {
-        min-width: 100px;
-    }
-
     .fa-arrow-circle-right,
     .fa-arrow-circle-left {
         margin-top: 25px !important;
     }
 
-    .provider-title-sub-bc {
-        height: 80px !important;
-    }
-
-    .menu-provider {
+    .menu-provider.live-menu-provider {
         height: 100px !important;
     }
 }
@@ -1235,7 +1123,7 @@
         height: 80px !important;
     }
 
-    .menu-provider {
+    .menu-provider.live-menu-provider {
         height: 100px !important;
     }
 }

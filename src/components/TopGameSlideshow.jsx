@@ -38,7 +38,10 @@ const TopGameSlideshow = (props) => {
 
   return (
     <div className="containerSliders">
-      <button className="swiper-button-prev" onClick={handlePrev} disabled={isBeginning ? true : false}></button>
+      {
+        props.games.length > 0 && <button className="swiper-button-prev" onClick={handlePrev} disabled={isBeginning ? true : false}></button>
+      }
+      
       <Swiper
         ref={swiperRef}
         onSlideChange={onSlideChange}
@@ -89,7 +92,9 @@ const TopGameSlideshow = (props) => {
           </SwiperSlide>
         ))}
       </Swiper>
-      <button className="swiper-button-next" onClick={handleNext} disabled={isEnd ? true : false}></button>
+      {
+        props.games.length > 0 && <button className="swiper-button-next" onClick={handleNext} disabled={isEnd ? true : false}></button>
+      }
     </div>
   )
 }
