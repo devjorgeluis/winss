@@ -45,11 +45,11 @@ const Sports = () => {
                         <DivLoading />
                     </div>
                 ) : sportsEmbedUrl ? (
-                    <div className="game-iframe-view_gameIframeWrapper game-iframe-view_sportbook">
+                    <div id="sbFrame" className="sbFrame w-100">
                         <iframe
                             src={sportsEmbedUrl}
                             title="Sportsbook"
-                            className="game-iframe-view_gameIframe game-iframe-view_sportbook"
+                            className="w-100"
                             allowFullScreen
                             loading="lazy"
                             onError={(e) => {
@@ -58,7 +58,7 @@ const Sports = () => {
                         />
                     </div>
                 ) : (
-                    <div className="game-iframe-view_gameIframeWrapper game-iframe-view_sportbook">
+                    <div className="sbFrame">
                         <div className="no-game">
                             <div className="leftWrapper">
                                 <p className="forbiddenNumber">

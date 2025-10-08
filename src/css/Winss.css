@@ -794,6 +794,10 @@ ul.nav>li.sa-stacker>a:hover {
     margin-left: 50px;
 }
 
+.sbFrame iframe {
+    min-height: 100vh;
+}
+
 @media screen and (max-width: 450px) {
     .sidenav {
         padding-top: 15px;
