@@ -986,6 +986,15 @@ ul.nav>li.sa-stacker>a:hover {
     background: #242322 !important;
 }
 
+.main.live-casino-container {
+    background: #1c1c1c !important;
+    background-repeat: no-repeat;
+    background-position: center;
+    background-attachment: fixed;
+    font-family: 'Roboto Condensed', sans-serif;
+    padding-bottom: 10px;
+}
+
 #showGame .main {
     min-height: 500px;
     background: #513717 !important;

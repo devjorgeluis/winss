@@ -29,6 +29,7 @@ const Layout = () => {
 
     const location = useLocation();
     const isCasino = location.pathname === "/casino";
+    const isLiveCasino = location.pathname === "/live-casino";
 
     useEffect(() => {
         if (contextData.session != null) {
@@ -206,7 +207,7 @@ const Layout = () => {
                             fragmentNavLinksTop={fragmentNavLinksTop}
                             isSlotsOnly={isSlotsOnly}
                         />
-                        <main className={isCasino ? 'casino main' : 'main'} id="wlcp">
+                        <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : 'main'} id="wlcp">
                             <Outlet />
                         </main>
                         <Footer />

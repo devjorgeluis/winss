@@ -1,0 +1,1275 @@
+.live-casino-container .container-provider .container-games {
+    grid-template-columns: repeat(8, 1fr);
+}
+
+#wlcp.live-casino-container {
+    background: #1c1c1c !important;
+}
+
+#casinobctp .col-lg-3 {
+    -ms-flex: 0 0 25%;
+    flex: 0 0 25%;
+    max-width: 24%;
+}
+
+#casinobctp .col-xl-2 {
+    -ms-flex: 0 0 15%;
+    flex: 0 0 15%;
+    max-width: 15%;
+}
+
+#menu-category-bc ul {
+    display: flex;
+    gap: 10px;
+    list-style: none;
+}
+
+#menu-category-bc ul li {
+    background: #202020;
+    margin-right: 5px;
+    cursor: pointer;
+    color: #98a7b5 !important;
+    font-weight: bold;
+    font-family: 'Roboto', sans-serif;
+}
+
+#menu-category-bc ul li:hover {
+    color: #fff;
+    background: linear-gradient(to bottom, rgba(63, 105, 232, 1) 0%, rgba(63, 105, 232, 1) 46%, rgba(65, 105, 225, 1) 51%, rgba(29, 63, 163, 1) 100%) !important;
+    margin-right: 5px;
+    cursor: pointer;
+}
+
+.btn-bottom {
+    background-color: #d59818;
+    color: #000;
+    border-color: #d59818;
+    transition: all .3s ease;
+    font-size: 12px;
+    text-align: center;
+    position: absolute;
+    bottom: 10px;
+    left: 0;
+    right: 0;
+    width: 80%;
+    font-weight: 700;
+    margin: auto;
+}
+
+.el-input__inner {
+    background-color: #202020 !important;
+    border-radius: 4px;
+    border: 1px solid #202020 !important;
+}
+
+.live-casino-container .container-provider {
+    border-radius: 10px;
+}
+
+.owl-dots {
+    display: none;
+}
+
+.btn-filter-s .active {
+    background-color: #00ff8d !important;
+    color: #000000;
+}
+
+.no-results {
+    min-height: 55px;
+    max-height: 55px;
+    background: #202020;
+    line-height: 45px;
+    text-align: center;
+    color: #f9f9f9;
+    font-weight: 700;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: x-large;
+    z-index: 1000;
+    cursor: pointer;
+}
+
+.no-results:hover {
+    color: #93000e;
+}
+
+.btn-more-results {
+    min-height: 55px;
+    max-height: 55px;
+    background: #121212;
+    line-height: 45px;
+    text-align: center;
+    color: #f9f9f9;
+    font-weight: 700;
+    margin-top: 10px;
+    border-radius: 10px;
+    font-size: x-large;
+    z-index: 1000;
+}
+
+.btn-more-results:hover {
+    color: #93000e;
+}
+
+.open {
+    max-height: 100% !important;
+    padding-bottom: 10px !important;
+}
+
+.closed {
+    display: none !important;
+}
+
+.provider-click {
+    background: #313131;
+    color: #fff;
+    min-height: 20px;
+    height: 20px;
+    display: block;
+    margin: auto;
+    min-width: 100%;
+    position: relative;
+    text-align: center;
+    font-size: 15px;
+    line-height: 20px;
+}
+
+.provider-click:hover {
+    z-index: 2000;
+    color: #f30101;
+    cursor: pointer;
+}
+
+.provider-search .form-control {
+    border-radius: 3px;
+}
+
+.loadere {
+    position: fixed;
+    left: 0;
+    top: 0;
+    width: 100%;
+    height: 100%;
+    z-index: 9999;
+    background: url('/assets/template/slots/lobbys/v1/img/loader-3.gif') 50% 50% no-repeat #06030c;
+    background-size: 10%;
+    opacity: 1;
+}
+
+.provider-play {
+    font-size: 16px;
+    font-weight: 700;
+    color: #464954;
+    background: #ffffff;
+    height: 38px;
+    line-height: 38px;
+    text-align: center;
+    text-transform: uppercase;
+    padding: 0px 5px 0px 5px !important;
+    min-width: 40px;
+    margin-left: 3px;
+    margin-top: 5px;
+    border-radius: 25px;
+    float: left;
+    width: auto;
+    border: 2px solid #ff5d3c;
+}
+
+.provider-search {
+    background: transparent;
+    height: 38px;
+    line-height: 38px;
+    min-width: 81px;
+    margin-left: 3px;
+    margin-top: 5px;
+    float: left;
+    width: auto;
+    display: flex;
+}
+
+.provider-title:nth-child(1) {
+    border-left: none;
+}
+
+.provider-title:nth-child(10) {
+    border-right: none;
+}
+
+.provider-title img {
+    height: 35px;
+}
+
+.provider-title:hover img {
+    opacity: 0.5;
+}
+
+.provider-title {
+    font-family: "Exo 2", sans-serif;
+    cursor: pointer;
+    color: #f9f9f9;
+    text-align: center;
+    margin-left: 5px;
+    margin-top: 5px;
+    text-transform: capitalize;
+    display: inline-flex;
+    flex-direction: column;
+    justify-content: space-between;
+    align-items: center;
+    gap: 5px;
+    height: 100%;
+    border-radius: 0px;
+    padding: 7px 0;
+    min-width: 75px;
+    flex: 1 1 14.2857142857%;
+    flex: 1;
+}
+
+.provider-title a {
+    color: #333743;
+}
+
+.provider-title a:active,
+.provider-title a:hover {
+    color: #ffffff;
+    text-decoration: none;
+}
+
+.provider-title:nth-child(1) {
+    border-left: none;
+}
+
+.provider-title-sub-first {
+    font-size: small;
+    cursor: pointer;
+    font-family: 'Play', sans-serif;
+    color: #fff;
+    background: #000000;
+    height: 35px;
+    text-align: center;
+    padding: 0px !important;
+    min-width: 150px;
+    margin-left: 3%;
+    margin-top: 16px;
+    border-radius: 5px;
+    float: left;
+    text-transform: capitalize;
+    line-height: 35px;
+}
+
+.provider-title-sub-bc {
+    font-size: x-small;
+    cursor: pointer;
+    font-family: 'Play', sans-serif;
+    color: #fff;
+    height: auto;
+    text-align: center;
+    padding: 0px !important;
+    margin-left: 1%;
+    margin-top: 8px;
+    float: left;
+    text-transform: capitalize;
+}
+
+.provider-title-sub-cate {
+    font-size: small;
+    cursor: pointer;
+    font-family: 'Play', sans-serif;
+    color: #fff;
+    height: auto;
+    text-align: center;
+    padding: 0px !important;
+    min-width: 150px;
+    max-width: 150px;
+    float: left;
+    line-height: 40px;
+    text-transform: capitalize;
+    text-overflow: ellipsis;
+    white-space: nowrap;
+    overflow: hidden;
+}
+
+.provider-title-sub-bc a {
+    color: #fff;
+}
+
+.provider-title-sub-bc img {
+    height: 60px;
+    width: auto;
+    transition-delay: 0.1s;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.provider-title-sub-bc a:active {
+    color: #ffffff;
+    background: #333743;
+    text-decoration: none;
+}
+
+.grActive,
+.join_btn {
+    background: -webkit-linear-gradient(top left, #ff5d3c 0, #ff8929);
+    background: -o-linear-gradient(top left, #ff5d3c 0, #ff8929 100%);
+    background: linear-gradient(to bottom right, #ff5d3c 0, #ff8929);
+    color: #fff;
+}
+
+.product-item {
+    width: 100%;
+    border: 1px solid #37364f;
+    transition-delay: 0.1s;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+}
+
+.product-item:hover {
+    opacity: 0.78;
+    -webkit-transition: all .4s ease-in-out;
+    -o-transition: all .4s ease-in-out;
+    transition: all .4s ease-in-out;
+}
+
+.banner-top-slots .line-groove-title {
+    height: 100px;
+    font-weight: 700;
+    font-family: 'Montserrat', sans-serif;
+    font-size: 25px;
+    text-transform: uppercase;
+    padding-left: 50px;
+    color: #00ff8d;
+    margin-bottom: 20px;
+}
+
+.btn-provider {
+    background: #333743;
+    height: 50px;
+    color: #00ff8d;
+    line-height: 39px;
+    margin-top: 10px;
+    margin-bottom: 40px;
+    border-radius: 0px;
+}
+
+.btn-provider:hover {
+    background: #00ff8d;
+    height: 50px;
+    color: #000000;
+}
+
+.live-casino-container .container-provider .reset {
+    clear: both;
+    text-align: center;
+}
+
+.live-casino-container .container-provider .reset .btn-more-lobby {
+    color: #ffffff;
+    font-weight: 700;
+    font-size: 20px;
+}
+
+.live-casino-container .botton-header-slots {
+    margin-top: 20px;
+}
+
+.botton-header-slots span {
+    line-height: 50px;
+    font-size: 20px;
+    color: #ffffff;
+}
+
+.middle-slots {
+    transition: 0.5s ease;
+    opacity: 0;
+    width: 30%;
+    position: absolute;
+    left: 50%;
+    margin-top: 30%;
+    z-index: 1000;
+    transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    text-align: center;
+    height: 0;
+    transition: .5s ease;
+}
+
+.slots-grid-item:hover .middle-slots,
+.slots-bann-item:hover .middle-slots {
+    opacity: 1;
+    top: 50%;
+    cursor: pointer;
+    border: none;
+    height: 100%;
+}
+
+@-webkit-keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+@keyframes zoomIn {
+    from {
+        opacity: 0;
+        -webkit-transform: scale3d(0.3, 0.3, 0.3);
+        transform: scale3d(0.3, 0.3, 0.3);
+    }
+
+    50% {
+        opacity: 1;
+    }
+}
+
+.zoomIn {
+    -webkit-animation-name: zoomIn;
+    animation-name: zoomIn;
+}
+
+.row-modal {
+    max-width: 90% !important;
+    margin: auto !important;
+    border-radius: 30px !important;
+    margin-top: 5px !important;
+    max-height: 40px !important;
+}
+
+.row-modal:hover {
+    background: #93000e !important;
+    cursor: pointer;
+}
+
+.row-modal:hover .icon-promoted {
+    color: #121212 !important;
+}
+
+.menu-provider.live-menu-provider {
+    height: 160px;
+    background: rgb(0 0 0 / 15%);
+    overflow: auto;
+    justify-content: center;
+}
+
+.menu-provider-title {
+    font-size: 10px;
+    color: #fff;
+    transition-delay: 0.1s;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+}
+
+.menu-provider-title-modal {
+    font-size: 16px;
+    margin-left: 0;
+    color: #fff;
+    text-align: left;
+    text-transform: capitalize;
+    transition-delay: 0.1s;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
+    text-align: left;
+}
+
+.provider-title-sub-bc:hover .menu-provider-title {
+    color: #fba537 !important;
+}
+
+.provider-title-sub-bc:hover {
+    color: #fba537 !important;
+    background: linear-gradient(to bottom, rgba(63, 105, 232, 1) 0%, rgba(63, 105, 232, 1) 46%, rgba(65, 105, 225, 1) 51%, rgba(29, 63, 163, 1) 100%) !important;
+}
+
+.provider-title-sub-bc:focus,
+.provider-title-sub-bc:active {
+    background: linear-gradient(to bottom, rgba(63, 105, 232, 1) 0%, rgba(63, 105, 232, 1) 46%, rgba(65, 105, 225, 1) 51%, rgba(29, 63, 163, 1) 100%) !important;
+}
+
+.CheckActive {
+    background: linear-gradient(to bottom, rgba(63, 105, 232, 1) 0%, rgba(63, 105, 232, 1) 46%, rgba(65, 105, 225, 1) 51%, rgba(29, 63, 163, 1) 100%) !important;
+}
+
+.icon-promoted {
+    color: #653cb4;
+    font-size: 19px;
+}
+
+/*# sourceMappingURL=live-dealer.css.map */
+.logo-img {
+    width: 100%;
+}
+
+#box-content iframe {
+    width: 100%;
+    height: 100%;
+}
+
+#box-content #playSlot {
+    background: #0f1119;
+}
+
+#searchModal .modal-dialog {
+    max-width: 90% !important;
+    height: 100% !important;
+    margin: 1.75rem auto;
+    border: none !important;
+}
+
+#searchModal .modal-body {
+    padding: 2rem;
+}
+
+#vueShowGame .modal-dialog {
+    max-width: 100% !important;
+    height: 100% !important;
+    margin: 1.75rem auto;
+    background: #0f1119;
+    border: none !important;
+}
+
+#showGame .modal-dialog {
+    max-width: 100% !important;
+}
+
+#vueShowGame .modal-content {
+    height: 100% !important;
+    background-color: #0f1119 !important;
+    flex-direction: row !important;
+}
+
+.modal-content {
+    background-color: #040404 !important;
+}
+
+#logo-box {
+    padding-top: 20px;
+    padding-bottom: 20px;
+}
+
+#options-box {
+    padding-top: 20px;
+}
+
+#wallet-box-total {
+    background: #0f1119;
+    padding-top: 20px;
+}
+
+.btn-box-option {
+    background: rgb(26 26 26 / 42%);
+    border: none;
+    text-align: center;
+    padding: 3px;
+    margin-bottom: 10px;
+    height: 50px;
+    width: 100%;
+    font-size: 20px;
+    cursor: pointer;
+    z-index: 2000;
+    border-radius: 50px;
+}
+
+.btn-box-option:hover {
+    background: rgba(203, 96, 179, 1);
+    background: -moz-linear-gradient(top,
+            rgba(203, 96, 179, 1) 0%,
+            rgba(193, 70, 161, 1) 50%,
+            rgba(168, 0, 119, 1) 51%,
+            rgba(219, 54, 164, 1) 100%);
+    background: -webkit-gradient(left top,
+            left bottom,
+            color-stop(0%, rgba(203, 96, 179, 1)),
+            color-stop(50%, rgba(193, 70, 161, 1)),
+            color-stop(51%, rgba(168, 0, 119, 1)),
+            color-stop(100%, rgba(219, 54, 164, 1)));
+    background: -webkit-linear-gradient(top,
+            rgba(203, 96, 179, 1) 0%,
+            rgba(193, 70, 161, 1) 50%,
+            rgba(168, 0, 119, 1) 51%,
+            rgba(219, 54, 164, 1) 100%);
+    background: -o-linear-gradient(top,
+            rgba(203, 96, 179, 1) 0%,
+            rgba(193, 70, 161, 1) 50%,
+            rgba(168, 0, 119, 1) 51%,
+            rgba(219, 54, 164, 1) 100%);
+    background: -ms-linear-gradient(top,
+            rgba(203, 96, 179, 1) 0%,
+            rgba(193, 70, 161, 1) 50%,
+            rgba(168, 0, 119, 1) 51%,
+            rgba(219, 54, 164, 1) 100%);
+    background: linear-gradient(to bottom,
+            rgba(203, 96, 179, 1) 0%,
+            rgba(193, 70, 161, 1) 50%,
+            rgba(168, 0, 119, 1) 51%,
+            rgba(219, 54, 164, 1) 100%);
+    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cb60b3', endColorstr='#db36a4', GradientType=0);
+    -webkit-box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
+    -moz-box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
+    box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
+    color: #0f1119;
+}
+
+.provider-title-sub-bc {
+    font-size: small;
+    height: 145px;
+    width: 280px;
+    background-color: #313131;
+    border-radius: 10px;
+    align-items: center;
+    display: flex;
+    justify-content: center;
+}
+
+#menu-category-bc {
+    overflow-x: auto;
+}
+
+.container-body::-webkit-scrollbar {
+    width: 8px;
+    /* Tamaño del scroll en vertical */
+    height: 8px;
+    /* Tamaño del scroll en horizontal */
+    display: block;
+    /* Ocultar scroll */
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del thumb */
+.container-body::-webkit-scrollbar-thumb {
+    background: #101010;
+    border-radius: 0;
+}
+
+/* Cambiamos el fondo y agregamos una sombra cuando esté en hover */
+.container-body::-webkit-scrollbar-thumb:hover {
+    background: #101010;
+    box-shadow: 0 0 2px 1px rgba(0, 0, 0, 0.2);
+}
+
+/* Cambiamos el fondo cuando esté en active */
+.container-body::-webkit-scrollbar-thumb:active {
+    background-color: #101010;
+}
+
+/* Ponemos un color de fondo y redondeamos las esquinas del track */
+.container-body::-webkit-scrollbar-track {
+    background: #151515;
+    border-radius: 4px;
+}
+
+/* Cambiamos el fondo cuando esté en active o hover */
+.container-body::-webkit-scrollbar-track:hover,
+.container-body::-webkit-scrollbar-track:active {
+    background: #151515;
+}
+
+/*
+ *  STYLE 4
+ */
+
+#style-4::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+}
+
+#style-4::-webkit-scrollbar {
+    height: 5px;
+    background-color: transparent;
+}
+
+#style-4::-webkit-scrollbar-thumb {
+    background-color: #101010;
+}
+
+/*
+ *  STYLE 4
+ */
+
+#style-3::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+}
+
+#style-3::-webkit-scrollbar {
+    width: 6px;
+    background-color: transparent;
+}
+
+#style-3::-webkit-scrollbar-thumb {
+    background-color: #93000e;
+}
+
+.scrollbar {
+    margin-left: 0;
+    height: 60px;
+    width: auto;
+    overflow-y: hidden;
+    margin-bottom: 25px;
+}
+
+.scrollbar-modal {
+    margin-left: 0;
+    min-height: 400px;
+    width: auto;
+    margin-bottom: 25px;
+}
+
+.force-overflow {
+    min-height: 60px;
+}
+
+.force-overflow-modal {
+    min-height: 400px;
+    max-height: 400px;
+    overflow: auto;
+    background: #121212 !important;
+}
+
+#wrapper {
+    text-align: center;
+    width: 100%;
+    margin: auto;
+    top: 50px;
+}
+
+.close-btn {
+    float: right !important;
+    color: #fff;
+    background: #121212 !important;
+    line-height: 0;
+    height: 30px;
+    text-shadow: none;
+    font-size: 15px;
+    font-weight: 400;
+    text-transform: capitalize;
+}
+
+.home-title {
+    display: flex;
+    justify-content: center;
+    z-index: 20;
+    padding: 15px 0;
+}
+
+.home-title h3 {
+    color: #ebebd3;
+    font-size: 1rem;
+    font-weight: 700;
+    text-transform: uppercase;
+    margin-bottom: 15px;
+    margin: 0;
+    display: flex;
+    align-items: center;
+    width: 100%;
+    gap: 10px;
+}
+
+.home-title h3::before {
+    background: linear-gradient(to right, transparent, #ebebd3) !important;
+}
+
+.home-title h3::before {
+    content: "";
+    position: relative;
+    width: 100%;
+    height: 3px;
+    flex: 1;
+    background: #ebebd3;
+}
+
+.home-title h3::after {
+    background: linear-gradient(to right, #ebebd3, transparent) !important;
+}
+
+.home-title h3::after,
+.home-title h3::before {
+    content: "";
+    position: relative;
+    width: 100%;
+    height: 3px;
+    flex: 1;
+    background: #ebebd3;
+}
+
+.casino-filters {
+    position: relative;
+    display: grid;
+    grid-template-columns: minmax(100px, 50%) minmax(100px, 50%);
+    grid-gap: 15px;
+    padding: 5px;
+    background: rgba(255, 255, 255, .15);
+    font-size: .875rem;
+    z-index: 0;
+}
+
+.casino-filters .query-filter,
+.casino-filters .providers-button {
+    height: 34px;
+}
+
+.casino-filters .query-filter {
+    position: relative;
+    background-color: #040404;
+    border-radius: 6px;
+    z-index: 1;
+}
+
+.casino-filters .query-filter input {
+    height: 100%;
+    outline: 0 !important;
+    box-shadow: none;
+    font-size: .875rem;
+    background: transparent;
+    padding-left: 40px;
+    color: #fff;
+    border: none;
+}
+
+.casino-filters .providers-button {
+    position: relative;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    background-color: #040404;
+    color: #fff;
+    border-radius: 6px;
+    z-index: 1;
+    width: 100%;
+    padding: 10px;
+    border-radius: 6px;
+    cursor: pointer;
+    gap: 8px;
+}
+
+.casino-filters .query-filter i {
+    position: absolute;
+    top: 10px;
+    left: 11px;
+    color: #fff;
+    font-size: 16px;
+    opacity: .3;
+    z-index: -1;
+}
+
+.slots-grid-item {
+    position: relative;
+    overflow: hidden;
+    border-radius: 8px;
+    transition: transform 0.3s ease, box-shadow 0.3s ease;
+}
+
+.slots-grid-item:hover {
+    transform: scale(1.05);
+    box-shadow: 0px 4px 15px rgba(0, 0, 0, 0.5);
+}
+
+.slots-grid-item::after {
+    content: '';
+    position: absolute;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    background: rgba(0, 0, 0, 0.5);
+    opacity: 0;
+    transition: opacity 0.3s ease;
+    z-index: 1;
+}
+
+.slots-grid-item:hover::after {
+    opacity: 1;
+}
+
+.imgslot {
+    width: 100%;
+    height: auto;
+    display: block;
+    border-radius: 8px;
+}
+
+#pSLots5 {
+    z-index: 10000;
+}
+
+#pSLots5 .modal-dialog {
+    max-width: 80% !important;
+    margin: 1.75rem auto;
+}
+
+@media screen and (min-width:769px) {
+    #pSLots5 .modal-dialog {
+        max-width: 60% !important;
+    }
+}
+
+@media screen and (max-width:768px) {
+    .live-casino-container .container-provider .container-games {
+        grid-template-columns: repeat(3, 1fr);
+    }
+
+    #pSLots5 .modal-dialog {
+        max-width: 80% !important;
+    }
+}
+
+@media screen and (max-width:1360px) {
+    .provider-title a {
+        font-size: 9px;
+    }
+}
+
+.live-casino-container .fa-arrow-circle-right,
+.live-casino-container .fa-arrow-circle-left {
+    margin-top: 54px;
+    font-size: 49px;
+    color: #fff;
+    margin-left: 5px;
+    cursor: pointer;
+    opacity: 0.05;
+}
+
+.live-casino-container .fa-arrow-circle-left:hover,
+.live-casino-container .fa-arrow-circle-right:hover {
+    margin-top: 54px;
+    font-size: 49px;
+    color: #fff;
+    margin-left: 5px;
+    cursor: pointer;
+    opacity: 0.1;
+}
+
+#menu-scroll {
+    overflow-x: auto;
+    width: 80%;
+    display: flex;
+    overflow-y: hidden;
+}
+
+/*
+*  STYLE 4
+*/
+#menu-scroll::-webkit-scrollbar-track {
+    -webkit-box-shadow: inset 0 0 6px rgba(0, 0, 0, 0.3);
+    background-color: transparent;
+}
+
+#menu-scroll::-webkit-scrollbar {
+    height: 5px;
+    background-color: transparent;
+}
+
+#menu-scroll::-webkit-scrollbar-thumb {
+    background-color: #222222;
+}
+
+.live-casino-container .container-provider .container-games .slots-grid-item .image-container{
+    width: 100%;
+}
+
+.live-casino-container .container-provider .container-games .slots-grid-item img {
+    width: 100%;
+    height: 145px;
+    border-radius: 6px 6px 0 0;
+}
+
+@media screen and (min-width: 1025px) {
+    #menu-scroll {
+        justify-content: left;
+    }
+
+    .slots-grid-item:hover {
+        display: block !important;
+    }
+
+    .provider-title-sub-bc {
+        -ms-flex: 0 0 16.666667%;
+        flex: 0 0 16.666667% !important;
+        max-width: 12.666667% !important;
+    }
+}
+
+@media screen and (max-width: 480px) {
+    .live-casino-container .container-provider .container-games .otros .gameprovider {
+        color: #fcfcfc;
+        display: block;
+        font-size: 8px;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gamename {
+        color: #ffffff;
+        font-size: 10px;
+        font-weight: 600;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 100px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .otros {
+        height: auto;
+    }
+
+    .live-casino-container .container-provider .container-games .slots-grid-item img {
+        height: 90px;
+    }
+
+    .provider-title {
+        text-overflow: none !important;
+        overflow: none !important;
+        white-space: none !important;
+        width: calc((100vw - 25px) / 3) !important;
+    }
+
+    .provider-title-sub-first {
+        min-width: 100px;
+    }
+
+    .provider-title-sub-bc {
+        height: 100px !important;
+    }
+
+    #menu-scroll {
+        align-items: center;
+        width: 100% !important;
+    }
+
+    #prev,
+    #next {
+        display: none !important;
+    }
+
+    .fa-arrow-circle-right,
+    .fa-arrow-circle-left {
+        margin-top: 25px !important;
+    }
+
+    .provider-title-sub-bc {
+        height: 60px !important;
+    }
+
+    .menu-provider {
+        height: 80px !important;
+    }
+}
+
+@media screen and (max-width: 1200px) {
+    .provider-title-sub-bc img {
+        height: auto;
+        width: 80%;
+    }
+}
+
+@media screen and (min-width: 481px) and (max-width: 767px) {
+    .live-casino-container .container-provider .reset {
+        display: none;
+    }
+
+    .live-casino-container .container-provider .reset {
+        display: none;
+    }
+
+    .provider-title-sub-bc {
+        height: 100px !important;
+    }
+
+    #menu-scroll {
+        align-items: center;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gameprovider {
+        color: #fcfcfc;
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gamename {
+        color: #ffffff;
+        font-weight: 600;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .slots-grid-item img {
+        height: 125px;
+    }
+
+    .live-casino-container .container-provider .container-games .otros {
+        height: 145px;
+    }
+
+    .provider-title {
+        text-overflow: none !important;
+        overflow: none !important;
+        white-space: none !important;
+        width: calc((100vw - 25px) / 3) !important;
+    }
+
+    .provider-title-sub-first {
+        min-width: 100px;
+    }
+
+    .fa-arrow-circle-right,
+    .fa-arrow-circle-left {
+        margin-top: 25px !important;
+    }
+
+    .provider-title-sub-bc {
+        height: 80px !important;
+    }
+
+    .menu-provider {
+        height: 100px !important;
+    }
+}
+
+@media screen and (min-width: 768px) and (max-width: 991px) {
+    .live-casino-container .container-provider .container-games {
+        grid-template-columns: repeat(4, 1fr);
+    }
+
+    .live-casino-container .container-provider .container-games .otros {
+        height: 145px;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gameprovider {
+        color: #fcfcfc;
+        display: block;
+        font-size: 11px;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gamename {
+        color: #ffffff;
+        font-weight: 600;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .slots-grid-item img {
+        height: 125px;
+    }
+
+    .fa-arrow-circle-right,
+    .fa-arrow-circle-left {
+        margin-top: 25px !important;
+    }
+
+    .provider-title-sub-bc {
+        height: 80px !important;
+    }
+
+    .menu-provider {
+        height: 100px !important;
+    }
+}
+
+@media screen and (min-width: 992px) and (max-width: 1199px) {
+    .live-casino-container .container-provider .container-games {
+        grid-template-columns: repeat(5, 1fr);
+    }
+
+    .live-casino-container .container-provider .container-games .otros {
+        height: auto;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gamename {
+        color: #ffffff;
+        font-weight: 600;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+}
+
+@media screen and (min-width: 1200px) and (max-width: 1529px) {
+    .live-casino-container .container-provider .container-games {
+        grid-template-columns: repeat(6, 1fr);
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gameprovider {
+        color: #fcfcfc;
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gamename {
+        color: #ffffff;
+        font-weight: 600;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+}
+
+@media screen and (min-width: 1530px) and (max-width: 1719px) {
+    .live-casino-container .container-provider .container-games .otros .gameprovider {
+        color: #fcfcfc;
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gamename {
+        color: #ffffff;
+        font-weight: 600;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+}
+
+@media screen and (min-width: 1720px) and (max-width: 1920px) {
+    .live-casino-container .container-provider .container-games .otros .gameprovider {
+        color: #fcfcfc;
+        display: block;
+        font-size: 12px;
+        text-transform: uppercase;
+    }
+
+    .live-casino-container .container-provider .container-games .otros .gamename {
+        color: #ffffff;
+        font-weight: 600;
+        display: block;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+        width: 150px;
+        overflow: hidden;
+        text-transform: uppercase;
+    }
+}

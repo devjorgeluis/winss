@@ -7,7 +7,7 @@ import ImgFlagEN from "/src/assets/img/en_US.png";
 import ImgFlagPT from "/src/assets/img/pt_BR.png";
 import ImgFlagHE from "/src/assets/img/he_IL.png";
 
-import ImgLogo from "/src/assets/img/logo.png";
+import ImgLogo from "/src/assets/img/winss.png";
 import IconProfile from "/src/assets/svg/profile.svg";
 import IconHamburger from "/src/assets/svg/hamburger.svg";
 

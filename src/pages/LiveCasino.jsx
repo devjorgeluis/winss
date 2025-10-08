@@ -1,12 +1,12 @@
 import { useContext, useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import { LayoutContext } from "../components/LayoutContext";
 import { NavigationContext } from "../components/NavigationContext";
 import { callApi, callApiService } from "../utils/Utils";
-import GameCard from "/src/components/GameCard";
-import Slideshow from "../components/Slideshow";
-import CategorySlideshow from "../components/CategorySlideshow";
+import LiveGameCard from "/src/components/LiveGameCard";
+import ProviderContainer from "../components/ProviderContainer";
+import LiveMenuProvider from "../components/LiveMenuProvider";
 import GameModal from "../components/GameModal";
 import DivLoading from "../components/DivLoading";
 import GamesLoading from "../components/GamesLoading";
@@ -14,8 +14,7 @@ import SearchInput from "../components/SearchInput";
 import LoginModal from "../components/LoginModal";
 import CustomAlert from "../components/CustomAlert";
 import "animate.css";
-import ImgBanner2 from "/src/assets/img/live-casino.avif";
-import ImgMobileBanner2 from "/src/assets/img/mobile-live-casino.avif";
+import "../css/Live-casino.css";
 
 let selectedGameId = null;
 let selectedGameType = null;
@@ -33,40 +32,17 @@ const LiveCasino = () => {
   const [categories, setCategories] = useState([]);
   const [activeCategory, setActiveCategory] = useState({});
   const [selectedProvider, setSelectedProvider] = useState(null);
-  const [isProviderDropdownOpen, setIsProviderDropdownOpen] = useState(false);
   const [pageData, setPageData] = useState({});
   const [gameUrl, setGameUrl] = useState("");
   const [isLoadingGames, setIsLoadingGames] = useState(false);
   const [showLoginModal, setShowLoginModal] = useState(false);
-  const [isMobile, setIsMobile] = useState(false);
   const [txtSearch, setTxtSearch] = useState("");
   const [searchDelayTimer, setSearchDelayTimer] = useState();
   const [messageCustomAlert, setMessageCustomAlert] = useState(["", ""]);
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
   const refGameModal = useRef();
-  const navigate = useNavigate();
   const location = useLocation();
   const searchRef = useRef(null);
-
-  let imageSlideshow = isMobile ? [ImgMobileBanner2] : [ImgBanner2];
-
-  useEffect(() => {
-    const checkIsMobile = () => {
-      return window.innerWidth <= 767;
-    };
-
-    setIsMobile(checkIsMobile());
-
-    const handleResize = () => {
-      setIsMobile(checkIsMobile());
-    };
-
-    window.addEventListener("resize", handleResize);
-
-    return () => {
-      window.removeEventListener("resize", handleResize);
-    };
-  }, []);
 
   useEffect(() => {
     selectedGameId = null;
@@ -254,20 +230,6 @@ const LiveCasino = () => {
     setTxtSearch("");
   }
 
-  const handleProviderSelect = (provider, index = 0) => {
-    setSelectedProvider(provider);
-    setIsProviderDropdownOpen(false);
-    setTxtSearch("");
-    if (categories.length > 0 && provider) {
-      setActiveCategory(provider);
-      fetchContent(provider, provider.id, provider.table_name, index, true);
-    } else if (!provider && categories.length > 0) {
-      const firstCategory = categories[0];
-      setActiveCategory(firstCategory);
-      fetchContent(firstCategory, firstCategory.id, firstCategory.table_name, 0, true);
-    }
-  };
-
   const search = (e) => {
     let keyword = e.target.value;
     setTxtSearch(keyword);
@@ -348,20 +310,21 @@ const LiveCasino = () => {
         />
       ) : (
         <>
-          <Slideshow images={imageSlideshow} />
+          <div className="container-fluid provider-container live-provider">
+            {
+              categories.length > 0 ? <ProviderContainer
+                categories={categories}
+                selectedCategoryIndex={selectedCategoryIndex}
+                onCategoryClick={fetchContent}
+                onCategorySelect={handleCategorySelect}
+                pageType="casino"
+              /> : <DivLoading />
+            }
+          </div>
+          <LiveMenuProvider />
 
-          {
-            categories.length > 0 ? <CategorySlideshow
-              categories={categories}
-              selectedCategoryIndex={selectedCategoryIndex}
-              onCategoryClick={fetchContent}
-              onCategorySelect={handleCategorySelect}
-              pageType="casino"
-            /> : <DivLoading />
-          }
-
-          <div className="slots-filters_gamesFilters">
-            <div className="slots-filters_searchSection">
+          <div className="container-provider">
+            <div className="botton-header-slots">
               <SearchInput
                 txtSearch={txtSearch}
                 setTxtSearch={setTxtSearch}
@@ -376,58 +339,45 @@ const LiveCasino = () => {
                 setSearchDelayTimer={setSearchDelayTimer}
               />
             </div>
-          </div>
 
-          <div className="active-games">
-            <div className="games-block-title_gamesBlockTitle">
-              <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleLeft"></div>
-              <p className="games-block-title_gamesBlockTitleText">{activeCategory.name}</p>
-              <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleRight"></div>
+            <div className="container-games">
+              {games &&
+                games.map((item, index) => {
+                  let imageDataSrc = item.image_url;
+                  if (item.image_local != null) {
+                    imageDataSrc = contextData.cdnUrl + item.image_local;
+                  }
+                  return (
+                    <LiveGameCard
+                      key={index}
+                      id={item.id}
+                      title={item.name}
+                      imageSrc={imageDataSrc}
+                      onClick={() =>
+                        isLogin
+                          ? launchGame(item, "slot", "tab")
+                          : handleLoginClick()
+                      }
+                    />
+                  );
+                })
+              }
             </div>
 
-            <div className="games-cards-suspensed_gameCardWrapper">
-              <div className="grid_grid grid_sm grid_rowMax3 games-cards-suspensed_gameCardListClassName">
-                {games &&
-                  games.map((item, index) => {
-                    let imageDataSrc = item.image_url;
-                    if (item.image_local != null) {
-                      imageDataSrc = contextData.cdnUrl + item.image_local;
-                    }
-                    return (
-                      <GameCard
-                        key={index}
-                        id={item.id}
-                        title={item.name}
-                        imageSrc={imageDataSrc}
-                        onClick={() =>
-                          isLogin
-                            ? launchGame(item.id, "slot", "tab")
-                            : handleLoginClick()
-                        }
-                      />
-                    );
-                  })
-                }
+            {isLoadingGames && <GamesLoading />}
+            {!isLoadingGames && games.length >= 20 && (
+              <div className="text-center">
+                <a onClick={loadMoreContent}>
+                  <button className="load_more">Ver más</button>
+                </a>
               </div>
-            </div>
-          </div>
-
-
-          {isLoadingGames && <GamesLoading />}
-          {!isLoadingGames && games.length >= 20 && (
-            <div className="games-cards-suspensed_seeMoreWrapper">
-              <a onClick={loadMoreContent}>
-                <button className="button_button button_zeusPrimary button_md">See more</button>
-              </a>
-            </div>
-          )}
-          {!isLoadingGames && games.length === 0 && (
-            <div className="not-found-view_notFoundView">
-              <div className="not-found-view_notFoundViewContent">
-                We looked everywhere, <br /> but found nothing.
+            )}
+            {!isLoadingGames && games.length === 0 && (
+              <div className="no-results">
+                <p>SIN RESULTADOS</p>
               </div>
-            </div>
-          )}
+            )}
+          </div>
         </>
       )}
     </>

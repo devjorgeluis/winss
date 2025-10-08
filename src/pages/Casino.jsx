@@ -1,5 +1,5 @@
 import { useContext, useState, useEffect, useRef } from "react";
-import { useNavigate, useLocation } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import { AppContext } from "../AppContext";
 import { LayoutContext } from "../components/LayoutContext";
 import { NavigationContext } from "../components/NavigationContext";
@@ -75,7 +75,6 @@ const Casino = () => {
   const [messageCustomAlert, setMessageCustomAlert] = useState(["", ""]);
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
   const refGameModal = useRef();
-  const navigate = useNavigate();
   const location = useLocation();
   const searchRef = useRef(null);
 
@@ -577,7 +576,7 @@ const Casino = () => {
                   {!isLoadingGames && games.length >= 20 && (
                     <div className="text-center">
                       <a onClick={loadMoreContent}>
-                        <button className="load_more">See more</button>
+                        <button className="load_more">Ver más</button>
                       </a>
                     </div>
                   )}
