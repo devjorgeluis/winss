@@ -16,6 +16,8 @@ import GamesLoading from "../components/GamesLoading";
 import SearchInput from "../components/SearchInput";
 import LoginModal from "../components/LoginModal";
 import CustomAlert from "../components/CustomAlert";
+import HistoryModal from "../components/HistoryModal";
+import RegulationModal from "../components/RegulationModal";
 import "animate.css";
 import ImgBanner1 from "/src/assets/img/banner-quinielas-1500x300.png";
 import ImgBanner2 from "/src/assets/img/banner-1.jpeg";
@@ -74,6 +76,8 @@ const Casino = () => {
   const [searchDelayTimer, setSearchDelayTimer] = useState();
   const [messageCustomAlert, setMessageCustomAlert] = useState(["", ""]);
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
+  const [showHistoryModal, setShowHistoryModal] = useState(false);
+  const [showRegulationModal, setShowRegulationModal] = useState(false);
   const refGameModal = useRef();
   const location = useLocation();
   const searchRef = useRef(null);
@@ -502,6 +506,14 @@ const Casino = () => {
           onConfirm={handleLoginConfirm}
         />
       )}
+      <HistoryModal
+        isOpen={showHistoryModal}
+        onClose={() => setShowHistoryModal(false)}
+      />
+      <RegulationModal
+        isOpen={showRegulationModal}
+        onClose={() => setShowRegulationModal(false)}
+      />
 
       {shouldShowGameModal && selectedGameId !== null ? (
         <GameModal
@@ -513,7 +525,7 @@ const Casino = () => {
         />
       ) : (
         <>
-          <JackpotContainer />
+          <JackpotContainer onHistoryClick={() => setShowHistoryModal(true)} onRegulationClick={() => setShowRegulationModal(true)} />
           <Slideshow images={imageSlideshow} />
 
           <div className="container-fluid provider-container">

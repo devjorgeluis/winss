@@ -1393,7 +1393,7 @@ ul.nav>li.sa-stacker>a:hover {
 
 #historial .modal-content {
     height: 100% !important;
-    background: url('/assets/template/jackpot/img/default/historial.png') !important;
+    background: url("../assets/img/historial.png") !important;
     background-position: top !important;
     background-repeat: no-repeat !important;
     background-size: 100% !important;
@@ -1402,10 +1402,6 @@ ul.nav>li.sa-stacker>a:hover {
 /* Responsive para móviles */
 @media (max-width: 768px) {
     #historial .modal-content {
-        height: 100% !important;
-        background: url('/assets/template/jackpot/img/default/historial.png') !important;
-        background-position: top !important;
-        background-repeat: no-repeat !important;
         background-size: auto !important;
     }
 }

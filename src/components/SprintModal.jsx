@@ -14,7 +14,7 @@ const SprintModal = ({ isOpen, onClose }) => {
     }, []);
 
     const handleBackdropClick = (e) => {
-        if (e.target.classList.contains("sprint-modal-root")) {
+        if (e.target.classList.contains("extra-modal-root")) {
             onClose?.();
         }
     };
@@ -25,14 +25,14 @@ const SprintModal = ({ isOpen, onClose }) => {
 
             <div
                 id="pSLots5" 
-                className="modal show sprint-modal-root"
+                className="modal show extra-modal-root"
                 role="dialog"
                 aria-modal="true"
                 style={{ display: "block" }}
                 onClick={handleBackdropClick}
             >
                 <div role="document" className="modal-dialog">
-                    <div className="modal-content sprint-animate-in">
+                    <div className="modal-content extra-animate-in">
                         <div className="modal-body p-0">
                             <button
                                 onClick={onClose}

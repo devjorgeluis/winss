@@ -999,14 +999,14 @@
     opacity: 1;
 }
 
-.sprint-modal-root {
+.extra-modal-root {
     position: fixed;
     inset: 0;
     z-index: 1050;
     overflow: auto;
 }
 
-.sprint-animate-in {
+.extra-animate-in {
     animation: sprint-slide-down 500ms ease-out both;
     will-change: transform, opacity;
 }
@@ -1031,7 +1031,7 @@
 
 @media (prefers-reduced-motion: reduce) {
     .modal-backdrop-custom,
-    .sprint-animate-in {
+    .extra-animate-in {
         transition: none !important;
         animation: none !important;
     }

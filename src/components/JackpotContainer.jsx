@@ -2,18 +2,32 @@ import ImgReglas from "/src/assets/img/boton-poseidon-reglas.png";
 import ImgHistorial from "/src/assets/img/boton-poseidon-historial.png";
 import VideoJackpot from "/src/assets/video/JackpotWaka.webm";
 
-const JackpotContainer = () => {
+const JackpotContainer = ({ onHistoryClick, onRegulationClick }) => {
+    const handleHistoryClick = (e) => {
+        e.preventDefault();
+        if (onHistoryClick) {
+            onHistoryClick();
+        }
+    };
+
+    const handleRegulationClick = (e) => {
+        e.preventDefault();
+        if (onRegulationClick) {
+            onRegulationClick();
+        }
+    };
+
     return (
         <div id="jackpot-visual" className="jackpot-container">
             <div className="boton-layout pl-2 pr-2">
                 <div>
-                    <a href="#historial" data-toggle="modal" data-target="#historial">
+                    <a href="#historial" onClick={handleHistoryClick}>
                         <img src={ImgHistorial} alt="Historial" />
                     </a>
                 </div>
                 <div></div>
                 <div>
-                    <a href="#reglamento" data-toggle="modal" data-target="#reglamento">
+                    <a href="#reglamento" onClick={handleRegulationClick}>
                         <img src={ImgReglas} alt="Reglamento" />
                     </a>
                 </div>
