@@ -976,7 +976,7 @@
     background-color: #222222;
 }
 
-.live-casino-container .container-provider .container-games .slots-grid-item .image-container{
+.live-casino-container .container-provider .container-games .slots-grid-item .image-container {
     width: 100%;
 }
 
@@ -984,6 +984,57 @@
     width: 100%;
     height: 145px;
     border-radius: 6px 6px 0 0;
+}
+
+.modal-backdrop-custom {
+    position: fixed;
+    inset: 0;
+    background: rgba(0, 0, 0, 0.55);
+    opacity: 0;
+    transition: opacity 200ms ease;
+    z-index: 1040;
+}
+
+.modal-backdrop-custom.show {
+    opacity: 1;
+}
+
+.sprint-modal-root {
+    position: fixed;
+    inset: 0;
+    z-index: 1050;
+    overflow: auto;
+}
+
+.sprint-animate-in {
+    animation: sprint-slide-down 500ms ease-out both;
+    will-change: transform, opacity;
+}
+
+.close-modal-new-roulette img {
+    position: absolute;
+    right: 10px;
+    top: 10px;
+}
+
+@keyframes sprint-slide-down {
+    from {
+        transform: translateY(-100px);
+        opacity: 0;
+    }
+
+    to {
+        transform: translateY(0);
+        opacity: 1;
+    }
+}
+
+@media (prefers-reduced-motion: reduce) {
+    .modal-backdrop-custom,
+    .sprint-animate-in {
+        transition: none !important;
+        animation: none !important;
+    }
 }
 
 @media screen and (min-width: 1025px) {

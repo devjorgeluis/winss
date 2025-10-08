@@ -13,6 +13,7 @@ import GamesLoading from "../components/GamesLoading";
 import SearchInput from "../components/SearchInput";
 import LoginModal from "../components/LoginModal";
 import CustomAlert from "../components/CustomAlert";
+import SprintModal from "../components/SprintModal";
 import "animate.css";
 import "../css/Live-casino.css";
 
@@ -40,6 +41,7 @@ const LiveCasino = () => {
   const [searchDelayTimer, setSearchDelayTimer] = useState();
   const [messageCustomAlert, setMessageCustomAlert] = useState(["", ""]);
   const [shouldShowGameModal, setShouldShowGameModal] = useState(false);
+  const [showSprintModal, setShowSprintModal] = useState(false);
   const refGameModal = useRef();
   const location = useLocation();
   const searchRef = useRef(null);
@@ -50,6 +52,7 @@ const LiveCasino = () => {
     selectedGameLauncher = null;
     setGameUrl("");
     setShouldShowGameModal(false);
+    setShowSprintModal(true);
 
     getPage("livecasino");
 
@@ -299,6 +302,10 @@ const LiveCasino = () => {
           onConfirm={handleLoginConfirm}
         />
       )}
+      <SprintModal
+        isOpen={showSprintModal}
+        onClose={() => setShowSprintModal(false)}
+      />
 
       {shouldShowGameModal && selectedGameId !== null ? (
         <GameModal
