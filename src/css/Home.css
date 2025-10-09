@@ -749,7 +749,7 @@ input.form-control.input-sm {
 	-ms-flex-align: stretch;
 	align-items: stretch;
 	width: 100%;
-	background: #343a40;
+	/* background: #343a40; */
 }
 
 .modal-header {

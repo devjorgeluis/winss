@@ -254,29 +254,12 @@ body {
 }
 
 .provider-title:hover img,
-.provider-title_active img {
+.provider-title_active img,
+.provider-active-title img {
     opacity: 0.7;
 }
 
 .provider-title {
-    font-family: "Exo 2", sans-serif;
-    cursor: pointer;
-    color: #f9f9f9;
-    text-align: center;
-    margin-left: 5px;
-    margin-top: 5px;
-    text-transform: capitalize;
-    display: inline-flex;
-    flex-direction: column;
-    justify-content: space-between;
-    align-items: center;
-    gap: 5px;
-    height: 100%;
-    border-radius: 0;
-    padding: 7px 0;
-    min-width: 75px;
-    flex: 1 1 14.2857142857%;
-    flex: 1;
     border-right: 1px solid #d4d4d41f !important;
     min-height: 60px !important;
     font-size: 12px;
@@ -288,7 +271,7 @@ body {
 }
 
 .provider-title_active {
-    
+    background-color: #363636; 
 }
 
 .provider-title a {
@@ -1764,37 +1747,6 @@ input.form-control.input-sm {
 .logo-ubii-w {
     float: right;
     height: 40px;
-}
-
-.profile-form-container {
-    padding-left: 10px;
-    padding-right: 10px;
-}
-
-.input-group {
-    position: relative;
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-wrap: wrap;
-    flex-wrap: wrap;
-    -ms-flex-align: stretch;
-    align-items: stretch;
-    width: 100%;
-    background: #343a40;
-}
-
-.modal-header {
-    display: -ms-flexbox;
-    display: flex;
-    -ms-flex-align: start;
-    align-items: flex-start;
-    -ms-flex-pack: justify;
-    justify-content: space-between;
-    padding: 1rem;
-    border-bottom: 1px solid #e9ecef;
-    border-top-left-radius: .3rem;
-    border-top-right-radius: .3rem;
-    background: #212531;
 }
 
 .bg-modal-cashin {

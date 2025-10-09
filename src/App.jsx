@@ -3,6 +3,7 @@ import { BrowserRouter as Router } from "react-router-dom";
 import { AppContext } from "./AppContext";
 import ErrorBoundary from "./ErrorBoundary";
 import AppRoutes from "./Routes";
+import { ToastContainer } from "react-toastify";
 import "animate.css";
 
 function App() {
@@ -34,6 +35,18 @@ function App() {
     <Router>
       <ErrorBoundary fallback={<p>Something went wrong</p>}>
         <AppRoutes />
+        <ToastContainer
+          position="top-right"
+          autoClose={5000}
+          hideProgressBar={false}
+          newestOnTop={false}
+          closeOnClick
+          rtl={false}
+          pauseOnFocusLoss
+          draggable
+          pauseOnHover
+          theme="light"
+        />
       </ErrorBoundary>
     </Router>
   );
