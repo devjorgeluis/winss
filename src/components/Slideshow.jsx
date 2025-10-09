@@ -25,10 +25,6 @@ const Slideshow = (props) => {
     setIsPaused(false);
   };
 
-  const goToSlide = (index) => {
-    setCurrentIndex(index);
-  };
-
   const goToPrevious = () => {
     setCurrentIndex(currentIndex === 0 ? props.images.length - 1 : currentIndex - 1);
   };

@@ -1,5 +1,5 @@
-import { useState } from "react";
-import { useNavigate } from "react-router-dom";
+import { useContext, useState } from "react";
+import { AppContext } from "../AppContext";
 import UserMenu from "../components/UserMenu";
 import ImgFlagES from "/src/assets/img/es_ES.png";
 import ImgFlagFR from "/src/assets/img/fr_TN.png";
@@ -8,17 +8,11 @@ import ImgFlagPT from "/src/assets/img/pt_BR.png";
 import ImgFlagHE from "/src/assets/img/he_IL.png";
 
 import ImgLogo from "/src/assets/img/winss.png";
-import IconProfile from "/src/assets/svg/profile.svg";
-import IconHamburger from "/src/assets/svg/hamburger.svg";
 
-const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, handleChangePasswordClick, fragmentNavLinksTop, isSlotsOnly }) => {
-    const navigate = useNavigate();
+const Header = ({ isLogin, userBalance, handleLogoutClick, handleChangePasswordClick, fragmentNavLinksTop, isSlotsOnly }) => {
+    const { contextData } = useContext(AppContext);
     const [showUserMenu, setShowUserMenu] = useState(false);
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
-    
-    const openMenu = () => {
-        setShowUserMenu(!showUserMenu);
-    };
     
     const onClose = () => {
         setShowUserMenu(false);
@@ -54,17 +48,9 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                                     {
                                         isLogin ?
                                         <div className="btn-group d-wallet-default d-wallet-default-header" role="group">
-                                            <a className="btn btn-sm btn-success cashin-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
-                                                <i className="fas fa-money-bill-wave"></i><br />
-                                                Depositar
-                                            </a>
-                                            <a className="btn btn-danger btn-sm cashout-open btn-mini" data-toggle="modal" data-target="#transactions-modal">
-                                                <i className="fas fa-arrow-alt-circle-down"></i> <br />
-                                                Retirar
-                                            </a>
                                             <button className="btn dropdown-toggle btn-sm btn-success btn-menu-top-login" type="button" data-toggle="dropdown" id="navbarDropdown2" aria-haspopup="true" aria-expanded="false">
-                                                <i className="fas fa-user"></i> <span>Hola, </span> <strong>betarsis</strong><br />
-                                                <i className="fas fa-money-bill-wave"></i> <span>AR$</span> <span className="walletBalance">0,00</span>
+                                                <i className="fas fa-user"></i> <span>Hola, </span> <strong>{contextData?.session?.user?.username || 'Guest'}</strong><br />
+                                                <i className="fas fa-money-bill-wave"></i> <span>AR$</span> <span className="walletBalance">{userBalance ? parseFloat(userBalance).toFixed(2) : ""}</span>
                                             </button>
                                             
                                             <div
@@ -74,7 +60,7 @@ const Header = ({ isLogin, userBalance, handleLoginClick, handleLogoutClick, han
                                                     cursor: "pointer"
                                                 }}
                                             >
-                                                <a className="dropdown-item btn-sm" href="https://winss.bet/profile/wallet"><i className="fas fa-wallet"></i> Ir a billetera</a>
+                                                <a className="dropdown-item btn-sm" href="/profile/history"><i className="fas fa-wallet"></i> Ir a billetera</a>
                                                 <a className="dropdown-item btn-sm" onClick={() => handleLogoutClick()}><i className="fas fa-sign-out-alt"></i> Cerrar sesión</a>
                                             </div>
                                             <div className="nav-item dropdown" style={{ position: 'relative' }}>

@@ -1,51 +1,21 @@
 import { useState, useEffect, useContext } from "react";
 import { useNavigate, useLocation } from "react-router-dom";
-import Calendar from 'react-calendar';
 import { AppContext } from "../../AppContext";
 import { callApi } from "../../utils/Utils";
 import DivLoading from "../../components/DivLoading";
+import ImgProfile from "/src/assets/img/profile-3d.jpg";
 import IconChevronLeft from "/src/assets/svg/chevron-left.svg";
 import IconChevronRight from "/src/assets/svg/chevron-right.svg";
 import IconDoubleLeft from "/src/assets/svg/double-arrow-left.svg";
 import IconDoubleRight from "/src/assets/svg/double-arrow-right.svg";
-import IconFilter from "/src/assets/svg/filter.svg";
 
 const ProfileHistory = () => {
     const navigate = useNavigate();
     const location = useLocation();
     const { contextData } = useContext(AppContext);
-    const [isMobile, setIsMobile] = useState(false);
 
-    useEffect(() => {
-        const checkIsMobile = () => {
-            return window.innerWidth <= 767;
-        };
-
-        setIsMobile(checkIsMobile());
-
-        const handleResize = () => {
-            setIsMobile(checkIsMobile());
-        };
-
-        window.addEventListener('resize', handleResize);
-
-        return () => {
-            window.removeEventListener('resize', handleResize);
-        };
-    }, []);
-
-    const getDefaultDates = () => {
-        const now = new Date();
-        const currentMonthFirst = new Date(now.getFullYear(), now.getMonth(), 1);
-        const nextMonthFirst = new Date(now.getFullYear(), now.getMonth() + 1, 1);
-        return { dateFrom: currentMonthFirst, dateTo: nextMonthFirst };
-    };
-
-    const [filters, setFilters] = useState(getDefaultDates());
     const [transactions, setTransactions] = useState([]);
     const [loading, setLoading] = useState(false);
-    const [showHistory, setShowHistory] = useState(true);
-    const [activeTab, setActiveTab] = useState('operations');
     const [pagination, setPagination] = useState({
         start: 0,
         length: 5,
@@ -53,48 +23,12 @@ const ProfileHistory = () => {
         currentPage: 1,
     });
 
-    const [showFromCalendar, setShowFromCalendar] = useState(false);
-    const [showToCalendar, setShowToCalendar] = useState(false);
-
-    const formatDate = (date) => {
-        return date.toLocaleDateString('en-GB', {
-            day: '2-digit',
-            month: '2-digit',
-            year: 'numeric'
-        }).replace(/\//g, '.');
-    };
-
-    const CustomFromInput = () => (
-        <button className="date-picker-wrapper_datePickerButton" onClick={() => setShowFromCalendar(!showFromCalendar)}>
-            <span className="date-picker-wrapper_datePickerButtonContent date-picker-wrapper_hasValue">
-                <span className="date-picker-wrapper_datePickerButtonLabel">From</span><span className="date-picker-wrapper_datePickerButtonValue">{formatDate(filters.dateFrom)}</span>
-            </span>
-            <span className="date-picker-wrapper_datePickerButtonArrow">
-                <img src={IconChevronLeft} />
-            </span>
-        </button>
-    );
-
-    const CustomToInput = () => (
-        <button className="date-picker-wrapper_datePickerButton" onClick={() => setShowToCalendar(!showToCalendar)}>
-            <span className="date-picker-wrapper_datePickerButtonContent date-picker-wrapper_hasValue">
-                <span className="date-picker-wrapper_datePickerButtonLabel">To</span><span className="date-picker-wrapper_datePickerButtonValue">{formatDate(filters.dateTo)}</span>
-            </span>
-            <span className="date-picker-wrapper_datePickerButtonArrow">
-                <img src={IconChevronLeft} />
-            </span>
-        </button>
-    );
-
-    const handleFilterChange = (name, checked) => {
-        setFilters((prev) => ({
-            ...prev,
-            status: { ...prev.status, [name]: checked },
-        }));
-    };
-
-    const handleDateChange = (date, name) => {
-        setFilters((prev) => ({ ...prev, [name]: date }));
+    const formatOperation = (operation, value) => {
+        return operation === "change_balance" && parseFloat(value) > 0
+            ? "Depósito"
+            : operation === "change_balance"
+                ? "Retiro"
+                : operation;
     };
 
     const handlePageChange = (page) => {
@@ -105,36 +39,14 @@ const ProfileHistory = () => {
         }));
     };
 
-    const fetchHistory = (tab) => {
+    const fetchHistory = () => {
         setLoading(true);
 
-        const formatDateForAPI = (date) => {
-            if (!date) return '';
-            const d = new Date(date);
-            return d.toISOString().split('T')[0];
-        };
-
-        let queryParams;
-        let apiEndpoint;
-
-        if (tab === 'casino') {
-            queryParams = new URLSearchParams({
-                start: pagination.start,
-                length: pagination.length,
-                ...(filters.dateFrom && { date_from: formatDateForAPI(filters.dateFrom) }),
-                ...(filters.dateTo && { date_to: formatDateForAPI(filters.dateTo) }),
-                type: "slot"
-            }).toString();
-            apiEndpoint = `/get-history?${queryParams}`;
-        } else {
-            queryParams = new URLSearchParams({
-                start: pagination.start,
-                length: pagination.length,
-                ...(filters.dateFrom && { date_from: formatDateForAPI(filters.dateFrom) }),
-                ...(filters.dateTo && { date_to: formatDateForAPI(filters.dateTo) }),
-            }).toString();
-            apiEndpoint = `/get-transactions?${queryParams}`;
-        }
+        let queryParams = new URLSearchParams({
+            start: pagination.start,
+            length: pagination.length,
+        }).toString();
+        let apiEndpoint = `/get-history?${queryParams}`;
 
         callApi(
             contextData,
@@ -149,7 +61,6 @@ const ProfileHistory = () => {
                     }));
                 } else {
                     setTransactions([]);
-                    console.error("API error:", response);
                 }
                 setLoading(false);
             },
@@ -162,7 +73,6 @@ const ProfileHistory = () => {
             e.preventDefault();
         }
         setPagination((prev) => ({ ...prev, start: 0, currentPage: 1 }));
-        fetchHistory(activeTab);
     };
 
     useEffect(() => {
@@ -176,14 +86,8 @@ const ProfileHistory = () => {
     }, [location.pathname]);
 
     useEffect(() => {
-        fetchHistory(activeTab);
-    }, [pagination.start, pagination.length, activeTab]);
-
-    const handleTabChange = (tab) => {
-        fetchHistory(tab);
-        setActiveTab(tab);
-        setPagination((prev) => ({ ...prev, start: 0, currentPage: 1 }));
-    };
+        fetchHistory();
+    }, [pagination.start, pagination.length,]);
 
     const formatDateDisplay = (dateString) => {
         const date = new Date(dateString);
@@ -204,10 +108,6 @@ const ProfileHistory = () => {
             minimumFractionDigits: 2,
             maximumFractionDigits: 2
         });
-    };
-
-    const formatOperation = (operation) => {
-        return operation === "change_balance" ? "change balance" : operation;
     };
 
     const totalPages = Math.ceil(pagination.totalRecords / pagination.length);
@@ -240,235 +140,185 @@ const ProfileHistory = () => {
     const handleNextPage = () => handlePageChange(pagination.currentPage + 1);
     const handleLastPage = () => handlePageChange(totalPages);
 
-    const handleBack = () => {
-        navigate(-1);
-    };
-
     return (
         <>
-            <div className="history-content_historyLayout">
-                <h2 className="history-content_pageTitle">History</h2>
-                <div className="history-content_historyLayoutContent">
-                    <div className="history-content_tabsWrapper">
-                        <div>
-                            <div className="tabs_tabsHeader">
-                                <button
-                                    className={`tabs_tabsItem ${activeTab === 'operations' ? 'tabs_active' : 'tabs_inActive'}`}
-                                    onClick={() => handleTabChange('operations')}
-                                >
-                                    Operations
-                                </button>
-                                <button
-                                    className={`tabs_tabsItem ${activeTab === 'casino' ? 'tabs_active' : 'tabs_inActive'}`}
-                                    onClick={() => handleTabChange('casino')}
-                                >
-                                    Casino
-                                </button>
+            <div className="container">
+                <div className="row profile">
+                    <div className="col-md-3 col-md-pull-9 blockin">
+                        <div className="profile-sidebar">
+                            <div className="con-pic">
+                                <div className="profile-userpic">
+                                    <img src={contextData.session.user.profile_image || ImgProfile} className="img-responsive" alt="" />
+                                </div>
+                            </div>
+                            <div className="profile-usertitle">
+                                <div className="col-xs-12 header-name">{contextData.session.user.username}</div>
+                                <div className="col-xs-12 header-info-user">
+                                    <i className="far fa-user"></i> <strong>{contextData.session.user.first_name || contextData.session.user.username}</strong><br />
+                                    <i className="far fa-envelope"></i> {contextData.session.user.email}
+                                </div>
+                            </div>
+                            <div className="list-group bg-dark profile-list">
+                                <a href="/profile/history" className="list-group-item list-group-item-action text-white item-list-o"><i className="far fa-clock"></i> Historial</a>
+                                <a href="/profile/edit" className="list-group-item list-group-item-action text-white item-list-o"><i className="far fa-user"></i> Mi Perfil</a>
+                                <a href="/profile/change/password" className="list-group-item list-group-item-action text-white item-list-o"><i className="fas fa-key"></i> Cambiar Contraseña</a>
                             </div>
                         </div>
-
-                        {totalPages > 1 && (
-                            <div className="pagination_pagination">
-                                {pagination.currentPage > 1 && (
-                                    <>
-                                        {
-                                            !isMobile && <button className="pagination_paginationButton" onClick={handleFirstPage}>
-                                                <img src={IconDoubleLeft} alt="first" width={12} />
-                                            </button>
-                                        }
-                                        <button className="pagination_paginationButton" onClick={handlePrevPage}>
-                                            <img src={IconChevronLeft} alt="next" width={20} />
-                                        </button>
-                                    </>
-                                )}
-
-                                {visiblePages.map((page) => (
-                                    <span
-                                        key={page}
-                                        className="pagination_paginationCurrentValue"
-                                        onClick={() => handlePageChange(page)}
-                                    >
-                                        {page}
-                                    </span>
-                                ))}
-
-                                {pagination.currentPage < totalPages && (
-                                    <>
-                                        <button className="pagination_paginationButton" onClick={handleNextPage}>
-                                            <img src={IconChevronRight} alt="first" width={12} />
-                                        </button>
-                                        {
-                                            !isMobile && <button className="pagination_paginationButton" onClick={handleLastPage}>
-                                                <img src={IconDoubleRight} alt="next" width={12} />
-                                            </button>
-                                        }
-                                    </>
-                                )}
-                            </div>
-                        )}
                     </div>
-                    <div className="history-content_content">
-                        <div className="history-content_historyLayoutFilters">
-                            <div className="history-content_historyLayoutFiltersHeader">
-                                <button className="button_button button_ghost button_md history-content_filtersVisibilityBtn" onClick={() => setShowHistory(!showHistory)}>
-                                    {showHistory ? "Hide" : "Show"} filters
-                                    <img src={IconFilter} />
-                                </button>
-                            </div>
-                            {
-                                showHistory && <div onSubmit={handleSubmit}>
-                                    <div className="history-operations-filters_filters">
-                                        {
-                                            activeTab === "casino" && <>
-                                                <ul className="select-multi-desktop">
-                                                    <li className="select-multi-desktop__item">
-                                                        <div className="select-multi-desktop__checkbox">
-                                                            <label className="check-box-desktop">
-                                                                <input
-                                                                    id="all-checkbox"
-                                                                    className="check-box-desktop__input"
-                                                                    type="checkbox"
-                                                                    name="all"
-                                                                    onChange={handleFilterChange}
-                                                                />
-                                                                <span className="check-box-desktop__checkmark"></span>
-                                                            </label>
-                                                        </div>
-                                                        <label className="select-multi-desktop__item-value" htmlFor="all-checkbox">All</label>
-                                                    </li>
-                                                    <li className="select-multi-desktop__item">
-                                                        <div className="select-multi-desktop__checkbox">
-                                                            <label className="check-box-desktop">
-                                                                <input
-                                                                    id="win-checkbox"
-                                                                    className="check-box-desktop__input"
-                                                                    type="checkbox"
-                                                                    name="win"
-                                                                    onChange={handleFilterChange}
-                                                                />
-                                                                <span className="check-box-desktop__checkmark"></span>
-                                                            </label>
-                                                        </div>
-                                                        <label className="select-multi-desktop__item-value" htmlFor="win-checkbox">Win</label>
-                                                    </li>
-                                                    <li className="select-multi-desktop__item">
-                                                        <div className="select-multi-desktop__checkbox">
-                                                            <label className="check-box-desktop">
-                                                                <input
-                                                                    id="lost-checkbox"
-                                                                    className="check-box-desktop__input"
-                                                                    type="checkbox"
-                                                                    name="lost"
-                                                                    onChange={handleFilterChange}
-                                                                />
-                                                                <span className="check-box-desktop__checkmark"></span>
-                                                            </label>
-                                                        </div>
-                                                        <label className="select-multi-desktop__item-value" htmlFor="lost-checkbox">Lost</label>
-                                                    </li>
-                                                </ul>
-                                            </>
-                                        }
-                                        <div className="history-operations-filters_filterItem">
-                                            <CustomFromInput />
-                                            {showFromCalendar && (
-                                                <div className="calendar-popup">
-                                                    <Calendar
-                                                        value={filters.dateFrom}
-                                                        onChange={(date) => {
-                                                            handleDateChange(date, "dateFrom");
-                                                            setShowFromCalendar(false);
-                                                        }}
-                                                    />
-                                                </div>
-                                            )}
+
+                    <div className="col-md-9 col-md-push-3 blockin">
+                        <div className="profile-content">
+                            <div className="row">
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 header-profile">
+                                    <div className="row">
+                                        <div className="col-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 px-0 text-right">
+                                            <a className="btn btn-md btn-success cashin cashin-open">
+                                                <i className="fas fa-money-bill-wave"></i>
+                                                <br />Depositar
+                                            </a>
                                         </div>
-                                        <div className="history-operations-filters_filterItem">
-                                            <CustomToInput />
-                                            {showToCalendar && (
-                                                <div className="calendar-popup">
-                                                    <Calendar
-                                                        value={filters.dateTo}
-                                                        onChange={(date) => {
-                                                            handleDateChange(date, "dateTo");
-                                                            setShowToCalendar(false);
-                                                        }}
-                                                    />
-                                                </div>
-                                            )}
-                                        </div>
-                                        <button
-                                            className="button_button button_zeusPrimary button_md history-operations-filters_filtersSubmitBtn"
-                                            onClick={() => handleSubmit()}
-                                        >
-                                            Search
-                                        </button>
                                     </div>
                                 </div>
-                            }
-                        </div>
-                        {loading ? (
-                            <DivLoading />
-                        ) : transactions.length > 0 ? (
-                            activeTab === "operations" ?
-                                <div className="table_tableWrapper">
-                                    <table className="table_table">
-                                        <thead>
-                                            <tr>
-                                                <td className="table_tableHeadCell" align="left">Date</td>
-                                                <td className="table_tableHeadCell" align="left">Type</td>
-                                                <td className="table_tableHeadCell" align="left">Balance before</td>
-                                                <td className="table_tableHeadCell" align="left">Balance after</td>
-                                                <td className="table_tableHeadCell" align="left">Amount</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {transactions.map((txn, index) => (
-                                                <tr className="table_tableRow" key={"txn" + index}>
-                                                    <td className="table_tableCell" align="left">{formatDateDisplay(txn.created_at)}</td>
-                                                    <td className="table_tableCell text-capitalize" align="left">{formatOperation(txn.type)}</td>
-                                                    <td className="table_tableCell" align="left">{formatBalance(txn.from_new_balance)}</td>
-                                                    <td className="table_tableCell" align="left">{formatBalance(txn.from_current_balance)}</td>
-                                                    <td className="table_tableCell" align="left">{formatBalance(txn.amount)}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
-                                </div> : <div className="table_tableWrapper">
-                                    <table className="table_table">
-                                        <thead>
-                                            <tr>
-                                                <td className="table_tableHeadCell" align="left">Date</td>
-                                                <td className="table_tableHeadCell" align="left">Provider</td>
-                                                <td className="table_tableHeadCell" align="left">Balance before</td>
-                                                <td className="table_tableHeadCell" align="left">Balance after</td>
-                                                <td className="table_tableHeadCell" align="left">Bet</td>
-                                                <td className="table_tableHeadCell" align="left">Result</td>
-                                            </tr>
-                                        </thead>
-                                        <tbody>
-                                            {transactions.map((txn, index) => (
-                                                <tr className="table_tableRow" key={"txn" + index}>
-                                                    <td className="table_tableCell" align="left">{formatDateDisplay(txn.created_at)}</td>
-                                                    <td className="table_tableCell" align="left"></td>
-                                                    <td className="table_tableCell" align="left">{formatBalance(txn.value_before)}</td>
-                                                    <td className="table_tableCell" align="left">{formatBalance(txn.value_after)}</td>
-                                                    <td className="table_tableCell" align="left"></td>
-                                                    <td className="table_tableCell" align="left">{formatBalance(txn.value)}</td>
-                                                </tr>
-                                            ))}
-                                        </tbody>
-                                    </table>
+                                <div className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12 px-0 balance">
+                                    <div className="row">
+                                        <div className="col-12 col-sm-10 col-md-10 col-lg-10 col-xl-10 px-0 mx-auto">
+                                            <div className="row">
+                                                <div className="col-xs-12 col-sm-8 col-md-8 col-lg-8 col-xl-8 px-0 d-block mx-auto text-center">
+                                                    <div className="text-white">
+                                                        <p className="mb-1" style={{
+                                                            letterSpacing: "2px",
+                                                            fontSize: "20px",
+                                                            textTransform: "uppercase",
+                                                            fontWeight: "700"
+                                                        }}>Balance Total</p>
+                                                    </div>
+                                                    <div className="bg-danger btn-block btn-md balance-total">AR$ 
+                                                        <span className="walletBalance"> {formatBalance(contextData.session.user.balance) || ''}</span>
+                                                    </div>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    </div>
                                 </div>
-                        ) : (
-                            <div className="pay-history-mobile">
-                                The transaction history is empty
                             </div>
-                        )}
+                        </div>
 
+                        <div className="profile-content-historial">
+                            <div id="vueHistoryWallet" className="col-xs-12 col-sm-12 col-md-12 col-lg-12 col-xl-12">
+                                <div className="row">
+                                    <div className="col-xl-10 pull-left header-name"><i className="far fa-clock"></i> Historial</div>
+                                </div>
+
+                                <div className="table-striped table-sm table-dark table-responsive-lg">
+                                    <div className="v-table__overflow">
+                                        <table className="v-datatable v-table theme--light">
+                                            <thead>
+                                                <tr>
+                                                    <th role="columnheader" scope="col" className="column text-xs-center">Fecha</th>
+                                                    <th role="columnheader" scope="col" className="column text-xs-center">#Referencia</th>
+                                                    <th role="columnheader" scope="col" className="column text-xs-center">Descripción</th>
+                                                    <th role="columnheader" scope="col" className="column text-xs-center">Plataforma</th>
+                                                    <th role="columnheader" scope="col" className="column text-xs-center">Débito</th>
+                                                    <th role="columnheader" scope="col" className="column text-xs-center">Crédito</th>
+                                                    <th role="columnheader" scope="col" className="column text-xs-center">Balance</th>
+                                                </tr>
+                                            </thead>
+                                            <tbody>
+                                                {loading ? (
+                                                    <tr>
+                                                        <td colSpan="7" className="text-xs-center">
+                                                            <DivLoading />
+                                                        </td>
+                                                    </tr>
+                                                ) : transactions.length > 0 ? (
+                                                    transactions.map((txn) => (
+                                                        <tr key={txn.id}>
+                                                            <td className="text-xs-center">{formatDateDisplay(txn.created_at || txn.created_at_formatted)}</td>
+                                                            <td className="text-xs-center">{txn.apigames_game?.name}</td>
+                                                            <td className="text-xs-center">{formatOperation(txn.operation, txn.value)}</td>
+                                                            <td className="text-xs-center"></td>
+                                                            <td className="text-xs-center"></td>
+                                                            <td className="text-xs-center"></td>
+                                                            <td className="text-xs-center">{formatBalance(txn.value_after)}</td>
+                                                        </tr>
+                                                    ))
+                                                ) : (
+                                                    <tr>
+                                                        <td colSpan="7" className="text-xs-center">No data available</td>
+                                                    </tr>
+                                                )}
+                                            </tbody>
+                                        </table>
+                                    </div>
+                                    
+                                    {totalPages > 1 && (
+                                        <div className="pay-history-desktop__paginator">
+                                            <div className="paginator-desktop">
+                                                <div className="paginator-desktop__main">
+                                                    {pagination.currentPage > 1 && (
+                                                        <>
+                                                            <div
+                                                                className="paginator-desktop__item"
+                                                                onClick={handleFirstPage}
+                                                            >
+                                                                <span className="paginator-desktop__item-value paginator-desktop__item-value_first">
+                                                                    <img src={IconDoubleLeft} alt="first" width={14} />
+                                                                </span>
+                                                            </div>
+                                                            <div
+                                                                className="paginator-desktop__item"
+                                                                onClick={handlePrevPage}
+                                                            >
+                                                                <span className="paginator-desktop__item-value">
+                                                                    <img src={IconChevronLeft} alt="before" width={14} />
+                                                                </span>
+                                                            </div>
+                                                        </>
+                                                    )}
+
+                                                    {visiblePages.map((page) => (
+                                                        <div
+                                                            key={page}
+                                                            className={`paginator-desktop__item ${page === pagination.currentPage ? "paginator-desktop__item_current" : ""}`}
+                                                            onClick={() => handlePageChange(page)}
+                                                        >
+                                                            <span className={`paginator-desktop__item-value ${page === pagination.currentPage ? "paginator-desktop__item-value_current" : ""}`}>
+                                                                {page}
+                                                            </span>
+                                                        </div>
+                                                    ))}
+
+                                                    {pagination.currentPage < totalPages && (
+                                                        <>
+                                                            <div
+                                                                className="paginator-desktop__item"
+                                                                onClick={handleNextPage}
+                                                            >
+                                                                <span className="paginator-desktop__item-value">
+                                                                    <img src={IconChevronRight} alt="next" width={14} />
+                                                                </span>
+                                                            </div>
+                                                            <div
+                                                                className="paginator-desktop__item"
+                                                                onClick={handleLastPage}
+                                                            >
+                                                                <span className="paginator-desktop__item-value paginator-desktop__item-value_last">
+                                                                    <img src={IconDoubleRight} alt="last" width={14} />
+                                                                </span>
+                                                            </div>
+                                                        </>
+                                                    )}
+                                                </div>
+                                            </div>
+                                        </div>
+                                    )}
+                                </div>
+                            </div>
+                        </div>
                     </div>
                 </div>
             </div>
+
         </>
     );
 };

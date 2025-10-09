@@ -30,6 +30,7 @@ const Layout = () => {
     const location = useLocation();
     const isCasino = location.pathname === "/casino";
     const isLiveCasino = location.pathname === "/live-casino";
+    const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history";
 
     useEffect(() => {
         if (contextData.session != null) {
@@ -129,10 +130,6 @@ const Layout = () => {
         }
     };
 
-    const handleLoginClick = () => {
-        setShowLoginModal(true);
-    };
-
     const handleLoginSuccess = (balance) => {
         setUserBalance(balance);
     };
@@ -165,7 +162,6 @@ const Layout = () => {
     const layoutContextValue = {
         isLogin,
         userBalance,
-        handleLoginClick,
         handleLogoutClick,
         handleChangePasswordClick,
         refreshBalance
@@ -201,13 +197,12 @@ const Layout = () => {
                         <Header
                             isLogin={isLogin}
                             userBalance={userBalance}
-                            handleLoginClick={handleLoginClick}
                             handleLogoutClick={handleLogoutClick}
                             handleChangePasswordClick={handleChangePasswordClick}
                             fragmentNavLinksTop={fragmentNavLinksTop}
                             isSlotsOnly={isSlotsOnly}
                         />
-                        <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : 'main'} id="wlcp">
+                        <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : isAuth ? 'auth' : 'main'} id="wlcp">
                             <Outlet />
                         </main>
                         <Footer />

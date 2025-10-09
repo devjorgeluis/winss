@@ -217,11 +217,6 @@ button:focus {
 }
 
 /*-----------------------------------------------------------------------------------*/
-.theme--light.v-table {
-	background-color: #272d33 !important;
-	color: white !important;
-}
-
 .theme--light.v-table thead th {
 	color: white !important;
 }
@@ -553,194 +548,6 @@ iframe {
 
 /*----------------------------------------------------PROFILE INITIAL//-----------------------------------------*/
 
-.profile-content-historial {
-	padding: 10px;
-	min-height: 460px;
-	background: #343a40;
-	color: #fff;
-	font-size: 12px;
-	margin-top: 10px;
-	margin-bottom: 10px;
-}
-
-.blockin {
-	padding-right: 5px;
-	padding-left: 5px;
-}
-
-.header-name {
-	font-size: 15px;
-	font-weight: 700;
-	color: #fff;
-	text-transform: uppercase;
-	letter-spacing: 3px;
-	margin-bottom: 20px;
-}
-
-.header-info-user {
-	font-size: 11px;
-	color: #ccc;
-}
-
-.header-profile {
-	font-size: 11px;
-	color: #ccc;
-	padding-left: 10px;
-	padding-right: 0;
-	margin-bottom: 20px;
-}
-
-.header-profile-two {
-	font-size: 11px;
-	color: #ccc;
-	padding-left: 0;
-	padding-right: 0;
-}
-
-.balance {
-	margin-top: 50px;
-}
-
-.balance-total {
-	font-size: 20px;
-	font-weight: 700;
-	color: #ccc;
-	padding: 10px;
-	letter-spacing: 3px;
-	text-align: center;
-	background: linear-gradient(-130deg, #343a40 90%, transparent 10%);
-}
-
-.points {
-	font-size: 20px;
-	font-weight: 700;
-	color: #ccc;
-	padding: 10px;
-	letter-spacing: 3px;
-	text-align: center;
-	background: linear-gradient(130deg, #343a40 90%, transparent 10%);
-}
-
-select.form-control.input-sm {
-	background: #2c3034 !important;
-	border: 0 !important;
-	border-radius: 3px !important;
-	color: #fff !important;
-	font-weight: 500 !important;
-	font-size: 13px !important;
-	font-family: "Roboto", sans-serif;
-	max-height: 30px;
-}
-
-.pagination>li>a,
-#pagination>li>span {
-	border: 0 !important;
-	border-radius: 0 !important;
-	color: #fff !important;
-	padding: 3px;
-	float: right;
-	background: #2c3034 !important;
-}
-
-.pagination {
-	background: #2c3034 !important;
-	border: 0 !important;
-	border-radius: 5px !important;
-	color: #fff !important;
-	font-weight: 500 !important;
-	font-size: 12px !important;
-	font-family: "Roboto", sans-serif;
-	padding: 3px;
-	float: right;
-}
-
-input.form-control.input-sm {
-	background: #2c3034 !important;
-	border: 0 !important;
-	border-radius: 3px !important;
-	color: #fff !important;
-	font-weight: 500 !important;
-	font-size: 12px !important;
-	font-family: "Roboto", sans-serif;
-	max-height: 30px;
-}
-
-.container-back {
-	padding: 0;
-}
-
-.profile {
-	padding-top: 10px;
-}
-
-.profile-sidebar {
-	padding: 20px 5px 10px 5px;
-	background: #272d33;
-}
-
-.profile-userpic img {
-	float: none;
-	text-align: center;
-	width: 50%;
-	height: 50%;
-	-webkit-border-radius: 50% !important;
-	-moz-border-radius: 50% !important;
-	border-radius: 50% !important;
-}
-
-.profile-usertitle {
-	text-align: center;
-	margin-top: 20px;
-}
-
-.con-pic {
-	text-align: center;
-}
-
-.profile-usertitle-name {
-	color: #5a7391;
-	font-size: 16px;
-	font-weight: 600;
-	margin-bottom: 7px;
-}
-
-.profile-usertitle-job {
-	text-transform: uppercase;
-	color: #5b9bd1;
-	font-size: 12px;
-	font-weight: 600;
-	margin-bottom: 15px;
-}
-
-.profile-list {
-	margin-top: 10px;
-	font-size: 14px;
-}
-
-.item-list-o {
-	background: #343a40 !important;
-}
-
-.item-list-o:hover {
-	background: #212529 !important;
-}
-
-.profile-content {
-	padding: 10px;
-	min-height: 260px;
-	background: url("/assets/img/auth/banner-profile-top02.png") #343a40;
-}
-
-.cashin,
-.cashout {
-	margin-right: 8px;
-}
-
-.profile-form-container {
-	padding-left: 10px;
-	padding-right: 10px;
-}
-
 .input-group {
 	position: relative;
 	display: -ms-flexbox;
@@ -764,15 +571,6 @@ input.form-control.input-sm {
 	border-bottom: 1px solid #e9ecef;
 	border-top-left-radius: 0.3rem;
 	border-top-right-radius: 0.3rem;
-}
-
-.bg-modal-cashin {
-	background: #343a40 !important;
-}
-
-#btn-wl {
-	/* background: #335555 !important;
-    border-color: #0c0c0c;*/
 }
 
 /*----------------------------------------------------PROFILE END//-----------------------------------------*/
@@ -1035,7 +833,6 @@ input.form-control.input-sm {
 		height: 550px;
 		padding-top: 50px;
 		padding-bottom: 50px;
-		background: #343a40;
 	}
 
 	#login-dp {
@@ -1134,4 +931,14 @@ input.form-control.input-sm {
 .home-title .title {
 	font-family: 'Exo 2', sans-serif !important;
 	font-size: 16px !important;
+}
+
+
+.react-slideshow-container .default-nav {
+    background: transparent !important;
+	width: 15% !important;
+}
+
+.react-slideshow-container .default-nav svg {
+	fill: #fff !important;
 }

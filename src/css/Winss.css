@@ -36,10 +36,6 @@ html {
     margin: 0;
 }
 
-.container {
-    padding: 24px;
-}
-
 #wl-top {
     width: 100%;
     margin: auto;
@@ -594,16 +590,6 @@ ul.nav>li.sa-stacker>a:hover {
     background: #513717;
 }
 
-.profile-sidebar {
-    padding: 20px 5px 10px 5px;
-    background: #6e4b1f;
-    border-radius: 10px;
-    -webkit-border-radius: 10px;
-    -moz-border-radius: 10px;
-    -ms-border-radius: 10px;
-    -o-border-radius: 10px;
-}
-
 .item-list-o {
     background: #6e4b1f !important;
     border: none;
@@ -688,6 +674,10 @@ ul.nav>li.sa-stacker>a:hover {
 .theme--light.v-table {
     background-color: transparent !important;
     color: white !important;
+}
+
+.theme--light.v-table {
+    height: 300px;
 }
 
 .btn-danger {
@@ -1026,13 +1016,6 @@ ul.nav>li.sa-stacker>a:hover {
         min-height: 270px;
         object-fit: cover;
     }
-}
-
-.main {
-    background: url('../assets/img/bg-winss.jpg') !important;
-    background-size: cover !important;
-    background-repeat: repeat !important;
-    background-position: center !important;
 }
 
 .main.casino {
@@ -1572,4 +1555,129 @@ ul.nav>li.sa-stacker>a:hover {
 
 .Toastify__toast--error svg {
     fill: #FFFFFF !important;
+}
+
+.paginator-desktop {
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    height: 100%;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center
+}
+
+.paginator-desktop__main {
+    width: -webkit-fit-content;
+    width: -moz-fit-content;
+    width: fit-content;
+    min-width: 4.563rem;
+    height: 100%;
+    position: relative;
+    -webkit-user-select: none;
+    -moz-user-select: none;
+    -ms-user-select: none;
+    user-select: none;
+    display: flex;
+    align-items: center;
+    margin: 15px auto;
+}
+
+.paginator-desktop__main_open>div {
+    border-bottom-left-radius: 0;
+    border-bottom-right-radius: 0
+}
+
+.paginator-desktop__items {
+    width: 100%;
+    max-height: 21rem;
+    z-index: 2;
+    position: absolute;
+    top: 100%;
+    overflow: auto
+}
+
+.paginator-desktop__item {
+    width: 100%;
+    height: 3.125rem;
+    position: relative;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-box-pack: justify;
+    -ms-flex-pack: justify;
+    justify-content: space-between;
+    cursor: pointer;
+    padding: .2rem;
+    color: #fff
+}
+
+.paginator-desktop__item img {
+    filter: invert(1);
+}
+
+.paginator-desktop__item_current {
+    height: 100%;
+    border-radius: .313rem;
+    margin-right: .313rem
+}
+
+.paginator-desktop__item-value {
+    font-size: .875rem;
+    font-weight: 900;
+    line-height: 1.125rem;
+    text-transform: capitalize;
+    width: 2.563rem;
+    height: 1.813rem;
+    text-align: center;
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    border-radius: .625rem;
+}
+
+.paginator-desktop__item-value_first,
+.paginator-desktop__item-value_last,
+.paginator-mobile__item-value_first,
+.paginator-mobile__item-value_last {
+    filter: invert(1);
+}
+
+.paginator-desktop__item_current .paginator-desktop__item-value {
+    border: 1px solid white;
+}
+
+.paginator-desktop__item-arrow {
+    display: -webkit-box;
+    display: -ms-flexbox;
+    display: flex;
+    -webkit-box-orient: vertical;
+    -webkit-box-direction: normal;
+    -ms-flex-direction: column;
+    flex-direction: column;
+    -webkit-box-pack: center;
+    -ms-flex-pack: center;
+    justify-content: center;
+    -webkit-box-align: center;
+    -ms-flex-align: center;
+    align-items: center;
+    -webkit-transition: -webkit-transform .3s ease;
+    transition: -webkit-transform .3s ease;
+    transition: transform .3s ease;
+    transition: transform .3s ease, -webkit-transform .3s ease;
+    width: 1.875rem;
+    height: 1.875rem
 }
