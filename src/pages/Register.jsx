@@ -5,6 +5,13 @@ import { callApi } from "../utils/Utils";
 import { toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 
+const CustomToastContent = ({ title, message }) => (
+    <div>
+        <strong>{title}</strong>
+        <p className="m-0">{message}</p>
+    </div>
+);
+
 const Register = () => {
     const navigate = useNavigate();
     const location = useLocation();
@@ -35,9 +42,20 @@ const Register = () => {
         e.preventDefault();
         setIsLoading(true);
 
-        // Basic validation
-        if (!formData.username || !formData.email || !formData.password) {
-            toast.error("Por favor completa todos los campos obligatorios");
+        if (!formData.username) {
+            toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message="El nombre de usuario es requerido." />);
+            setIsLoading(false);
+            return;
+        }
+
+        if (!formData.email) {
+            toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message="Se requiere correo electrónico." />);
+            setIsLoading(false);
+            return;
+        }
+
+        if (!formData.password) {
+            toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message="El contraseña es requerido." />);
             setIsLoading(false);
             return;
         }
@@ -52,12 +70,12 @@ const Register = () => {
             const result = await callApi(
                 contextData,
                 "POST",
-                "/auth/register",
+                "/register",
                 handleRegisterResponse,
                 JSON.stringify(body)
             );
         } catch (error) {
-            toast.error("Error de conexión. Intenta nuevamente.");
+            toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message="Error de conexión. Intenta nuevamente." />);
             setIsLoading(false);
         }
     };
@@ -66,20 +84,18 @@ const Register = () => {
         setIsLoading(false);
         
         if (result.status === 200 || result.status === "success") {
-            toast.success("¡Registro exitoso! Redirigiendo...");
             setTimeout(() => {
                 navigate("/login");
             }, 2000);
         } else if (result.status === 500 || result.status === 422) {
-            toast.error(result.message || "Error en el registro");
+            toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message="Error en el registro." />);
         } else {
-            toast.error("Error desconocido. Intenta nuevamente.");
+            toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message="Error desconocido. Intenta nuevamente." />);
         }
     };
 
     return (
         <div className="main container-fluid main-static kb-whitelabel-auth-register">
-            
             <article className="card-body mx-auto content-relog" style={{ maxWidth: "300px" }}>
                 <h4 style={{ textAlign: "center", color: "#fff", textTransform: "uppercase", letterSpacing: "3px" }}>
                     Crear cuenta
@@ -94,7 +110,6 @@ const Register = () => {
                         </div>
                         <input 
                             name="username" 
-                            required 
                             className="form-control form-control-auth btn-md" 
                             placeholder="Usuario" 
                             value={formData.username}
@@ -111,7 +126,6 @@ const Register = () => {
                         </div>
                         <input 
                             name="email" 
-                            required 
                             className="form-control form-control-auth btn-md" 
                             placeholder="Correo Electrónico" 
                             value={formData.email}
@@ -128,7 +142,6 @@ const Register = () => {
                         </div>
                         <input 
                             name="password" 
-                            required 
                             className="form-control form-control-auth btn-md" 
                             placeholder="Contraseña" 
                             value={formData.password}
@@ -175,24 +188,7 @@ const Register = () => {
                         </button>
                     </div>
 
-                    <div className="form-group text-center">
-                        <p style={{ color: "#fff", fontSize: "14px" }}>
-                            ¿Ya tienes una cuenta?{" "}
-                            <a 
-                                href="/login" 
-                                style={{ color: "#f47a20", textDecoration: "none" }}
-                                onClick={(e) => {
-                                    e.preventDefault();
-                                    navigate("/login");
-                                }}
-                            >
-                                Inicia sesión aquí
-                            </a>
-                        </p>
-                    </div>
-
-                    <label className="form-group" id="check-term" style={{ color: "#fff", fontSize: "12px" }}>
-                        <input type="checkbox" required style={{ marginRight: "5px" }} />
+                    <label className="form-group" id="check-term">
                         Al registrarme acepto los Términos y Condiciones.
                     </label>
                 </form>

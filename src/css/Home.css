@@ -505,13 +505,6 @@ ul.nav>li.sa-stacker>a {
 	display: none;
 }
 
-#check-term {
-	color: #ffffff;
-	font-size: 12px;
-	justify-content: center;
-	display: flex;
-}
-
 #socialnetworks-group {
 	display: flex;
 	justify-content: center;
@@ -521,8 +514,16 @@ ul.nav>li.sa-stacker>a {
 
 /*----------------------------------------------------MAIN INITIAL//------------------------------------------------*/
 
+@font-face {
+    font-family: 'MetropolisMedium';
+    src: url("../assets/font/Metropolis-Medium.otf") format("truetype");
+    font-weight: 400;
+    font-style: normal;
+}
+
 .main-static {
 	height: 800px;
+	font-family: 'MetropolisMedium';
 }
 
 iframe {

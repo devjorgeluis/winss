@@ -1564,3 +1564,12 @@ ul.nav>li.sa-stacker>a:hover {
     width: 50px;
     top: 100px;
 }
+
+.Toastify__toast--error {
+    background-color: #A94442 !important;
+    color: #FFFFFF !important;
+}
+
+.Toastify__toast--error svg {
+    fill: #FFFFFF !important;
+}
