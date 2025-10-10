@@ -225,16 +225,6 @@
     flex: 1;
 }
 
-.provider-title a {
-    color: #333743;
-}
-
-.provider-title a:active,
-.provider-title a:hover {
-    color: #ffffff;
-    text-decoration: none;
-}
-
 .provider-title:nth-child(1) {
     border-left: none;
 }
