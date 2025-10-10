@@ -21,13 +21,13 @@ const JackpotContainer = ({ onHistoryClick, onRegulationClick }) => {
         <div id="jackpot-visual" className="jackpot-container">
             <div className="boton-layout pl-2 pr-2">
                 <div>
-                    <a href="#historial" onClick={handleHistoryClick}>
+                    <a href="#" onClick={handleHistoryClick}>
                         <img src={ImgHistorial} alt="Historial" />
                     </a>
                 </div>
                 <div></div>
                 <div>
-                    <a href="#reglamento" onClick={handleRegulationClick}>
+                    <a href="#" onClick={handleRegulationClick}>
                         <img src={ImgReglas} alt="Reglamento" />
                     </a>
                 </div>
