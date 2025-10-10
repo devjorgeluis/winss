@@ -1405,6 +1405,7 @@ ul.nav>li.sa-stacker>a:hover {
 
 .boton-layout img {
     height: 50px !important;
+    cursor: pointer;
 }
 
 #reglamento .modal-dialog {
