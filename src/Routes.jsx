@@ -5,8 +5,8 @@ import LiveCasino from "./pages/LiveCasino";
 import Sports from "./pages/Sports";
 import Login from "./pages/Login";
 import Register from "./pages/Register";
-import Profile from "./pages/Profile/Profile";
 import ProfileHistory from "./pages/Profile/ProfileHistory";
+import ProfileEdit from "./pages/Profile/ProfileEdit";
 import ProfileNotification from "./pages/Profile/ProfileNotification";
 import NoPage from "./pages/NoPage";
 import Layout from "./components/Layout";
@@ -22,8 +22,8 @@ export default function AppRoutes() {
                 <Route path="/sports" element={<Sports />} />
                 <Route path="/login" element={<Login />} />
                 <Route path="/register" element={<Register />} />
-                <Route path="/profile" element={<Profile />} />
                 <Route path="/profile/history" element={<ProfileHistory />} />
+                <Route path="/profile/edit" element={<ProfileEdit />} />
                 <Route path="/profile/notification" element={<ProfileNotification />} />
                 <Route path="*" element={<NoPage />} />
             </Route>

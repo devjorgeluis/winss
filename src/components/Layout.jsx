@@ -30,7 +30,7 @@ const Layout = () => {
     const location = useLocation();
     const isCasino = location.pathname === "/casino";
     const isLiveCasino = location.pathname === "/live-casino";
-    const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history";
+    const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history" || location.pathname === "/profile/edit";
 
     useEffect(() => {
         if (contextData.session != null) {

@@ -1681,3 +1681,13 @@ ul.nav>li.sa-stacker>a:hover {
     width: 1.875rem;
     height: 1.875rem
 }
+
+.react-calendar {
+    color: #000;
+}
+
+.react-calendar button.react-calendar__tile--now {
+    background: transparent !important;
+    color: #409EFF !important;
+    font-weight: 700 !important;
+}

@@ -38,6 +38,19 @@ body {
     margin-right: 10px;
 }
 
+.el-select>.el-input {
+    display: block;
+}
+
+.profile .el-input {
+    line-height: normal;
+    display: inline-table;
+    width: 100%;
+    border-collapse: separate;
+    position: relative;
+    font-size: 14px;
+}
+
 .live-casino-container .el-input {
     width: 250px;
     margin-right: auto;

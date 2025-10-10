@@ -143,19 +143,19 @@ const ProfileHistory = () => {
     return (
         <>
             <div className="container">
-                <div className="row profile">
+                <div className="row profile mt-3 pt-3">
                     <div className="col-md-3 col-md-pull-9 blockin">
                         <div className="profile-sidebar">
                             <div className="con-pic">
                                 <div className="profile-userpic">
-                                    <img src={contextData.session.user.profile_image || ImgProfile} className="img-responsive" alt="" />
+                                    <img src={contextData.session?.user?.profile_image || ImgProfile} className="img-responsive" alt="" />
                                 </div>
                             </div>
                             <div className="profile-usertitle">
-                                <div className="col-xs-12 header-name">{contextData.session.user.username}</div>
+                                <div className="col-xs-12 header-name">{contextData.session?.user?.username}</div>
                                 <div className="col-xs-12 header-info-user">
-                                    <i className="far fa-user"></i> <strong>{contextData.session.user.first_name || contextData.session.user.username}</strong><br />
-                                    <i className="far fa-envelope"></i> {contextData.session.user.email}
+                                    <i className="far fa-user"></i> <strong>{contextData.session?.user?.first_name || contextData.session?.user?.username}</strong><br />
+                                    <i className="far fa-envelope"></i> {contextData.session?.user?.email}
                                 </div>
                             </div>
                             <div className="list-group bg-dark profile-list">
@@ -193,7 +193,7 @@ const ProfileHistory = () => {
                                                         }}>Balance Total</p>
                                                     </div>
                                                     <div className="bg-danger btn-block btn-md balance-total">AR$ 
-                                                        <span className="walletBalance"> {formatBalance(contextData.session.user.balance) || ''}</span>
+                                                        <span className="walletBalance"> {formatBalance(contextData.session?.user?.balance) || ''}</span>
                                                     </div>
                                                 </div>
                                             </div>
