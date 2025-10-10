@@ -307,15 +307,6 @@ ul.nav>li.sa-stacker>a {
 	padding: 7px 10px;
 }
 
-.active-menu-item {
-	color: #fff !important;
-	background-color: rgb(0 0 0 / 40%) !important;
-}
-
-.active-menu-item a {
-	color: #fff !important;
-}
-
 /*------------navbar-responsive-------------*/
 
 .btn-top-responsive {
