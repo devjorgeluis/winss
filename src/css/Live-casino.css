@@ -474,60 +474,6 @@
     padding-top: 20px;
 }
 
-.btn-box-option {
-    background: rgb(26 26 26 / 42%);
-    border: none;
-    text-align: center;
-    padding: 3px;
-    margin-bottom: 10px;
-    height: 50px;
-    width: 100%;
-    font-size: 20px;
-    cursor: pointer;
-    z-index: 2000;
-    border-radius: 50px;
-}
-
-.btn-box-option:hover {
-    background: rgba(203, 96, 179, 1);
-    background: -moz-linear-gradient(top,
-            rgba(203, 96, 179, 1) 0%,
-            rgba(193, 70, 161, 1) 50%,
-            rgba(168, 0, 119, 1) 51%,
-            rgba(219, 54, 164, 1) 100%);
-    background: -webkit-gradient(left top,
-            left bottom,
-            color-stop(0%, rgba(203, 96, 179, 1)),
-            color-stop(50%, rgba(193, 70, 161, 1)),
-            color-stop(51%, rgba(168, 0, 119, 1)),
-            color-stop(100%, rgba(219, 54, 164, 1)));
-    background: -webkit-linear-gradient(top,
-            rgba(203, 96, 179, 1) 0%,
-            rgba(193, 70, 161, 1) 50%,
-            rgba(168, 0, 119, 1) 51%,
-            rgba(219, 54, 164, 1) 100%);
-    background: -o-linear-gradient(top,
-            rgba(203, 96, 179, 1) 0%,
-            rgba(193, 70, 161, 1) 50%,
-            rgba(168, 0, 119, 1) 51%,
-            rgba(219, 54, 164, 1) 100%);
-    background: -ms-linear-gradient(top,
-            rgba(203, 96, 179, 1) 0%,
-            rgba(193, 70, 161, 1) 50%,
-            rgba(168, 0, 119, 1) 51%,
-            rgba(219, 54, 164, 1) 100%);
-    background: linear-gradient(to bottom,
-            rgba(203, 96, 179, 1) 0%,
-            rgba(193, 70, 161, 1) 50%,
-            rgba(168, 0, 119, 1) 51%,
-            rgba(219, 54, 164, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cb60b3', endColorstr='#db36a4', GradientType=0);
-    -webkit-box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
-    -moz-box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
-    box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
-    color: #0f1119;
-}
-
 .provider-title-sub-bc {
     font-size: small;
     height: 145px;
@@ -541,6 +487,17 @@
     padding: 0px !important;
     margin-left: 1%;
     margin-top: 8px;
+}
+
+.provider-title-sub-bc img {
+    height: 60px;
+    width: auto;
+    transition-delay: 0.1s;
+    -webkit-transition: all 1s ease;
+    -moz-transition: all 1s ease;
+    -o-transition: all 1s ease;
+    -ms-transition: all 1s ease;
+    transition: all 1s ease;
 }
 
 #menu-category-bc {

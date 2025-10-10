@@ -171,44 +171,37 @@ const GameModal = (props) => {
   return (
     <>
       <div className="d-none game-container">
-        {
-          !isFullscreen && <div className="games-block-title_gamesBlockTitle">
-            <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleLeft"></div>
-            <p className="games-block-title_gamesBlockTitleText">Joker's Jewels</p>
-            <div className="games-block-title_gamesBlockTitleSeparator games-block-title_gamesBlockTitleRight"></div>
-          </div>
-        }
         <div className="game-window">
           <div className="game-window-header">
+            <div className="game-window-header-item align-center full-window">
+              {isFullscreen ? (
+                <span
+                  className="btn-dark btn-box-option btn-sm text-white"
+                  onClick={toggleFullScreen}
+                  title="Exit Fullscreen"
+                >
+                  <i className="fas fa-expand"></i>
+                </span>
+              ) : (
+                <span
+                  className="btn-dark btn-box-option btn-sm text-white"
+                  onClick={toggleFullScreen}
+                  title="Fullscreen"
+                >
+                  <i className="fas fa-expand"></i>
+                </span>
+              )}
+            </div>
             <div className="game-window-header-item align-center close-window">
-              <span className="close-button" onClick={closeModal} title="Close">
-                <ImCross />
+              <span className="btn-dark btn-box-option btn-sm text-white" onClick={closeModal} title="Close">
+                <i className="fas fa-close"></i>
               </span>
             </div>
             <div className="game-window-header-item align-center reload-window">
               <span className="icon-reload" onClick={reload} title="Reload">
                 <ImRedo />
               </span>
-            </div>
-            <div className="game-window-header-item align-center full-window">
-              {isFullscreen ? (
-                <span
-                  className="icon-originscreen"
-                  onClick={toggleFullScreen}
-                  title="Exit Fullscreen"
-                >
-                  <img src={IconShrink} />
-                </span>
-              ) : (
-                <span
-                  className="icon-fullscreen"
-                  onClick={toggleFullScreen}
-                  title="Fullscreen"
-                >
-                  <img src={IconEnlarge} />
-                </span>
-              )}
-            </div>
+            </div>            
             <div className="game-window-header-item align-center new-window">
               <span
                 className="icon-new-window"

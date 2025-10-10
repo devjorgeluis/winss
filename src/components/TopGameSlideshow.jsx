@@ -14,6 +14,8 @@ const TopGameSlideshow = (props) => {
   const handleGameClick = (game, index) => {
     if (!props.isLogin && props.handleLoginClick) {
       props.handleLoginClick();
+    } else if (props.launchGame) {
+      props.launchGame(game, "slot", "tab");
     } else {
       console.log('Launching game:', game);
     }

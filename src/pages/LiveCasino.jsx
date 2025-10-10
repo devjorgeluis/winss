@@ -20,6 +20,7 @@ import "../css/Live-casino.css";
 let selectedGameId = null;
 let selectedGameType = null;
 let selectedGameLauncher = null;
+let selectedGameName = null;
 let pageCurrent = 0;
 
 
@@ -27,7 +28,6 @@ const LiveCasino = () => {
   const pageTitle = "Casino En Vivo";
   const { contextData } = useContext(AppContext);
   const { isLogin } = useContext(LayoutContext);
-  const { setShowFullDivLoading } = useContext(NavigationContext);
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [games, setGames] = useState([]);
   const [categories, setCategories] = useState([]);
@@ -50,6 +50,7 @@ const LiveCasino = () => {
     selectedGameId = null;
     selectedGameType = null;
     selectedGameLauncher = null;
+    selectedGameName = null;
     setGameUrl("");
     setShouldShowGameModal(false);
     setShowSprintModal(true);
@@ -184,17 +185,16 @@ const LiveCasino = () => {
     });
   };
 
-  const launchGame = (id, type, launcher) => {
+  const launchGame = (game, type, launcher) => {
     setShouldShowGameModal(true);
-    setShowFullDivLoading(true);
-    selectedGameId = id != null ? id : selectedGameId;
+    selectedGameId = game.id != null ? game.id : selectedGameId;
     selectedGameType = type != null ? type : selectedGameType;
     selectedGameLauncher = launcher != null ? launcher : selectedGameLauncher;
+    selectedGameName = game?.name;
     callApi(contextData, "GET", "/get-game-url?game_id=" + selectedGameId, callbackLaunchGame, null);
   };
 
   const callbackLaunchGame = (result) => {
-    setShowFullDivLoading(false);
     if (result.status == "0") {
       switch (selectedGameLauncher) {
         case "modal":
@@ -211,6 +211,7 @@ const LiveCasino = () => {
     selectedGameId = null;
     selectedGameType = null;
     selectedGameLauncher = null;
+    selectedGameName = null;
     setGameUrl("");
     setShouldShowGameModal(false);
   };

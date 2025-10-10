@@ -487,6 +487,7 @@ body {
     -o-transition: all 1s ease;
     -ms-transition: all 1s ease;
     transition: all 1s ease;
+    cursor: pointer;
 }
 
 .container-provider .container-games .slots-grid-item img {
@@ -738,17 +739,20 @@ body {
 }
 
 .btn-box-option {
-    background: rgb(26 26 26 / 42%);
+    background: transparent;
     border: none;
     text-align: center;
     padding: 3px;
-    margin-bottom: 10px;
+    margin-bottom: 0;
     height: 50px;
-    width: 100%;
+    width: 50px;
     font-size: 20px;
     cursor: pointer;
     z-index: 2000;
     border-radius: 50px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
 }
 
 .btn-box-option:hover {
@@ -784,10 +788,10 @@ body {
             rgba(193, 70, 161, 1) 50%,
             rgba(168, 0, 119, 1) 51%,
             rgba(219, 54, 164, 1) 100%);
-    filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cb60b3', endColorstr='#db36a4', GradientType=0);
+    /* filter: progid:DXImageTransform.Microsoft.gradient(startColorstr='#cb60b3', endColorstr='#db36a4', GradientType=0);
     -webkit-box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
     -moz-box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
-    box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1);
+    box-shadow: 0px 0px 29px 0px rgba(230, 0, 230, 1); */
     color: #0f1119;
 }
 

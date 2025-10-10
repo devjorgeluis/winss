@@ -48,6 +48,7 @@ import ImgMegaways from "/src/assets/svg/megaways.svg";
 let selectedGameId = null;
 let selectedGameType = null;
 let selectedGameLauncher = null;
+let selectedGameName = null;
 let pageCurrent = 0;
 
 
@@ -55,7 +56,6 @@ const Casino = () => {
   const pageTitle = "Casino";
   const { contextData } = useContext(AppContext);
   const { isLogin } = useContext(LayoutContext);
-  const { setShowFullDivLoading } = useContext(NavigationContext);
   const [selectedPage, setSelectedPage] = useState("casino");
   const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [games, setGames] = useState([]);
@@ -134,6 +134,7 @@ const Casino = () => {
     selectedGameId = null;
     selectedGameType = null;
     selectedGameLauncher = null;
+    selectedGameName = null;
     setGameUrl("");
     setShouldShowGameModal(false);
 
@@ -389,17 +390,16 @@ const Casino = () => {
     });
   };
 
-  const launchGame = (id, type, launcher) => {
+  const launchGame = (game, type, launcher) => {
     setShouldShowGameModal(true);
-    setShowFullDivLoading(true);
-    selectedGameId = id != null ? id : selectedGameId;
+    selectedGameId = game.id != null ? game.id : selectedGameId;
     selectedGameType = type != null ? type : selectedGameType;
     selectedGameLauncher = launcher != null ? launcher : selectedGameLauncher;
+    selectedGameName = game?.name;
     callApi(contextData, "GET", "/get-game-url?game_id=" + selectedGameId, callbackLaunchGame, null);
   };
 
   const callbackLaunchGame = (result) => {
-    setShowFullDivLoading(false);
     if (result.status == "0") {
       switch (selectedGameLauncher) {
         case "modal":
@@ -576,7 +576,7 @@ const Casino = () => {
                             imageSrc={imageDataSrc}
                             onClick={() =>
                               isLogin
-                                ? launchGame(item.id, "slot", "tab")
+                                ? launchGame(item, "slot", "tab")
                                 : handleLoginClick()
                             }
                           />
@@ -605,10 +605,10 @@ const Casino = () => {
                     </h3>
                   </div>
 
-                  <TopGameSlideshow games={topSlot} isLogin={isLogin} handleLoginClick={handleLoginClick} />
-                  <TopGameSlideshow games={topLiveCasino} isLogin={isLogin} handleLoginClick={handleLoginClick} />
-                  <TopGameSlideshow games={topHot} isLogin={isLogin} handleLoginClick={handleLoginClick} />
-                  <TopGameSlideshow games={topArcade} isLogin={isLogin} handleLoginClick={handleLoginClick} />
+                  <TopGameSlideshow games={topSlot} isLogin={isLogin} handleLoginClick={handleLoginClick} launchGame={launchGame} />
+                  <TopGameSlideshow games={topLiveCasino} isLogin={isLogin} handleLoginClick={handleLoginClick} launchGame={launchGame} />
+                  <TopGameSlideshow games={topHot} isLogin={isLogin} handleLoginClick={handleLoginClick} launchGame={launchGame} />
+                  <TopGameSlideshow games={topArcade} isLogin={isLogin} handleLoginClick={handleLoginClick} launchGame={launchGame} />
                 </>
                 :
                 <div className="container-provider">
@@ -643,7 +643,7 @@ const Casino = () => {
                             imageSrc={imageDataSrc}
                             onClick={() =>
                               isLogin
-                                ? launchGame(item.id, "slot", "tab")
+                                ? launchGame(item, "slot", "tab")
                                 : handleLoginClick()
                             }
                           />

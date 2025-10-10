@@ -11,7 +11,6 @@ import LoginModal from "./LoginModal";
 import LogoutConfirmModal from "./LogoutConfirmModal";
 import ChangePasswordModal from "./ChangePasswordModal";
 import { NavigationContext } from "./NavigationContext";
-import FullDivLoading from "./FullDivLoading";
 
 const Layout = () => {
     const { contextData } = useContext(AppContext);
@@ -24,7 +23,6 @@ const Layout = () => {
     const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
     const [fragmentNavLinksTop, setFragmentNavLinksTop] = useState(<></>);
     const [isSlotsOnly, setIsSlotsOnly] = useState("");
-    const [showFullDivLoading, setShowFullDivLoading] = useState(false);
     const navigate = useNavigate();
 
     const location = useLocation();
@@ -75,13 +73,11 @@ const Layout = () => {
 
     const getPage = (page) => {
         setSelectedPage(page);
-        setShowFullDivLoading(true);
         callApi(contextData, "GET", "/get-page?page=" + page, callbackGetPage, null);
         navigate("/" + (page === "home" ? "" : page));
     };
 
     const callbackGetPage = () => {
-        setShowFullDivLoading(false);
     };
 
     const callbackGetStatus = (result) => {
@@ -170,10 +166,9 @@ const Layout = () => {
     return (
         <LayoutContext.Provider value={layoutContextValue}>
             <NavigationContext.Provider
-                value={{ fragmentNavLinksTop, selectedPage, setSelectedPage, getPage, showFullDivLoading, setShowFullDivLoading }}
+                value={{ fragmentNavLinksTop, selectedPage, setSelectedPage, getPage }}
             >
                 <>
-                    <FullDivLoading show={showFullDivLoading} />
                     {showLoginModal && (
                         <LoginModal
                             isOpen={showLoginModal}
