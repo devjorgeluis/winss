@@ -25,9 +25,7 @@ const ProfileEdit = () => {
         }
     }, [contextData?.session, navigate]);
 
-    const currentUser = contextData?.session?.user;
-    console.log(currentUser);
-    
+    const currentUser = contextData?.session?.user;    
 
     useEffect(() => {
         window.scrollTo(0, 0);
@@ -107,7 +105,7 @@ const ProfileEdit = () => {
                                     <i className="far fa-user"></i> Mi Perfil
                                 </a>
                                 <a
-                                    href="/profile/change/password"
+                                    href="/profile/change-password"
                                     className="list-group-item list-group-item-action text-white item-list-o"
                                 >
                                     <i className="fas fa-key"></i> Cambiar Contraseña

@@ -7,7 +7,7 @@ import Login from "./pages/Login";
 import Register from "./pages/Register";
 import ProfileHistory from "./pages/Profile/ProfileHistory";
 import ProfileEdit from "./pages/Profile/ProfileEdit";
-import ProfileNotification from "./pages/Profile/ProfileNotification";
+import ProfileChangePassword from "./pages/Profile/ProfileChangePassword";
 import NoPage from "./pages/NoPage";
 import Layout from "./components/Layout";
 
@@ -24,7 +24,7 @@ export default function AppRoutes() {
                 <Route path="/register" element={<Register />} />
                 <Route path="/profile/history" element={<ProfileHistory />} />
                 <Route path="/profile/edit" element={<ProfileEdit />} />
-                <Route path="/profile/notification" element={<ProfileNotification />} />
+                <Route path="/profile/change-password" element={<ProfileChangePassword />} />
                 <Route path="*" element={<NoPage />} />
             </Route>
         </Routes>

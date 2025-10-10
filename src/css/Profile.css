@@ -11739,7 +11739,10 @@ input.form-control.input-sm {
 }
 
 .el-input-group__append {
-    border-left: 0
+    border-left: 0;
+    position: absolute;
+    right: 20px;
+    top: 10px;
 }
 
 .el-input-group--append .el-select .el-input.is-focus .el-input__inner,.el-input-group--prepend .el-select .el-input.is-focus .el-input__inner {

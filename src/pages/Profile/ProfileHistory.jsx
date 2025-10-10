@@ -161,7 +161,7 @@ const ProfileHistory = () => {
                             <div className="list-group bg-dark profile-list">
                                 <a href="/profile/history" className="list-group-item list-group-item-action text-white item-list-o"><i className="far fa-clock"></i> Historial</a>
                                 <a href="/profile/edit" className="list-group-item list-group-item-action text-white item-list-o"><i className="far fa-user"></i> Mi Perfil</a>
-                                <a href="/profile/change/password" className="list-group-item list-group-item-action text-white item-list-o"><i className="fas fa-key"></i> Cambiar Contraseña</a>
+                                <a href="/profile/change-password" className="list-group-item list-group-item-action text-white item-list-o"><i className="fas fa-key"></i> Cambiar Contraseña</a>
                             </div>
                         </div>
                     </div>
