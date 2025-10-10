@@ -89,33 +89,10 @@ const CategorySlideshow = (props) => {
                 onSlideChange={onSlideChange}
                 className="menu-scroll"
                 spaceBetween={3}
-                slidesPerView={props.categories.length > 20 ? 20 : props.categories.length}
-                watchOverflow={true}
-                observer={true}
-                observeParents={true}
-                breakpoints={{
-                  320: {
-                    slidesPerView: 3
-                  },
-                  576: {
-                    slidesPerView: props.categories.length > 20 && 4
-                  },
-                  640: {
-                    slidesPerView: props.categories.length > 20 && 8
-                  },
-                  1024: {
-                    slidesPerView: props.categories.length > 20 && 9
-                  },
-                  1600: {
-                    slidesPerView: props.categories.length > 20 && 12
-                  },
-                  1601: {
-                    slidesPerView: props.categories.length > 20 && 15
-                  },
-                }}
+                slidesPerView={'auto'}
               >
                 {props.categories.map((category, index) => (
-                  <SwiperSlide key={`category-${category.id || index}`}>
+                  <SwiperSlide key={`category-${category.id || index}`} style={{ width: 'auto', maxWidth: '120px' }}>
                     <CategoryButton
                       name={category.name}
                       icon={

@@ -252,7 +252,6 @@ const Casino = () => {
 
   const getPage = (page) => {
     setIsLoadingGames(true);
-    setCategories([]);
     setGames([]);
     setSelectedPage(page);
     callApi(contextData, "GET", "/get-page?page=" + page, callbackGetPage, null);
@@ -297,6 +296,7 @@ const Casino = () => {
     } else {
       setPageData(result.data);
       setActiveCategory({});
+      setCategories([]);
 
       if (result.data.page_group_type === "categories") {
         setCategories(result.data.categories)
