@@ -12,14 +12,20 @@ importers:
         specifier: ^4.1.1
         version: 4.1.1
       bootstrap:
-        specifier: ^5.3.3
-        version: 5.3.3(@popperjs/core@2.11.8)
+        specifier: ^4.1.1
+        version: 4.6.2(jquery@3.7.1)(popper.js@1.16.1)
+      jquery:
+        specifier: ^3.6.0
+        version: 3.7.1
       micro-slider:
         specifier: ^1.1.0
         version: 1.1.0
       normalize.css:
         specifier: ^8.0.1
         version: 8.0.1
+      popper.js:
+        specifier: ^1.16.1
+        version: 1.16.1
       prop-types:
         specifier: ^15.8.1
         version: 15.8.1
@@ -44,6 +50,9 @@ importers:
       react-slideshow-image:
         specifier: ^4.3.2
         version: 4.3.2(react@19.0.0)
+      react-toastify:
+        specifier: ^11.0.5
+        version: 11.0.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0)
       sweetalert2:
         specifier: ^11.17.2
         version: 11.17.2
@@ -407,9 +416,6 @@ packages:
     resolution: {integrity: sha512-oGB+UxlgWcgQkgwo8GcEGwemoTFt3FIO9ababBmaGwXIoBKZ+GTy0pP185beGg7Llih/NSHSV2XAs1lnznocSg==}
     engines: {node: '>= 8'}
 
-  '@popperjs/core@2.11.8':
-    resolution: {integrity: sha512-P1st0aksCrn9sGZhp8GMYwBnQsbvAWsZAX44oXNNvLHGqAOcoVxmjZiohstwQ7SqKnbR47akdNi+uleWD8+g6A==}
-
   '@rollup/rollup-android-arm-eabi@4.34.4':
     resolution: {integrity: sha512-gGi5adZWvjtJU7Axs//CWaQbQd/vGy8KGcnEaCWiyCqxWYDxwIlAHFuSe6Guoxtd0SRvSfVTDMPd5H+4KE2kKA==}
     cpu: [arm]
@@ -616,10 +622,11 @@ packages:
     resolution: {integrity: sha512-Ceh+7ox5qe7LJuLHoY0feh3pHuUDHAcRUeyL2VYghZwfpkNIy/+8Ocg0a3UuSoYzavmylwuLWQOf3hl0jjMMIw==}
     engines: {node: '>=8'}
 
-  bootstrap@5.3.3:
-    resolution: {integrity: sha512-8HLCdWgyoMguSO9o+aH+iuZ+aht+mzW0u3HIMzVu7Srrpv7EBBxTnrFlSCskwdY1+EOFQSm7uMJhNQHkdPcmjg==}
+  bootstrap@4.6.2:
+    resolution: {integrity: sha512-51Bbp/Uxr9aTuy6ca/8FbFloBUJZLHwnhTcnjIeRn2suQWsWzcuJhGjKDB5eppVte/8oCdOL3VuwxvZDUggwGQ==}
     peerDependencies:
-      '@popperjs/core': ^2.11.8
+      jquery: 1.9.1 - 3
+      popper.js: ^1.16.1
 
   brace-expansion@1.1.11:
     resolution: {integrity: sha512-iCuPHDFgrHX7H2vEI/5xpz07zSHB00TpugqhmYtVmMO6518mCuRMoOYFldEBl0g187ufozdaHgWKcYFb61qGiA==}
@@ -1095,6 +1102,9 @@ packages:
     resolution: {integrity: sha512-H0dkQoCa3b2VEeKQBOxFph+JAbcrQdE7KC0UkqwpLmv2EC4P41QXP+rqo9wYodACiG5/WM5s9oDApTU8utwj9g==}
     engines: {node: '>= 0.4'}
 
+  jquery@3.7.1:
+    resolution: {integrity: sha512-m4avr8yL8kmFN8psrbFFFmB/If14iN5o9nw/NgnnM+kybDJpRsAynV2BsfpTYrTRysYUdADVD7CkUUizgkpLfg==}
+
   js-tokens@4.0.0:
     resolution: {integrity: sha512-RdJUflcE3cUzKiMqQgsCu06FPu9UdIJO0beYbPhHN4k6apgJtifcoCtT9bcxOpYBtpD2kCM6Sbzg4CausW/PKQ==}
 
@@ -1272,6 +1282,10 @@ packages:
     resolution: {integrity: sha512-JU3teHTNjmE2VCGFzuY8EXzCDVwEqB2a8fsIvwaStHhAWJEeVd1o1QD80CU6+ZdEXXSLbSsuLwJjkCBWqRQUVA==}
     engines: {node: '>=8.6'}
 
+  popper.js@1.16.1:
+    resolution: {integrity: sha512-Wb4p1J4zyFTbM+u6WuO4XstYx4Ky9Cewe4DWrel7B0w6VVICvPwdOpotjzcf6eD8TsckVnIMNONQyPIUFOUbCQ==}
+    deprecated: You can find the new Popper v2 at @popperjs/core, this package is dedicated to the legacy v1
+
   possible-typed-array-names@1.0.0:
     resolution: {integrity: sha512-d7Uw+eZoloe0EHDIYoe+bQ5WXnGMOpmiZFTuMWCwpjzzkL2nTjcKiAk4hh8TjnGye2TwWOk3UXucZ+3rbmBa8Q==}
     engines: {node: '>= 0.4'}
@@ -1347,6 +1361,12 @@ packages:
     resolution: {integrity: sha512-cALXr6RvP7er5QYWcX1ctBvG2x4jvZsgSPMPWUzQG47ZeKZjmXNmN9h8y4tScsWk/7TV23uAFQIESN8kxTaBHQ==}
     peerDependencies:
       react: '>=15'
+
+  react-toastify@11.0.5:
+    resolution: {integrity: sha512-EpqHBGvnSTtHYhCPLxML05NLY2ZX0JURbAdNYa6BUkk+amz4wbKBQvoKQAB0ardvSarUBuY4Q4s1sluAzZwkmA==}
+    peerDependencies:
+      react: ^18 || ^19
+      react-dom: ^18 || ^19
 
   react@19.0.0:
     resolution: {integrity: sha512-V8AVnmPIICiWpGfm6GLzCR/W5FXLchHop40W4nXBmdlEceh16rCN8O8LNWm5bh5XUX91fh7KpA+W0TgMKmgTpQ==}
@@ -1895,8 +1915,6 @@ snapshots:
       '@nodelib/fs.scandir': 2.1.5
       fastq: 1.19.1
 
-  '@popperjs/core@2.11.8': {}
-
   '@rollup/rollup-android-arm-eabi@4.34.4':
     optional: true
 
@@ -2095,9 +2113,10 @@ snapshots:
 
   binary-extensions@2.3.0: {}
 
-  bootstrap@5.3.3(@popperjs/core@2.11.8):
+  bootstrap@4.6.2(jquery@3.7.1)(popper.js@1.16.1):
     dependencies:
-      '@popperjs/core': 2.11.8
+      jquery: 3.7.1
+      popper.js: 1.16.1
 
   brace-expansion@1.1.11:
     dependencies:
@@ -2725,6 +2744,8 @@ snapshots:
       has-symbols: 1.1.0
       set-function-name: 2.0.2
 
+  jquery@3.7.1: {}
+
   js-tokens@4.0.0: {}
 
   js-yaml@4.1.0:
@@ -2888,6 +2909,8 @@ snapshots:
 
   picomatch@2.3.1: {}
 
+  popper.js@1.16.1: {}
+
   possible-typed-array-names@1.0.0: {}
 
   postcss@8.5.1:
@@ -2959,6 +2982,12 @@ snapshots:
       '@tweenjs/tween.js': 18.6.4
       react: 19.0.0
       resize-observer-polyfill: 1.5.1
+
+  react-toastify@11.0.5(react-dom@19.0.0(react@19.0.0))(react@19.0.0):
+    dependencies:
+      clsx: 2.1.1
+      react: 19.0.0
+      react-dom: 19.0.0(react@19.0.0)
 
   react@19.0.0: {}
 
