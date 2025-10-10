@@ -194,7 +194,7 @@ const GameModal = (props) => {
             </div>
             <div className="game-window-header-item align-center close-window">
               <span className="btn-dark btn-box-option btn-sm text-white" onClick={closeModal} title="Close">
-                <i className="fas fa-close"></i>
+                <i className="far fa-times-circle"></i>
               </span>
             </div>
             <div className="game-window-header-item align-center reload-window">
