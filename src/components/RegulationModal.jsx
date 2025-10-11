@@ -2,21 +2,25 @@ import { useEffect } from "react";
 import IconClose from "/src/assets/svg/close.svg";
 
 const RegulationModal = ({ isOpen, onClose }) => {
-    if (!isOpen) return null;
-
     useEffect(() => {
+        if (!isOpen) return;
+
         const prevOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
         return () => {
             document.body.style.overflow = prevOverflow;
         };
-    }, []);
+    }, [isOpen]);
 
     const handleBackdropClick = (e) => {
         if (e.target.classList.contains("extra-modal-root")) {
             onClose?.();
         }
     };
+
+    if (!isOpen) {
+        return null;
+    }
 
     return (
         <>
@@ -32,8 +36,8 @@ const RegulationModal = ({ isOpen, onClose }) => {
             >
                 <div className="modal-dialog modal-xl">
                     <div className="modal-content extra-animate-in">
-                        <div class="modal-header">
-                            <h5 id="reglamentoLabel" class="modal-title text-white">Reglamento del Sistema Jackpot</h5>
+                        <div className="modal-header">
+                            <h5 id="reglamentoLabel" className="modal-title text-white">Reglamento del Sistema Jackpot</h5>
                             <button
                                 onClick={onClose}
                                 className="close close-modal-new-roulette"

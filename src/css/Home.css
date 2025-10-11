@@ -894,9 +894,10 @@ iframe {
 }
 
 
-.react-slideshow-container .default-nav {
+.slide-container .react-slideshow-container .default-nav {
     background: transparent !important;
 	width: 15% !important;
+	height: 100%;
 }
 
 .react-slideshow-container .default-nav svg {

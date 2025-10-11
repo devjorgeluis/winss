@@ -46,7 +46,9 @@ const LoginModal = ({ isOpen, onClose, onLoginSuccess }) => {
         }
     };
 
-    if (!isOpen) return null;
+    if (!isOpen) {
+        return null;
+    }
 
     return (
         <>

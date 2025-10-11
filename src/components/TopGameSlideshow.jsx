@@ -54,7 +54,7 @@ const TopGameSlideshow = (props) => {
         observeParents={true}
         breakpoints={{
           320: {
-            slidesPerView: 1
+            slidesPerView: 3
           },
           576: {
             slidesPerView: 4
@@ -76,18 +76,10 @@ const TopGameSlideshow = (props) => {
               className="slots-grid-item swiper-slide otros"
               onClick={() => handleGameClick(game, index)}
               style={{
-                cursor: 'pointer',
                 backgroundImage: `url(${game.image_local && game.image_local !== ""
                     ? contextData.cdnUrl + game.image_local
                     : game.image_url
                   })`,
-                backgroundSize: 'cover',
-                backgroundPosition: 'center',
-                backgroundRepeat: 'no-repeat',
-                width: '100%',
-                height: '150px',
-                borderRadius: '8px',
-                position: 'relative'
               }}
             >
             </div>

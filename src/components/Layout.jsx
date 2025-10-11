@@ -16,7 +16,9 @@ const Layout = () => {
     const { contextData } = useContext(AppContext);
     const [selectedPage, setSelectedPage] = useState("lobby");
     const [isLogin, setIsLogin] = useState(contextData.session !== null);
-    const [isMobile, setIsMobile] = useState(false);
+    const [isMobile, setIsMobile] = useState(() => {
+        return typeof window !== 'undefined' ? window.innerWidth <= 767 : false;
+    });
     const [userBalance, setUserBalance] = useState("");
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
@@ -29,16 +31,6 @@ const Layout = () => {
     const isCasino = location.pathname === "/casino";
     const isLiveCasino = location.pathname === "/live-casino";
     const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history" || location.pathname === "/profile/edit" || location.pathname === "/profile/change-password";
-
-    useEffect(() => {
-        if (contextData.session != null) {
-            setIsLogin(true);
-            if (contextData.session.user && contextData.session.user.balance) {
-                setUserBalance(contextData.session.user.balance);
-            }
-        }
-        getStatus();
-    }, [contextData.session]);
 
     useEffect(() => {
         const checkIsMobile = () => {
@@ -57,6 +49,85 @@ const Layout = () => {
             window.removeEventListener('resize', handleResize);
         };
     }, []);
+
+    useEffect(() => {
+        if (contextData.session != null) {
+            setIsLogin(true);
+            if (contextData.session.user && contextData.session.user.balance) {
+                setUserBalance(contextData.session.user.balance);
+            }
+        }
+        getStatus();
+    }, [contextData.session]);
+
+    useEffect(() => {
+        updateNavigation();
+    }, [isMobile, isSlotsOnly]);
+
+    const updateNavigation = () => {
+        if (isSlotsOnly === "") return;
+
+        if (isSlotsOnly === "false") {
+            setFragmentNavLinksTop(
+                !isMobile ?
+                <>
+                    <NavLinkHeader
+                        title="Home"
+                        pageCode="home"
+                        icon=""
+                        getPage={getPage}
+                    />
+                    <NavLinkHeader
+                        title="Slots"
+                        pageCode="casino"
+                        icon=""
+                        getPage={getPage}
+                    />
+                    <NavLinkHeader
+                        title="Casino En Vivo"
+                        pageCode="live-casino"
+                        icon=""
+                        getPage={getPage}
+                    />
+                    <NavLinkHeader
+                        title="Deportes"
+                        pageCode="sports"
+                        icon=""
+                        getPage={getPage}
+                    />
+                </> :
+                <>
+                    <NavLinkHeader
+                        title="Slots"
+                        pageCode="casino"
+                        icon=""
+                        getPage={getPage}
+                    />
+                    <NavLinkHeader
+                        title="+Juegos"
+                        pageCode=""
+                        icon=""
+                        getPage={getPage}
+                    />
+                </>
+            );
+        } else if (isSlotsOnly === "true") {
+            setFragmentNavLinksTop(
+                <>
+                    <NavLinkHeader
+                        title="Home"
+                        pageCode="home"
+                        icon=""
+                    />
+                    <NavLinkHeader
+                        title="Slots"
+                        pageCode="casino"
+                        icon=""
+                    />
+                </>
+            );
+        }
+    };
 
     const refreshBalance = () => {
         setUserBalance("");
@@ -83,57 +154,13 @@ const Layout = () => {
     const callbackGetStatus = (result) => {
         if ((result && result.slots_only == null) || (result && result.slots_only == false)) {
             setIsSlotsOnly("false");
-            setFragmentNavLinksTop(
-                <>
-                    <NavLinkHeader
-                        title="Home"
-                        pageCode="home"
-                        icon=""
-                    />
-                    <NavLinkHeader
-                        title="Casino"
-                        pageCode="casino"
-                        icon=""
-                    />
-                    <NavLinkHeader
-                        title="Casino En Vivo"
-                        pageCode="live-casino"
-                        icon=""
-                    />
-                    <NavLinkHeader
-                        title="Deportes"
-                        pageCode="sports"
-                        icon=""
-                    />
-                </>
-            );
         } else {
             setIsSlotsOnly("true");
-            setFragmentNavLinksTop(
-                <>
-                    <NavLinkHeader
-                        title="Home"
-                        pageCode="home"
-                        icon=""
-                    />
-                    <NavLinkHeader
-                        title="Casino"
-                        pageCode="casino"
-                        icon=""
-                    />
-                </>
-            );
         }
     };
 
     const handleLoginSuccess = (balance) => {
         setUserBalance(balance);
-    };
-
-    const handleLoginConfirm = () => {
-        setIsLogin(true);
-        refreshBalance();
-        setShowLoginModal(false);
     };
 
     const handleLogoutClick = () => {
@@ -201,10 +228,6 @@ const Layout = () => {
                             <Outlet />
                         </main>
                         <Footer />
-                        {/* {
-                            isMobile && !isSportsPage ? <Footer isSlotsOnly={isSlotsOnly} isSportsPage={isSportsPage} /> :
-                                !isMobile ? <Footer isSlotsOnly={isSlotsOnly} isSportsPage={isSportsPage} /> : <></>
-                        } */}
                     </>
                 </>
             </NavigationContext.Provider>

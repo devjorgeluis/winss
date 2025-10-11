@@ -2,21 +2,25 @@ import { useEffect } from "react";
 import IconClose from "/src/assets/svg/close.svg";
 
 const HistoryModal = ({ isOpen, onClose }) => {
-    if (!isOpen) return null;
-
     useEffect(() => {
+        if (!isOpen) return;
+
         const prevOverflow = document.body.style.overflow;
         document.body.style.overflow = "hidden";
         return () => {
             document.body.style.overflow = prevOverflow;
         };
-    }, []);
+    }, [isOpen]);
 
     const handleBackdropClick = (e) => {
         if (e.target.classList.contains("extra-modal-root")) {
             onClose?.();
         }
     };
+
+    if (!isOpen) {
+        return null;
+    }
 
     return (
         <>

@@ -93,7 +93,7 @@ const Footer = () => {
 
                         <p className="default-copy">Lea nuestro Reglamento para aclarar todas sus dudas sobre nuestro funcionamiento.</p>
                     </div>
-                    <div className="col-6 col-sm-6 col-md-3 col-lg-3 pb-2 order-2 order-sm-6 order-md-12 pr-4">
+                    <div className="col-6 col-sm-6 col-md-3 col-lg-3 pb-2 order-2 order-sm-6 order-md-12 pr-md-4">
                         <div className="row">
                             <div className="col-12 col-sm-12 col-md-12 col-lg-8 pt-3 p-2">
                                 <p className="curacao-text">

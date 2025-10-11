@@ -31,7 +31,9 @@ const CustomAlert = ({ message, onClose }) => {
     }
   };
 
-  if (!isVisible) return null;
+  if (!isVisible) {
+    return null;
+  }
 
   return (
     <div id="notify-root">

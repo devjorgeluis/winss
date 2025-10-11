@@ -148,6 +148,11 @@ const Header = ({ isLogin, userBalance, handleLogoutClick, handleChangePasswordC
                                 </div>
                             </div>
                         </div>
+                        <div id="header-bg">
+                            <ul className="nav mobile-header">
+                                {fragmentNavLinksTop}
+                            </ul>
+                        </div>
                     </div>
                 </div>
             </div>
