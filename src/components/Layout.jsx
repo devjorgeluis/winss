@@ -80,7 +80,7 @@ const Layout = () => {
                     />
                     <NavLinkHeader
                         title="Halloween"
-                        pageCode="home"
+                        pageCode=""
                         icon={ImgPumpkin}
                         getPage={getPage}
                     />
@@ -106,13 +106,13 @@ const Layout = () => {
                     />
                     <NavLinkHeader
                         title="Halloween"
-                        pageCode="home"
+                        pageCode=""
                         icon={ImgPumpkin}
                         getPage={getPage}
                     />
                     <NavLinkHeader
                         title="+Juegos"
-                        pageCode=""
+                        pageCode="#"
                         icon=""
                         getPage={getPage}
                     />

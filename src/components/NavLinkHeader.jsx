@@ -5,7 +5,7 @@ const NavLinkHeader = (props) => {
     const [showDropdown, setShowDropdown] = useState(false);
 
     const handleClick = (e) => {
-        if (props.pageCode === "") {
+        if (props.pageCode === "#") {
             e.preventDefault();
             setShowDropdown(!showDropdown);
         } else if (props.onClick) {
@@ -20,7 +20,7 @@ const NavLinkHeader = (props) => {
         }
     };
 
-    if (props.pageCode === "") {
+    if (props.pageCode === "#") {
         return (
             <li className="dropdown-container">
                 <a
@@ -50,6 +50,28 @@ const NavLinkHeader = (props) => {
                         </li>
                     </ul>
                 )}
+            </li>
+        );
+    }
+
+    if (props.pageCode === "") {
+        return (
+            <li>
+                <a
+                    href="#"
+                    className="btn-menu-cj button type1"
+                    onClick={(e) => {
+                        e.preventDefault();
+                        if (props.onClick) {
+                            props.onClick(e);
+                        }
+                    }}
+                >
+                    {
+                        props.icon && <img src={props.icon} width={20} height={20} className="icon-HALLOWEEN" />
+                    }
+                    {props.title}
+                </a>
             </li>
         );
     }
