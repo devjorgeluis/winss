@@ -63,6 +63,9 @@ const NavLinkHeader = (props) => {
                 }
                 onClick={props.onClick}
             >
+                {
+                    props.icon && <img src={props.icon} width={20} height={20} className="icon-HALLOWEEN" />
+                }
                 {props.title}
             </NavLink>
         </li>

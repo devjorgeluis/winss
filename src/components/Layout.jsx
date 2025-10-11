@@ -11,6 +11,7 @@ import LoginModal from "./LoginModal";
 import LogoutConfirmModal from "./LogoutConfirmModal";
 import ChangePasswordModal from "./ChangePasswordModal";
 import { NavigationContext } from "./NavigationContext";
+import ImgPumpkin from "/src/assets/img/pumpkin.png";
 
 const Layout = () => {
     const { contextData } = useContext(AppContext);
@@ -72,15 +73,15 @@ const Layout = () => {
                 !isMobile ?
                 <>
                     <NavLinkHeader
-                        title="Home"
-                        pageCode="home"
+                        title="Slots"
+                        pageCode="casino"
                         icon=""
                         getPage={getPage}
                     />
                     <NavLinkHeader
-                        title="Slots"
-                        pageCode="casino"
-                        icon=""
+                        title="Halloween"
+                        pageCode="home"
+                        icon={ImgPumpkin}
                         getPage={getPage}
                     />
                     <NavLinkHeader
@@ -104,6 +105,12 @@ const Layout = () => {
                         getPage={getPage}
                     />
                     <NavLinkHeader
+                        title="Halloween"
+                        pageCode="home"
+                        icon={ImgPumpkin}
+                        getPage={getPage}
+                    />
+                    <NavLinkHeader
                         title="+Juegos"
                         pageCode=""
                         icon=""
@@ -114,11 +121,6 @@ const Layout = () => {
         } else if (isSlotsOnly === "true") {
             setFragmentNavLinksTop(
                 <>
-                    <NavLinkHeader
-                        title="Home"
-                        pageCode="home"
-                        icon=""
-                    />
                     <NavLinkHeader
                         title="Slots"
                         pageCode="casino"
