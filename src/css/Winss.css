@@ -974,7 +974,7 @@ ul.nav>li.sa-stacker>a:hover {
 .slide img,
 .slide video {
     width: 100%;
-    height: auto;
+    height: 100% !important;
     display: block;
     object-fit: contain;
 }
