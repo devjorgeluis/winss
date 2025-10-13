@@ -4,14 +4,14 @@ import { AppContext } from "../AppContext";
 import { LayoutContext } from "../components/LayoutContext";
 import { callApi } from "../utils/Utils";
 import LiveGameCard from "/src/components/LiveGameCard";
-import HalloweenSlideshow from "../components/HalloweenSlideshow";
+import CrashSlideshow from "../components/CrashSlideshow";
 import GameModal from "../components/GameModal";
 import GamesLoading from "../components/GamesLoading";
 import SearchInput from "../components/SearchInput";
 import LoginModal from "../components/LoginModal";
 import CustomAlert from "../components/CustomAlert";
 import "animate.css";
-import "../css/Halloween.css";
+import "../css/Crash.css";
 
 let selectedGameId = null;
 let selectedGameType = null;
@@ -20,11 +20,14 @@ let selectedGameName = null;
 let pageCurrent = 0;
 
 
-const Halloween = () => {
-  const pageTitle = "Halloween";
+const Crash = () => {
+  const pageTitle = "Crash";
   const { contextData } = useContext(AppContext);
   const { isLogin } = useContext(LayoutContext);
+  const [selectedCategoryIndex, setSelectedCategoryIndex] = useState(0);
   const [games, setGames] = useState([]);
+  const [categories, setCategories] = useState([]);
+  const [activeCategory, setActiveCategory] = useState({});
   const [pageData, setPageData] = useState({});
   const [gameUrl, setGameUrl] = useState("");
   const [isLoadingGames, setIsLoadingGames] = useState(false);
@@ -44,16 +47,96 @@ const Halloween = () => {
     selectedGameName = null;
     setGameUrl("");
     setShouldShowGameModal(false);
-    fetchContent();
+    
+    getPage("arcade");
 
     window.scrollTo(0, 0);
   }, [location.pathname]);
 
-  const fetchContent = () => {
+  const getPage = (page) => {
     setIsLoadingGames(true);
+    setCategories([]);
+    setGames([]);
+    callApi(contextData, "GET", "/get-page?page=" + page, callbackGetPage, null);
+  };
+
+  const callbackGetPage = (result) => {
+    if (result.status === 500 || result.status === 422) {
+      setMessageCustomAlert(["error", result.message]);
+    } else {
+      setCategories(result.data.categories);
+      setPageData(result.data);      
+
+      if (pageData.url && pageData.url != null) {
+        if (contextData.isMobile) {
+          // Mobile sports workaround
+        }
+      } else {
+        if (result.data.page_group_type == "categories") {
+          setSelectedCategoryIndex(0);
+        }
+        if (result.data.page_group_type == "games") {
+          loadMoreContent();
+        }
+      }
+      pageCurrent = 0;
+    }
+  };
+
+  useEffect(() => {
+    if (categories.length > 0) {
+      const urlParams = new URLSearchParams(location.search);
+      const providerName = urlParams.get('provider');
+      const providerId = urlParams.get('providerId');
+
+      if (providerName && providerId) {
+        const provider = categories.find(cat => cat.id.toString() === providerId.toString());
+        if (provider) {
+          const providerIndex = categories.indexOf(provider);
+          setActiveCategory(provider);
+          setSelectedCategoryIndex(providerIndex);
+          fetchContent(provider, provider.id, provider.table_name, providerIndex, true);
+          return;
+        }
+      }
+
+      let item = categories[0];
+      fetchContent(item, item.id, item.table_name, 0, false);
+      setActiveCategory(item);
+    }
+  }, [categories, location.search]);
+
+  const loadMoreContent = () => {
+    setIsLoadingGames(true);
+    let item = categories[selectedCategoryIndex];
+    if (item) {
+      fetchContent(item, item.id, item.table_name, selectedCategoryIndex, false);
+    }
+  };
+
+  const fetchContent = (category, categoryId, tableName, categoryIndex, resetCurrentPage) => {
+    let pageSize = 30;
+    setIsLoadingGames(true);
+
+    if (resetCurrentPage == true) {
+      pageCurrent = 0;
+      setGames([]);
+    }
+
+    setActiveCategory(category);
+    setSelectedCategoryIndex(categoryIndex);
     setTxtSearch("");
 
-    let apiUrl = "/get-top-category-content?group=Hallowen_Button";
+    let apiUrl = "/get-content?page_group_type=categories&page_group_code=" +
+      pageData.page_group_code +
+      "&table_name=" +
+      tableName +
+      "&apigames_category_id=" +
+      categoryId +
+      "&page=" +
+      pageCurrent +
+      "&length=" +
+      pageSize;
 
     callApi(
       contextData,
@@ -70,11 +153,10 @@ const Halloween = () => {
     } else {
       if (pageCurrent == 0) {
         configureImageSrc(result);
-        setGames(result.data);
-        setPageData(result.data);
+        setGames(result.content);
       } else {
         configureImageSrc(result);
-        setGames([...games, ...result.data]);
+        setGames([...games, ...result.content]);
       }
       pageCurrent += 1;
     }
@@ -82,7 +164,7 @@ const Halloween = () => {
   };
 
   const configureImageSrc = (result) => {
-    (result.data || []).forEach((element) => {
+    (result.content || []).forEach((element) => {
       let imageDataSrc = element.image_url;
       if (element.image_local != null) {
         imageDataSrc = contextData.cdnUrl + element.image_local;
@@ -213,10 +295,10 @@ const Halloween = () => {
         />
       ) : (
         <>
-          <HalloweenSlideshow />
+          <CrashSlideshow />
           <div className="container-provider">
             <div className="botton-header-slots">
-              <strong>TOP HALLOWEEN</strong>
+              <strong>INICIO</strong>
               <SearchInput
                 txtSearch={txtSearch}
                 setTxtSearch={setTxtSearch}
@@ -230,6 +312,11 @@ const Halloween = () => {
                 searchDelayTimer={searchDelayTimer}
                 setSearchDelayTimer={setSearchDelayTimer}
               />
+              <div className="reset">
+                <button className="btn btn-more-lobby" onClick={loadMoreContent}>
+                  Ver Todos &gt;
+                </button>
+              </div>
             </div>
 
             <div className="container-games">
@@ -269,4 +356,4 @@ const Halloween = () => {
   );
 };
 
-export default Halloween;
+export default Crash;

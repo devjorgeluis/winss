@@ -117,7 +117,7 @@ const NavLinkHeader = (props) => {
                         <li>
                             <a
                                 href=""
-                                onClick={() => handleDropdownItemClick("")}
+                                onClick={() => handleDropdownItemClick("crash")}
                             >
                                 Crash Games
                             </a>

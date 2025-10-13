@@ -24,6 +24,17 @@ body {
     font-family: "MetropolisMedium", sans-serif;
 }
 
+#wlcp.crash {
+    font-family: 'Roboto Condensed', sans-serif;
+    background: url("../assets/img/bg.png") #4b0a6a !important;
+    background-size: 100% !important;
+    background-repeat: no-repeat !important;
+    padding: 0 !important;
+    color: #ddd;
+    font-size: 1em;
+    min-height: 650px;
+}
+
 .visible {
     display: block !important;
 }

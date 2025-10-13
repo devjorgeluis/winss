@@ -50,7 +50,7 @@ const Header = ({ isLogin, userBalance, handleLogoutClick, handleChangePasswordC
                                         <div className="btn-group d-wallet-default d-wallet-default-header" role="group">
                                             <button className="btn dropdown-toggle btn-sm btn-success btn-menu-top-login" type="button" data-toggle="dropdown" id="navbarDropdown2" aria-haspopup="true" aria-expanded="false">
                                                 <i className="fas fa-user"></i> <span>Hola, </span> <strong>{contextData?.session?.user?.username || 'Guest'}</strong><br />
-                                                <i className="fas fa-money-bill-wave"></i> <span>AR$</span> <span className="walletBalance">{userBalance ? parseFloat(userBalance).toFixed(2) : ""}</span>
+                                                <i className="fas fa-money-bill-wave"></i> <span>$</span> <span className="walletBalance">{userBalance ? parseFloat(userBalance).toFixed(2) : ""}</span>
                                             </button>
                                             
                                             <div

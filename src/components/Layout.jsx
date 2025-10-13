@@ -32,6 +32,7 @@ const Layout = () => {
     const isCasino = location.pathname === "/casino";
     const isLiveCasino = location.pathname === "/live-casino";
     const isHalloween = location.pathname === "/halloween";
+    const isCrash = location.pathname === "/crash";
     const isSport = location.pathname === "/sports";
     const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history" || location.pathname === "/profile/edit" || location.pathname === "/profile/change-password";
 
@@ -230,7 +231,7 @@ const Layout = () => {
                                 isSlotsOnly={isSlotsOnly}
                             />
                         }
-                        <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : isHalloween ? 'live-casino-container halloween' : isAuth ? 'auth' : 'main'} id="wlcp">
+                        <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : isHalloween ? 'live-casino-container halloween' : isCrash ? 'crash' : isAuth ? 'auth' : 'main'} id="wlcp">
                             <Outlet />
                         </main>
                         { !isSport && <Footer /> }

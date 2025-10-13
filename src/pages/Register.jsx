@@ -173,7 +173,7 @@ const Register = () => {
                             value={formData.currency}
                             onChange={handleInputChange}
                         >
-                            <option value="8">AR$ ARS</option>
+                            <option value="8">$ ARS</option>
                             <option value="89">₲ PYG</option>
                         </select>
                     </div>

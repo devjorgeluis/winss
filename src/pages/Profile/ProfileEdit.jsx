@@ -147,7 +147,7 @@ const ProfileEdit = () => {
                                                         </p>
                                                     </div>
                                                     <div className="bg-danger btn-block btn-md balance-total">
-                                                        AR$
+                                                        $
                                                         <span className="walletBalance">
                                                             {" "}
                                                             {formatBalance(

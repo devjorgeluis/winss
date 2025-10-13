@@ -1,0 +1,255 @@
+#wlcp.live-casino-container.halloween {
+    background: url('../assets/img/halloween-back.jpg') #141414 !important;
+    background-size: 100% !important;
+    background-attachment: fixed !important;
+    font-family: 'Roboto Condensed', sans-serif;
+    min-height: 500px;
+    height: auto;
+    padding-bottom: 0;
+}
+
+.crash1 {
+    background: url("../assets/img/spaceman.png") #141035;
+    background-size: cover;
+    height: 30vw;
+    border-bottom: 1px solid #9c27b0;
+    animation: redEffect 5s infinite;
+}
+
+.crash2 {
+    background: url("../assets/img/aviator-03.webp") #141035;
+    background-size: cover;
+    height: 30vw;
+    animation: redEffect 5s infinite;
+}
+
+.crash3 {
+    background: url("../assets/img/xplore-01.webp") #141035;
+    background-size: cover;
+    height: 30vw;
+    animation: redEffect 5s infinite;
+}
+
+.crash4 {
+    background: url("../assets/img/pipa-01.webp") #141035;
+    background-size: cover;
+    height: 30vw;
+    animation: redEffect 5s infinite;
+}
+
+.item {
+    width: 30vw;
+    color: white;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    font-size: 2em;
+    position: absolute;
+    animation-play-state: paused;
+    display: none;
+}
+
+.active .item {
+    display: block;
+    animation-play-state: running;
+}
+
+.item-2 {
+    animation: slideLeft 2s forwards, floating 3s infinite;
+    top: 10%;
+    left: 20%;
+}
+
+.item-3 {
+    animation: slideRight 2s forwards, floating 3s infinite;
+    top: 30%;
+    left: 51%;
+    width: 49vw;
+}
+
+.item-0 {
+    animation: slideUp 2s forwards, floating 3s infinite, colorChange 5s infinite;
+    bottom: 0%;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgb(0 0 255 / 0%), #5b00f8) !important
+}
+
+.item-5 {
+    animation: slideUp 2s forwards, floating 3s infinite;
+    top: 20%;
+    left: 50%;
+    width: 49vw;
+}
+
+.item-4 {
+    animation: slideLeft 2s forwards, floating 3s infinite;
+    top: 10%;
+    left: 20%;
+}
+
+.item-0a {
+    animation: slideUp 2s forwards, floating 3s infinite, colorChange 5s infinite;
+    bottom: 0%;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgb(0 0 255 / 0%), #ff9800) !important
+}
+
+.item-6 {
+    animation: slideLeft 2s forwards, floating 3s infinite;
+    top: 10%;
+    left: 10%;
+}
+
+.item-0b {
+    animation: slideUp 2s forwards, floating 3s infinite, colorChange 5s infinite;
+    bottom: 0%;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgb(0 0 255 / 0%), #5b00f8) !important;
+}
+
+.item-7 {
+    animation: slideRight 2s forwards, floating 3s infinite;
+    top: 0%;
+    left: 50%;
+}
+
+.item-8 {
+    animation: slideLeft 2s forwards, floating 3s infinite;
+    top: 10%;
+    left: 10%;
+}
+
+.item-0c {
+    animation: slideUp 2s forwards, floating 3s infinite, colorChange 5s infinite;
+    bottom: 0%;
+    width: 100%;
+    height: 100px;
+    background: linear-gradient(to bottom, rgb(0 0 255 / 0%),rgb(0, 186, 248)) !important
+}
+
+/* Slideshow container styles */
+.slide-container.crash-slideshow {
+    width: 100%;
+    margin: 0 auto;
+}
+
+.carousel-item {
+    position: relative;
+    width: 100%;
+    display: block;
+}
+
+.crash-slideshow .react-slideshow-wrapper.slide {
+    border-bottom: 9px solid #9C27B0;
+}
+
+.react-slideshow-container .active .carousel-item {
+    display: block !important;
+}
+
+.button-play {
+    display: none;
+}
+
+.image-box:hover .button-play {
+    display: block !important;
+    z-index: 1000;
+    margin: 0 auto;
+    position: absolute;
+    left: 0;
+    right: 0;
+    top: 40%;
+    bottom: 0;
+    background: #9C27B0;
+    height: 30px;
+    width: 70%;
+    color: #fff;
+    border-radius: 2px;
+    font-weight: 900;
+    font-family: 'Roboto';
+}
+
+.crash .container-provider .container-games .slots-grid-item {
+    border: 1px solid #9c27b0;
+    border-radius: 6px;
+}
+
+.crash .container-provider .container-games .slots-grid-item .image-container {
+    width: 100%;
+    border-radius: 6px;
+}
+
+/* Animation definitions */
+@keyframes slideLeft {
+    0% {
+        transform: translateX(-100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideRight {
+    0% {
+        transform: translateX(100%);
+    }
+    100% {
+        transform: translateX(0);
+    }
+}
+
+@keyframes slideUp {
+    0% {
+        transform: translateY(100%);
+    }
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes greenEffect {
+    0%, 100% {
+        background-color: green;
+    }
+    50% {
+        background-color: lightgreen;
+    }
+}
+
+@keyframes redEffect {
+    0%, 100% {
+        background-color: red;
+    }
+    50% {
+        background-color: pink;
+    }
+}
+
+/* Background animations for active slides */
+.react-slideshow-container .active .crash1 {
+    animation: greenEffect 5s infinite;
+}
+
+.react-slideshow-container .active .crash2,
+.react-slideshow-container .active .crash3 {
+    animation: redEffect 5s infinite;
+}
+
+.live-casino-container.halloween .container-provider .container-games .slots-grid-item .play-button img {
+    height: 50px;
+    border: none;
+    box-shadow: none !important;
+    object-fit: contain;
+    border-radius: 0;
+}
+
+@media (max-width: 1200px) {
+    .crash .container-provider {
+        border-radius: 10px;
+        display: grid;
+        padding-bottom: 100px;
+    }
+}

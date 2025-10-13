@@ -68,6 +68,13 @@
    border: 1px solid #607D8B !important
 }
 
+.crash .el-input__inner {
+    background-color: #653cb4 !important;
+    border-radius: 4px;
+    border: 1px solid #5902861c !important;
+    color: #fff;
+}
+
 .live-casino-container .container-provider {
     border-radius: 10px;
 }

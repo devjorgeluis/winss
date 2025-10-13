@@ -192,7 +192,7 @@ const ProfileHistory = () => {
                                                             fontWeight: "700"
                                                         }}>Balance Total</p>
                                                     </div>
-                                                    <div className="bg-danger btn-block btn-md balance-total">AR$ 
+                                                    <div className="bg-danger btn-block btn-md balance-total">$ 
                                                         <span className="walletBalance"> {formatBalance(contextData.session?.user?.balance) || ''}</span>
                                                     </div>
                                                 </div>
