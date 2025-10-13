@@ -2,7 +2,7 @@ import { useLocation } from "react-router-dom";
 
 const GamesLoading = () => {
     const location = useLocation();
-    const isLiveCasino = location.pathname === "/live-casino";
+    const isLiveCasino = location.pathname === "/live-casino" || location.pathname === "/halloween";
 
     return (
         <div className="container-games">

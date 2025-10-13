@@ -1,9 +1,6 @@
-import { useContext, useState, useEffect } from "react";
-import { ImCross } from "react-icons/im";
+import { useState, useEffect } from "react";
 import { ImRedo } from "react-icons/im";
 import { ImNewTab } from "react-icons/im";
-import IconEnlarge from "/src/assets/svg/enlarge.svg";
-import IconShrink from "/src/assets/svg/shrink.svg";
 import DivLoading from "./DivLoading";
 
 const GameModal = (props) => {
@@ -39,6 +36,10 @@ const GameModal = (props) => {
           .getElementsByClassName("game-container")[0]
           .classList.remove("d-none");
         setUrl(props.gameUrl);
+        
+        setTimeout(() => {
+          toggleFullScreen();
+        }, 500);
       }
     }
   }, [props.gameUrl, isMobile]);

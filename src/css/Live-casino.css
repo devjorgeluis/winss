@@ -1,4 +1,5 @@
-.live-casino-container .container-provider .container-games {
+.live-casino-container .container-provider .container-games,
+.halloween .container-provider .container-games {
     grid-template-columns: repeat(8, 1fr);
 }
 
@@ -62,6 +63,11 @@
     border: 1px solid #202020 !important;
 }
 
+.live-casino-container.halloween .el-input__inner {
+   background-color: #00000063 !important;
+   border: 1px solid #607D8B !important
+}
+
 .live-casino-container .container-provider {
     border-radius: 10px;
 }
@@ -92,6 +98,11 @@
 
 .no-results:hover {
     color: #93000e;
+}
+
+.halloween .no-results {
+    background: #00000087;
+    color: #ff8929;
 }
 
 .btn-more-results {
@@ -294,6 +305,10 @@
 
 .live-casino-container .botton-header-slots {
     margin-top: 20px;
+}
+
+.live-casino-container.halloween .botton-header-slots {
+    margin-top: 0;
 }
 
 .botton-header-slots span {
@@ -780,7 +795,8 @@
 }
 
 @media screen and (max-width:768px) {
-    .live-casino-container .container-provider .container-games {
+    .live-casino-container .container-provider .container-games,
+    .halloween .container-provider .container-games {
         grid-template-columns: repeat(3, 1fr);
     }
 
@@ -851,6 +867,12 @@
     width: 100%;
     height: 145px;
     border-radius: 6px 6px 0 0;
+}
+
+.live-casino-container.halloween .container-provider .container-games .slots-grid-item img {
+    border: 1px solid #9c27b0;
+    border-radius: 6px;
+    box-shadow: 0px 0px 3px 2px #29455b !important;
 }
 
 .modal-backdrop-custom {
@@ -1043,7 +1065,8 @@
 }
 
 @media screen and (min-width: 768px) and (max-width: 991px) {
-    .live-casino-container .container-provider .container-games {
+    .live-casino-container .container-provider .container-games,
+    .halloween .container-provider .container-games {
         grid-template-columns: repeat(4, 1fr);
     }
 
@@ -1088,7 +1111,8 @@
 }
 
 @media screen and (min-width: 992px) and (max-width: 1199px) {
-    .live-casino-container .container-provider .container-games {
+    .live-casino-container .container-provider .container-games,
+    .halloween .container-provider .container-games {
         grid-template-columns: repeat(5, 1fr);
     }
 
@@ -1109,7 +1133,8 @@
 }
 
 @media screen and (min-width: 1200px) and (max-width: 1529px) {
-    .live-casino-container .container-provider .container-games {
+    .live-casino-container .container-provider .container-games,
+    .halloween .container-provider .container-games {
         grid-template-columns: repeat(6, 1fr);
     }
 

@@ -31,6 +31,7 @@ const Layout = () => {
     const location = useLocation();
     const isCasino = location.pathname === "/casino";
     const isLiveCasino = location.pathname === "/live-casino";
+    const isHalloween = location.pathname === "/halloween";
     const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history" || location.pathname === "/profile/edit" || location.pathname === "/profile/change-password";
 
     useEffect(() => {
@@ -80,7 +81,7 @@ const Layout = () => {
                     />
                     <NavLinkHeader
                         title="Halloween"
-                        pageCode=""
+                        pageCode="halloween"
                         icon={ImgPumpkin}
                         getPage={getPage}
                     />
@@ -91,8 +92,8 @@ const Layout = () => {
                         getPage={getPage}
                     />
                     <NavLinkHeader
-                        title="Deportes"
-                        pageCode="sports"
+                        title="+Juegos"
+                        pageCode="#"
                         icon=""
                         getPage={getPage}
                     />
@@ -106,7 +107,7 @@ const Layout = () => {
                     />
                     <NavLinkHeader
                         title="Halloween"
-                        pageCode=""
+                        pageCode="halloween"
                         icon={ImgPumpkin}
                         getPage={getPage}
                     />
@@ -226,7 +227,7 @@ const Layout = () => {
                             fragmentNavLinksTop={fragmentNavLinksTop}
                             isSlotsOnly={isSlotsOnly}
                         />
-                        <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : isAuth ? 'auth' : 'main'} id="wlcp">
+                        <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : isHalloween ? 'live-casino-container halloween' : isAuth ? 'auth' : 'main'} id="wlcp">
                             <Outlet />
                         </main>
                         <Footer />

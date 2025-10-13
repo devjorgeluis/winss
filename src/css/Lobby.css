@@ -56,6 +56,11 @@ body {
     margin-right: auto;
 }
 
+.live-casino-container.halloween .el-input {
+    width: 180px;
+    margin-right: 20px;
+}
+
 .el-input__inner {
     background-color: #1c1c1c !important;
     border-radius: 4px;

@@ -1,8 +1,29 @@
 import { NavLink } from "react-router-dom";
-import { useState } from "react";
+import { useState, useEffect } from "react";
 
 const NavLinkHeader = (props) => {
     const [showDropdown, setShowDropdown] = useState(false);
+    const [isMobile, setIsMobile] = useState(() => {
+        return typeof window !== 'undefined' ? window.innerWidth <= 767 : false;
+    });
+
+    useEffect(() => {
+        const checkIsMobile = () => {
+            return window.innerWidth <= 767;
+        };
+
+        setIsMobile(checkIsMobile());
+
+        const handleResize = () => {
+            setIsMobile(checkIsMobile());
+        };
+
+        window.addEventListener('resize', handleResize);
+
+        return () => {
+            window.removeEventListener('resize', handleResize);
+        };
+    }, []);
 
     const handleClick = (e) => {
         if (props.pageCode === "#") {
@@ -32,12 +53,22 @@ const NavLinkHeader = (props) => {
                 </a>
                 {showDropdown && (
                     <ul className="nav">
+                        {
+                            isMobile && <li>
+                                <a
+                                    href="#"
+                                    onClick={() => handleDropdownItemClick("live-casino")}
+                                >
+                                    Casino En Vivo
+                                </a>
+                            </li>
+                        }
                         <li>
                             <a
                                 href="#"
-                                onClick={() => handleDropdownItemClick("live-casino")}
+                                onClick={() => handleDropdownItemClick("live-sports")}
                             >
-                                Casino En Vivo
+                                Deportes en vivo
                             </a>
                         </li>
                         <li>
@@ -46,6 +77,54 @@ const NavLinkHeader = (props) => {
                                 onClick={() => handleDropdownItemClick("sports")}
                             >
                                 Deportes
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => handleDropdownItemClick("")}
+                            >
+                                Ruleta en Español
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => handleDropdownItemClick("")}
+                            >
+                                Caballos
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => handleDropdownItemClick("")}
+                            >
+                                Crash Games
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => handleDropdownItemClick("")}
+                            >
+                                Video Bingo
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => handleDropdownItemClick("")}
+                            >
+                                Raspaditas
+                            </a>
+                        </li>
+                        <li>
+                            <a
+                                href="#"
+                                onClick={() => handleDropdownItemClick("")}
+                            >
+                                Virtuales
                             </a>
                         </li>
                     </ul>

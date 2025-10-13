@@ -11,6 +11,7 @@ import './css/Profile.css'
 import './css/Winss.css'
 import './css/Home.css'
 import './css/Lobby.css'
+import './css/Halloween.css'
 
 import App from './App.jsx'
 

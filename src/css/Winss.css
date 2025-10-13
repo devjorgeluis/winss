@@ -436,6 +436,10 @@ ul.nav>li.sa-stacker>a:hover {
     z-index: 10000;
 }
 
+.dropdown-container ul li {
+    width: 100%;
+}
+
 /* .dropdown-container .dropdown-menu.dropdown-item:hover {
     color: #ee3550;
     background-color: transparent;
@@ -927,6 +931,10 @@ ul.nav>li.sa-stacker>a:hover {
         list-style: none;
         height: 52px;
         margin-left: 5px !important;
+    }
+
+    .login-header .nav .nav {
+        margin-top: 0 !important;
     }
 
     .logo-responsive {
