@@ -1,11 +1,12 @@
 import { NavLink } from "react-router-dom";
-import { useState, useEffect } from "react";
+import { useState, useEffect, useRef } from "react";
 
 const NavLinkHeader = (props) => {
     const [showDropdown, setShowDropdown] = useState(false);
     const [isMobile, setIsMobile] = useState(() => {
         return typeof window !== 'undefined' ? window.innerWidth <= 767 : false;
     });
+    const dropdownRef = useRef(null);
 
     useEffect(() => {
         const checkIsMobile = () => {
@@ -25,6 +26,24 @@ const NavLinkHeader = (props) => {
         };
     }, []);
 
+    useEffect(() => {
+        const handleClickOutside = (event) => {
+            if (dropdownRef.current && !dropdownRef.current.contains(event.target)) {
+                setShowDropdown(false);
+            }
+        };
+
+        if (showDropdown) {
+            document.addEventListener('mousedown', handleClickOutside);
+        } else {
+            document.removeEventListener('mousedown', handleClickOutside);
+        }
+
+        return () => {
+            document.removeEventListener('mousedown', handleClickOutside);
+        };
+    }, [showDropdown]);
+
     const handleClick = (e) => {
         if (props.pageCode === "#") {
             e.preventDefault();
@@ -43,7 +62,7 @@ const NavLinkHeader = (props) => {
 
     if (props.pageCode === "#") {
         return (
-            <li className="dropdown-container">
+            <li className="dropdown-container" ref={dropdownRef}>
                 <a
                     href="#"
                     className={`btn-menu-cj button type1 ${showDropdown ? "active-menu-item" : ""}`}
@@ -56,7 +75,7 @@ const NavLinkHeader = (props) => {
                         {
                             isMobile && <li>
                                 <a
-                                    href="#"
+                                    href=""
                                     onClick={() => handleDropdownItemClick("live-casino")}
                                 >
                                     Casino En Vivo
@@ -65,7 +84,7 @@ const NavLinkHeader = (props) => {
                         }
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("live-sports")}
                             >
                                 Deportes en vivo
@@ -73,7 +92,7 @@ const NavLinkHeader = (props) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("sports")}
                             >
                                 Deportes
@@ -81,7 +100,7 @@ const NavLinkHeader = (props) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("")}
                             >
                                 Ruleta en Español
@@ -89,7 +108,7 @@ const NavLinkHeader = (props) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("")}
                             >
                                 Caballos
@@ -97,7 +116,7 @@ const NavLinkHeader = (props) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("")}
                             >
                                 Crash Games
@@ -105,7 +124,7 @@ const NavLinkHeader = (props) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("")}
                             >
                                 Video Bingo
@@ -113,7 +132,7 @@ const NavLinkHeader = (props) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("")}
                             >
                                 Raspaditas
@@ -121,7 +140,7 @@ const NavLinkHeader = (props) => {
                         </li>
                         <li>
                             <a
-                                href="#"
+                                href=""
                                 onClick={() => handleDropdownItemClick("")}
                             >
                                 Virtuales

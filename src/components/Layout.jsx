@@ -32,6 +32,7 @@ const Layout = () => {
     const isCasino = location.pathname === "/casino";
     const isLiveCasino = location.pathname === "/live-casino";
     const isHalloween = location.pathname === "/halloween";
+    const isSport = location.pathname === "/sports";
     const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history" || location.pathname === "/profile/edit" || location.pathname === "/profile/change-password";
 
     useEffect(() => {
@@ -219,18 +220,20 @@ const Layout = () => {
                         />
                     )}
                     <>
-                        <Header
-                            isLogin={isLogin}
-                            userBalance={userBalance}
-                            handleLogoutClick={handleLogoutClick}
-                            handleChangePasswordClick={handleChangePasswordClick}
-                            fragmentNavLinksTop={fragmentNavLinksTop}
-                            isSlotsOnly={isSlotsOnly}
-                        />
+                        {
+                            !isSport && <Header
+                                isLogin={isLogin}
+                                userBalance={userBalance}
+                                handleLogoutClick={handleLogoutClick}
+                                handleChangePasswordClick={handleChangePasswordClick}
+                                fragmentNavLinksTop={fragmentNavLinksTop}
+                                isSlotsOnly={isSlotsOnly}
+                            />
+                        }
                         <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : isHalloween ? 'live-casino-container halloween' : isAuth ? 'auth' : 'main'} id="wlcp">
                             <Outlet />
                         </main>
-                        <Footer />
+                        { !isSport && <Footer /> }
                     </>
                 </>
             </NavigationContext.Provider>
