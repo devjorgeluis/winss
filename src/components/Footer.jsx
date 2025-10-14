@@ -33,7 +33,7 @@ const Footer = () => {
                                 </svg>
                             </button>
                         </a>
-                        <a href="https://www.instagram.com/winssbet/" target="_blank">
+                        <a href="#" target="_blank">
                             <button type="button">
                                 <i className="fab fa-instagram"></i>
                             </button>
@@ -69,7 +69,7 @@ const Footer = () => {
                 <div className="row">
                     <div className="col-6 col-sm-6 col-md-3 col-lg-3">
                         <div className="col-12 col-sm-12 col-md-12 col-lg-12 text-center">
-                            <a href="https://winss.bet" className="logofooter">
+                            <a href="/" className="logofooter">
                                 <img src="https://images.kbapi.net/images/Whitelabel/Winss/LogoFooter.png" className="pure-img" />
                             </a>
                         </div>
@@ -78,17 +78,17 @@ const Footer = () => {
                     </div>
                     <div className="col-12 col-sm-12 col-md-6 col-lg-6 text-center order-3 order-sm-6 order-sm-12">
                         <ul className="list-footer mb-0">
-                            <li><a href="https://winss.bet/assets/pdf/winss/aml-policy_es_ES.pdf" target="_blank">Política AML</a></li>
-                            <li><a href="https://winss.bet/assets/pdf/winss/self-exclusion_es_ES.pdf" target="_blank">AutoExclusión</a></li>
-                            <li><a href="https://winss.bet/assets/pdf/winss/amlkyc-policy_es_ES.pdf" target="_blank">Política de KYC</a></li>
-                            <li><a href="https://winss.bet/assets/pdf/winss/juegos-responsable_es_ES.pdf" target="_blank">Juego Responsable</a></li>
-                            <li><a href="https://winss.bet/assets/pdf/winss/terms-services_es_ES.pdf" target="_blank">Términos de Servicio</a></li>
+                            <li><a href="/docs/reglamento-general-sistema-jackpot.pdf" target="_blank">Política AML</a></li>
+                            <li><a href="/docs/self-exclusion_es_ES.pdf" target="_blank">AutoExclusión</a></li>
+                            <li><a href="/docs/amlkyc-policy_es_ES.pdf" target="_blank">Política de KYC</a></li>
+                            <li><a href="/docs/juegos-responsable_es_ES.pdf" target="_blank">Juego Responsable</a></li>
+                            <li><a href="/docs/terms-services_es_ES.pdf" target="_blank">Términos de Servicio</a></li>
                         </ul>
                         <ul className="list-footer mt-0">
-                            <li><a href="https://winss.bet/assets/pdf/winss/dispute-resolution_es_ES.pdf" target="_blank">Resolución de Disputas</a></li>
-                            <li><a href="https://winss.bet/assets/pdf/winss/accounts-payouts_es_ES.pdf" target="_blank">Cuentas, Pagos y Bonos</a></li>
-                            <li><a href="https://winss.bet/assets/pdf/winss/fairness-rng_es_ES.pdf" target="_blank">Métodos de prueba de Justicia y RNG</a></li>
-                            <li><a href="https://winss.bet/assets/pdf/winss/privacy-policy_es_ES.pdf" target="_blank">Privacidad y gestión de datos personales</a></li>
+                            <li><a href="/docs/dispute-resolution_es_ES.pdf" target="_blank">Resolución de Disputas</a></li>
+                            <li><a href="/docs/accounts-payouts_es_ES.pdf" target="_blank">Cuentas, Pagos y Bonos</a></li>
+                            <li><a href="/docs/fairness-rng_es_ES.pdf" target="_blank">Métodos de prueba de Justicia y RNG</a></li>
+                            <li><a href="/docs/privacy-policy_es_ES.pdf" target="_blank">Privacidad y gestión de datos personales</a></li>
                         </ul>
 
                         <p className="default-copy">Lea nuestro Reglamento para aclarar todas sus dudas sobre nuestro funcionamiento.</p>
