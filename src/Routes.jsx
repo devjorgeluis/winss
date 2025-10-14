@@ -3,6 +3,7 @@ import Home from "./pages/Home";
 import Casino from "./pages/Casino";
 import LiveCasino from "./pages/LiveCasino";
 import Sports from "./pages/Sports";
+import LiveSports from "./pages/LiveSports";
 import Halloween from "./pages/Halloween";
 import Crash from "./pages/Crash";
 import Login from "./pages/Login";
@@ -22,6 +23,7 @@ export default function AppRoutes() {
                 <Route path="/casino" element={<Casino />} />
                 <Route path="/live-casino" element={<LiveCasino />} />
                 <Route path="/sports" element={<Sports />} />
+                <Route path="/live-sports" element={<LiveSports />} />
                 <Route path="/halloween" element={<Halloween />} />
                 <Route path="/crash" element={<Crash />} />
                 <Route path="/login" element={<Login />} />

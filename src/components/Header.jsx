@@ -1,6 +1,5 @@
 import { useContext, useState } from "react";
 import { AppContext } from "../AppContext";
-import UserMenu from "../components/UserMenu";
 import ImgFlagES from "/src/assets/img/es_ES.png";
 import ImgFlagFR from "/src/assets/img/fr_TN.png";
 import ImgFlagEN from "/src/assets/img/en_US.png";
@@ -11,12 +10,7 @@ import ImgLogo from "/src/assets/img/winss.png";
 
 const Header = ({ isLogin, userBalance, handleLogoutClick, handleChangePasswordClick, fragmentNavLinksTop, isSlotsOnly }) => {
     const { contextData } = useContext(AppContext);
-    const [showUserMenu, setShowUserMenu] = useState(false);
     const [showLanguageDropdown, setShowLanguageDropdown] = useState(false);
-    
-    const onClose = () => {
-        setShowUserMenu(false);
-    }
     
     const toggleLanguageDropdown = () => {
         setShowLanguageDropdown(!showLanguageDropdown);
@@ -156,12 +150,6 @@ const Header = ({ isLogin, userBalance, handleLogoutClick, handleChangePasswordC
                     </div>
                 </div>
             </div>
-
-            {showUserMenu && <UserMenu
-                handleChangePasswordClick={() => { handleChangePasswordClick(); onClose(); }}
-                handleLogoutClick={() => { handleLogoutClick(); onClose(); }}
-                onClose={onClose}
-            />}
         </>
     );
 };

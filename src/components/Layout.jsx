@@ -33,7 +33,7 @@ const Layout = () => {
     const isLiveCasino = location.pathname === "/live-casino";
     const isHalloween = location.pathname === "/halloween";
     const isCrash = location.pathname === "/crash";
-    const isSport = location.pathname === "/sports";
+    const isSport = location.pathname === "/sports" || location.pathname === "/live-sports";
     const isAuth = location.pathname === "/login" || location.pathname === "/register" || location.pathname === "/profile/history" || location.pathname === "/profile/edit" || location.pathname === "/profile/change-password";
 
     useEffect(() => {
