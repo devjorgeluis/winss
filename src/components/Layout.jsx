@@ -162,6 +162,11 @@ const Layout = () => {
         } else {
             setIsSlotsOnly("true");
         }
+
+        if (result && result.user === null) {
+            localStorage.removeItem("session");
+            window.location.href = "/";
+        }
     };
 
     const handleLoginSuccess = (balance) => {
