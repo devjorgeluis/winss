@@ -165,7 +165,6 @@ const Layout = () => {
 
         if (result && result.user === null) {
             localStorage.removeItem("session");
-            window.location.href = "/";
         }
     };
 
