@@ -10,6 +10,7 @@ import NavLinkHeader from "../components/NavLinkHeader";
 import LoginModal from "./LoginModal";
 import LogoutConfirmModal from "./LogoutConfirmModal";
 import ChangePasswordModal from "./ChangePasswordModal";
+import SupportModal from "./SupportModal";
 import { NavigationContext } from "./NavigationContext";
 import ImgPumpkin from "/src/assets/img/pumpkin.png";
 
@@ -21,6 +22,12 @@ const Layout = () => {
         return typeof window !== 'undefined' ? window.innerWidth <= 767 : false;
     });
     const [userBalance, setUserBalance] = useState("");
+    const [supportWhatsApp, setSupportWhatsApp] = useState("");
+    const [supportTelegram, setSupportTelegram] = useState("");
+    const [supportEmail, setSupportEmail] = useState("");
+    const [supportParent, setSupportParent] = useState("");
+    const [showSupportModal, setShowSupportModal] = useState(false);
+    const [supportParentOnly, setSupportParentOnly] = useState(false);
     const [showLoginModal, setShowLoginModal] = useState(false);
     const [showLogoutModal, setShowLogoutModal] = useState(false);
     const [showChangePasswordModal, setShowChangePasswordModal] = useState(false);
@@ -59,6 +66,11 @@ const Layout = () => {
             setIsLogin(true);
             if (contextData.session.user && contextData.session.user.balance) {
                 setUserBalance(contextData.session.user.balance);
+
+                setSupportWhatsApp(contextData.session.support_whatsapp || "");
+                setSupportTelegram(contextData.session.support_telegram || "");
+                setSupportEmail(contextData.session.support_email || "");
+                setSupportParent(contextData.session.support_parent || "");
             }
 
             refreshBalance();
@@ -165,6 +177,11 @@ const Layout = () => {
             setIsSlotsOnly("true");
         }
 
+        setSupportWhatsApp(result && result.support_whatsapp ? result.support_whatsapp : "");
+        setSupportTelegram(result && result.support_telegram ? result.support_telegram : "");
+        setSupportEmail(result && result.support_email ? result.support_email : "");
+        setSupportParent(result && result.support_parent ? result.support_parent : "");
+
         if (result && result.user === null) {
             localStorage.removeItem("session");
         }
@@ -193,12 +210,26 @@ const Layout = () => {
         setShowLogoutModal(false);
     };
 
+    const openSupportModal = (parentOnly = false) => {
+        setSupportParentOnly(Boolean(parentOnly));
+        setShowSupportModal(true);
+    };
+
+    const closeSupportModal = () => {
+        setShowSupportModal(false);
+        setSupportParentOnly(false);
+    };
+
     const layoutContextValue = {
         isLogin,
         userBalance,
+        supportWhatsApp,
+        supportTelegram,
+        supportEmail,
         handleLogoutClick,
         handleChangePasswordClick,
-        refreshBalance
+        refreshBalance,
+        openSupportModal
     };
 
     return (
@@ -235,12 +266,23 @@ const Layout = () => {
                                 handleChangePasswordClick={handleChangePasswordClick}
                                 fragmentNavLinksTop={fragmentNavLinksTop}
                                 isSlotsOnly={isSlotsOnly}
+                                supportParent={supportParent}
+                                openSupportModal={openSupportModal}
                             />
                         }
                         <main className={isCasino ? 'casino main' : isLiveCasino ? 'live-casino-container' : isHalloween ? 'live-casino-container halloween' : isCrash ? 'crash' : isAuth ? 'auth' : 'main'} id="wlcp">
                             <Outlet />
                         </main>
                         { !isSport && <Footer /> }
+                        <SupportModal
+                            isOpen={showSupportModal}
+                            onClose={closeSupportModal}
+                            supportWhatsApp={supportWhatsApp}
+                            supportTelegram={supportTelegram}
+                            supportEmail={supportEmail}
+                            supportParentOnly={supportParentOnly}
+                            supportParent={supportParent}
+                        />
                     </>
                 </>
             </NavigationContext.Provider>
