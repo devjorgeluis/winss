@@ -2038,7 +2038,7 @@ ul.nav>li.sa-stacker>a:hover {
 }
 
 .apigames-popup {
-    position: absolute;
+    position: fixed;
     width: 100%;
     height: 100%;
     top: 0px;
