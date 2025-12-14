@@ -946,7 +946,7 @@ ul.nav>li.sa-stacker>a:hover {
     .login-header .login-group-default {
         min-width: auto !important;
         display: flex;
-        align-items: flex-start;
+        align-items: center;
     }
 }
 
@@ -2031,6 +2031,7 @@ ul.nav>li.sa-stacker>a:hover {
     border-radius: 5px;
     padding: 0px;
     margin-right: 10px;
+    margin-left: 10px;
 }
 
 .button-support>img {

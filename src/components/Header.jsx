@@ -103,7 +103,9 @@ const Header = ({ isLogin, userBalance, supportParent, handleLogoutClick, handle
                                             <div className="login-group-default">
                                                 <a href="/register" className="btn btn-dark btn-menu-top btndrop btn-register-a"> <i className="fas fa-user"></i> CREAR CUENTA </a>
                                                 <a href="/login" className="btn btn-danger btn-menu-top btndrop btn-login-a"> <i className="fas fa-lock"></i> INICIAR SESIÓN </a>
-
+                                                <button className="button-support" onClick={() => { openSupportModal(false); }}>
+                                                    <img src={ImgSupport} />
+                                                </button>
                                                 <div className="nav-item dropdown" style={{ position: 'relative' }}>
                                                     <a 
                                                         className="nav-link nav-link-mini dropdown-toggle p-0" 
@@ -140,9 +142,6 @@ const Header = ({ isLogin, userBalance, supportParent, handleLogoutClick, handle
                                                         </div>
                                                     )}
                                                 </div>
-                                                <button className="button-support" onClick={() => { openSupportModal(false); }}>
-                                                    <img src={ImgSupport} />
-                                                </button>
                                             </div>
                                         </div>
                                     }
