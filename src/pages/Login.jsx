@@ -67,6 +67,7 @@ const Login = () => {
             let body = {
                 username: loginFormData.username,
                 password: loginFormData.password,
+                site_label: "main",
             };
 
             const result = await callApi(
@@ -91,6 +92,8 @@ const Login = () => {
             setTimeout(() => {
                 navigate("/");
             }, 1000);
+        } else if (result.status === "country") {
+            toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message={result.message} />);
         } else if (result.status === 401) {
             toast.error(<CustomToastContent title="¡Vaya! ¡Algo salió mal!" message="Verifica tu usuario y contraseña." />);
         } else if (result.status === 500 || result.status === 422) {
